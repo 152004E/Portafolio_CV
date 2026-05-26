@@ -1,0 +1,16 @@
+---
+const phoneNumber = "573222463385";
+const message = "¡Hola! Me gustaría saber más sobre tus servicios.";
+const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+---
+
+<a
+  href={whatsappUrl}
+  target="_blank"
+  rel="noopener noreferrer"
+  class="fixed bottom-6 right-6 z-50 w-14 h-14 bg-green-500 hover:bg-green-400 rounded-full flex items-center justify-center text-white text-3xl shadow-lg shadow-green-500/30 transition-all duration-300 hover:scale-110 hover:shadow-xl hover:shadow-green-500/40 active:scale-95 animate__animated animate__fadeInUp animate__delay-3s"
+  aria-label="Contactar por WhatsApp"
+  title="Escríbeme por WhatsApp"
+>
+  <i class="fa-brands fa-whatsapp"></i>
+</a>

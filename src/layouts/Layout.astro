@@ -2,6 +2,7 @@
 import '../styles/tailwind.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import Navbar from '../components/Navbar.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
 
 interface Props {
 	title?: string;
@@ -40,6 +41,7 @@ const { title = "Emerson Reyes || Portafolio profesional" } = Astro.props;
   <body class="text-white antialiased">
     <Navbar />
     <slot />
+    <WhatsAppButton />
 
     <!-- AOS JS -->
     <script is:inline src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
