@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Plus Jakarta Sans', sans-serif;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: linear-gradient(135deg, #2b2e4a 20%, #536976 30%, #292e49 90%),
+    url("https://www.transparenttextures.com/patterns/black-linen.png");
+  background-blend-mode: overlay;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.blur-bg {
+  background: rgba(20, 20, 20, 0.25);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+}
+
+.fondo {
+  background: linear-gradient(
+      to bottom right,
+      rgba(13, 110, 253, 0.95) 0%,
+      rgba(255, 255, 255, 0.1) 50%,
+      rgba(41, 72, 156, 0.95) 100%
+    ),
+    url(/images/portada-fondoOP.png) center center no-repeat;
+  background-size: cover;
+}

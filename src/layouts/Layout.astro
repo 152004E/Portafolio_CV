@@ -1,0 +1,51 @@
+---
+import '../styles/tailwind.css';
+import '@fortawesome/fontawesome-free/css/all.min.css';
+
+interface Props {
+	title?: string;
+}
+
+const { title = "Emerson Reyes || Portafolio profesional" } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+
+    <!-- Agregar el Favicon-->
+    <link rel="shortcut icon" href="/images/LogoCvOP.png" type="image/png" />
+
+    <!-- Google fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Transicion (Animate.css) -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  </head>
+  <body class="text-white antialiased">
+    <slot />
+
+    <!-- AOS JS -->
+    <script is:inline src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script is:inline>
+      AOS.init({
+        duration: 500, // Duración en milisegundos (0.5s)
+        once: true, // Solo una vez por scroll
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,177 @@
+---
+---
+<section id="contacto" class="py-12">
+  <div class="container mx-auto px-4 flex justify-center">
+    <div
+      class="border border-white/10 p-6 md:p-8 rounded-3xl blur-bg text-white w-100 shadow-2xl"
+      data-aos="fade-up"
+      style="max-width: 700px;"
+    >
+      <div id="form-container" class="flex flex-col">
+        <div class="text-center md:text-left">
+          <span class="bg-blue-500/20 text-blue-400 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider">
+            Contacto
+          </span>
+          <h3 class="text-blue-400 font-bold text-2xl md:text-3xl mt-4">
+            Hablemos de tu proyecto
+          </h3>
+          <p class="text-gray-300 mt-2 text-sm md:text-base leading-relaxed">
+            Completa el formulario y me pondré en contacto contigo a la brevedad.
+          </p>
+        </div>
+        
+        <form id="contact-form" class="mt-6 flex flex-col gap-4 text-left" novalidate>
+          <div class="flex flex-col gap-1">
+            <label for="name" class="text-sm font-semibold text-gray-200">Nombre Completo</label>
+            <input
+              type="text"
+              class="w-full bg-zinc-950/40 text-white placeholder-gray-500 border border-zinc-800 rounded-2xl px-4 py-3 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition duration-300"
+              id="name"
+              required
+              placeholder="Tu nombre..."
+              minlength="3"
+            />
+            <div class="invalid-feedback text-red-400 text-xs mt-1 hidden">
+              Por favor, escribe tu nombre (mínimo 3 caracteres).
+            </div>
+          </div>
+          
+          <div class="flex flex-col gap-1">
+            <label for="email" class="text-sm font-semibold text-gray-200">Correo Electrónico</label>
+            <input
+              type="email"
+              class="w-full bg-zinc-950/40 text-white placeholder-gray-500 border border-zinc-800 rounded-2xl px-4 py-3 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition duration-300"
+              id="email"
+              required
+              placeholder="tuemail@ejemplo.com"
+            />
+            <div class="invalid-feedback text-red-400 text-xs mt-1 hidden">
+              Por favor, introduce un correo electrónico válido.
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-1">
+            <label for="subject" class="text-sm font-semibold text-gray-200">Asunto</label>
+            <input
+              type="text"
+              class="w-full bg-zinc-950/40 text-white placeholder-gray-500 border border-zinc-800 rounded-2xl px-4 py-3 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition duration-300"
+              id="subject"
+              required
+              placeholder="¿En qué puedo ayudarte?"
+            />
+            <div class="invalid-feedback text-red-400 text-xs mt-1 hidden">
+              Por favor, especifica el asunto.
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-1">
+            <label for="message" class="text-sm font-semibold text-gray-200">Mensaje</label>
+            <textarea
+              class="w-full bg-zinc-950/40 text-white placeholder-gray-500 border border-zinc-800 rounded-2xl px-4 py-3 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition duration-300"
+              id="message"
+              rows="4"
+              required
+              placeholder="Cuéntame más sobre tu idea o proyecto..."
+            ></textarea>
+            <div class="invalid-feedback text-red-400 text-xs mt-1 hidden">
+              Por favor, escribe un mensaje.
+            </div>
+          </div>
+
+          <button
+            type="submit"
+            id="submit-btn"
+            class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full transition duration-300 shadow-md flex items-center justify-center gap-2 hover:-translate-y-0.5 cursor-pointer mt-2"
+          >
+            <span>Enviar Mensaje</span>
+            <i class="fa-solid fa-paper-plane text-sm"></i>
+          </button>
+        </form>
+      </div>
+
+      <!-- Success Message (Hidden initially) -->
+      <div id="success-container" class="text-center py-8 hidden animate__animated animate__zoomIn">
+        <div class="mb-4">
+          <i class="fa-solid fa-circle-check text-green-500 text-7xl"></i>
+        </div>
+        <h3 class="text-white font-bold text-2xl">¡Mensaje Recibido!</h3>
+        <p class="text-gray-300 mt-2 text-sm md:text-base leading-relaxed">
+          Gracias por escribir. Te responderé lo antes posible.
+        </p>
+        <button
+          id="reset-btn"
+          class="border border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white font-semibold py-2 px-6 rounded-full mt-6 transition duration-300 cursor-pointer"
+        >
+          Enviar otro mensaje
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Form Validation styling logic mimicking bootstrap via CSS styles local to this component */
+  .was-validated input:invalid,
+  .was-validated textarea:invalid {
+    border-color: #ef4444; /* Tailwind red-500 */
+    background-color: rgba(239, 68, 68, 0.02);
+  }
+
+  .was-validated input:invalid ~ .invalid-feedback,
+  .was-validated textarea:invalid ~ .invalid-feedback {
+    display: block;
+  }
+</style>
+
+<script>
+  function initForm() {
+    const form = document.getElementById('contact-form') as HTMLFormElement;
+    const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
+    const formContainer = document.getElementById('form-container');
+    const successContainer = document.getElementById('success-container');
+    const resetBtn = document.getElementById('reset-btn');
+
+    if (form && submitBtn && formContainer && successContainer && resetBtn) {
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+
+        if (form.checkValidity()) {
+          // Change state to loading
+          const originalText = submitBtn.innerHTML;
+          submitBtn.disabled = true;
+          submitBtn.innerHTML = `
+            <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+            <span>Enviando...</span>
+          `;
+
+          // Simulate API call and success animation
+          setTimeout(() => {
+            // Hide form and show success state
+            formContainer.classList.add('hidden');
+            successContainer.classList.remove('hidden');
+            form.reset();
+            form.classList.remove('was-validated');
+            
+            // Re-enable button
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalText;
+          }, 1500);
+        }
+
+        form.classList.add('was-validated');
+      }, false);
+
+      resetBtn.addEventListener('click', () => {
+        successContainer.classList.add('hidden');
+        formContainer.classList.remove('hidden');
+      });
+    }
+  }
+
+  // Run on page load
+  document.addEventListener('DOMContentLoaded', initForm);
+</script>
