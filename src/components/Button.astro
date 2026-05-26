@@ -1,0 +1,116 @@
+---
+type LoadingType = "spinner" | "dots" | "pulse";
+type ButtonVariant = "primary" | "success" | "error" | "secondary";
+
+interface Props {
+  to?: string;
+  text: string;
+  iconLeft?: string;
+  iconRight?: string;
+  type?: "button" | "submit";
+  disabled?: boolean;
+  className?: string;
+  isLoading?: boolean;
+  loadingType?: LoadingType;
+  loadingText?: string;
+  variant?: ButtonVariant;
+  id?: string;
+  [key: string]: any; // Allow forwarding other standard HTML attributes
+}
+
+const {
+  to,
+  text,
+  type = "button",
+  iconLeft,
+  iconRight,
+  disabled,
+  className = "",
+  isLoading = false,
+  loadingType = "spinner",
+  loadingText,
+  variant = "primary",
+  id,
+  ...rest
+} = Astro.props;
+
+const variantClasses = {
+  primary: "bg-room-primary hover:bg-blue-700 shadow-glow",
+  success: "bg-room-success hover:bg-emerald-600 text-room-dark",
+  error: "bg-room-error hover:bg-red-700",
+  secondary: "bg-room-card backdrop-blur-sm border border-white/10 hover:bg-slate-800",
+};
+
+const baseClasses =
+  "inline-flex items-center cursor-pointer justify-center gap-2 text-white px-6 py-2.5 rounded-room transition-all duration-300 ease-in-out hover:scale-[1.02] active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 font-medium";
+
+// Use variant specific text color for success as it's very bright neon
+const textClass = variant === "success" ? "text-room-dark" : "text-white";
+
+const finalClasses = `${baseClasses} ${variantClasses[variant]} ${textClass} ${className}`;
+const isDisabled = disabled || isLoading;
+---
+
+{
+  to && !isLoading ? (
+    <a href={to} class={finalClasses} id={id} {...rest}>
+      {iconLeft && <i class={iconLeft} />}
+      <span>{text}</span>
+      {iconRight && <i class={iconRight} />}
+    </a>
+  ) : (
+    <button
+      type={type}
+      disabled={isDisabled}
+      class={finalClasses}
+      id={id}
+      {...rest}
+    >
+      {isLoading && (
+        <span class="flex items-center justify-center mr-1">
+          {loadingType === "spinner" && (
+            <svg
+              class="animate-spin h-5 w-5 text-current"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <circle
+                class="opacity-25"
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="currentColor"
+                stroke-width="4"
+              />
+              <path
+                class="opacity-75"
+                fill="currentColor"
+                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+              />
+            </svg>
+          )}
+          {loadingType === "dots" && (
+            <span class="flex gap-1 items-center">
+              <span class="w-2 h-2 bg-current rounded-full animate-bounce [animation-delay:0ms]" />
+              <span class="w-2 h-2 bg-current rounded-full animate-bounce [animation-delay:150ms]" />
+              <span class="w-2 h-2 bg-current rounded-full animate-bounce [animation-delay:300ms]" />
+            </span>
+          )}
+          {loadingType === "pulse" && (
+            <span class="flex gap-1 items-center">
+              <span class="w-2 h-2 bg-current rounded-full animate-pulse" />
+              <span class="w-2 h-2 bg-current rounded-full animate-pulse [animation-delay:75ms]" />
+              <span class="w-2 h-2 bg-current rounded-full animate-pulse [animation-delay:150ms]" />
+            </span>
+          )}
+        </span>
+      )}
+      
+      <span>{isLoading ? (loadingText || "Cargando...") : text}</span>
+      
+      {!isLoading && iconLeft && <i class={iconLeft} />}
+      {!isLoading && iconRight && <i class={iconRight} />}
+    </button>
+  )
+}

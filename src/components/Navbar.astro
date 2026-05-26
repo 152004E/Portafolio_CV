@@ -1,0 +1,98 @@
+---
+const navLinks = [
+  { href: "#section-portada", label: "Inicio" },
+  { href: "#section-proyectos", label: "Proyectos" },
+  { href: "#sobre-mi", label: "Sobre mí" },
+  { href: "#tecnologias", label: "Tecnologías" },
+  { href: "#contacto", label: "Contacto" },
+];
+---
+
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+  <div id="nav-backdrop" class="border-b border-blue-500/10 backdrop-blur-xl bg-[#0a0a0f]/70 transition-all duration-300">
+    <div class="container mx-auto px-4">
+      <div class="flex items-center justify-between h-16 md:h-20">
+        <a
+          href="#section-portada"
+          class="text-xl md:text-2xl font-bold text-white tracking-tight group"
+        >
+          <span class="text-blue-400 group-hover:text-cyan-400 transition-colors">&lt;</span>
+          Emerson
+          <span class="text-blue-400 group-hover:text-cyan-400 transition-colors"> /&gt;</span>
+        </a>
+        <div class="hidden md:flex items-center gap-1">
+          {navLinks.map((link) => (
+            <a
+              href={link.href}
+              class="relative px-4 py-2 text-sm font-medium text-gray-300 hover:text-white transition-all duration-300 group"
+            >
+              {link.label}
+              <span class="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2px] bg-gradient-to-r from-blue-500 to-cyan-400 group-hover:w-3/4 transition-all duration-300 rounded-full"></span>
+            </a>
+          ))}
+        </div>
+        <a
+          href="#contacto"
+          class="hidden md:inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-cyan-500 text-white px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/25 hover:scale-105 active:scale-95"
+        >
+          Hablemos
+          <i class="fa-solid fa-arrow-right text-xs"></i>
+        </a>
+        <button id="menu-toggle" class="md:hidden relative w-10 h-10 flex items-center justify-center text-white hover:text-blue-400 transition-colors" aria-label="Abrir menú">
+          <i id="menu-icon" class="fa-solid fa-bars text-xl transition-all duration-300"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div id="mobile-menu" class="md:hidden hidden">
+    <div class="backdrop-blur-xl bg-[#0a0a0f]/95 border-b border-blue-500/10 shadow-2xl shadow-blue-500/5">
+      <div class="container mx-auto px-4 py-6 flex flex-col gap-2">
+        {navLinks.map((link) => (
+          <a
+            href={link.href}
+            class="block px-4 py-3 text-gray-300 hover:text-white font-medium rounded-xl hover:bg-white/5 transition-all duration-300 border-l-2 border-transparent hover:border-blue-500"
+          >
+            {link.label}
+          </a>
+        ))}
+        <a
+          href="#contacto"
+          class="mt-3 text-center bg-gradient-to-r from-blue-600 to-cyan-500 text-white px-5 py-3 rounded-xl font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/25"
+        >
+          Hablemos
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<script>
+  const menuToggle = document.getElementById('menu-toggle');
+  const menuIcon = document.getElementById('menu-icon');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const navBackdrop = document.getElementById('nav-backdrop');
+
+  if (menuToggle && menuIcon && mobileMenu && navBackdrop) {
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+      menuIcon.classList.toggle('fa-bars');
+      menuIcon.classList.toggle('fa-times');
+    });
+    mobileMenu.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        menuIcon.classList.add('fa-bars');
+        menuIcon.classList.remove('fa-times');
+      });
+    });
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 100) {
+        navBackdrop.classList.add('bg-[#0a0a0f]/90');
+        navBackdrop.classList.remove('bg-[#0a0a0f]/70');
+      } else {
+        navBackdrop.classList.add('bg-[#0a0a0f]/70');
+        navBackdrop.classList.remove('bg-[#0a0a0f]/90');
+      }
+    });
+  }
+</script>

@@ -1,0 +1,36 @@
+---
+interface SocialLink {
+  icon: string;
+  url: string;
+  label: string;
+  color?: string;
+  hoverColor?: string;
+}
+
+interface Props {
+  links?: SocialLink[];
+}
+
+const defaultLinks: SocialLink[] = [
+  { icon: "fa-brands fa-facebook", url: "https://www.facebook.com/luisfavian.avila/", label: "Facebook", color: "text-blue-500", hoverColor: "hover:text-blue-400" },
+  { icon: "fa-brands fa-instagram", url: "https://www.instagram.com/emerson_15a/", label: "Instagram", color: "text-pink-500", hoverColor: "hover:text-pink-400" },
+  { icon: "fa-brands fa-github", url: "https://github.com/152004E", label: "GitHub", color: "text-white", hoverColor: "hover:text-gray-300" },
+];
+
+const { links = defaultLinks } = Astro.props;
+---
+
+<div class="flex items-center gap-4">
+  {links.map((link) => (
+    <a
+      href={link.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      class={`${link.color} ${link.hoverColor} text-2xl transition-all duration-300 hover:scale-110 hover:[filter:drop-shadow(0_0_8px_rgba(59,130,246,0.5))]`}
+      aria-label={link.label}
+      title={link.label}
+    >
+      <i class={link.icon}></i>
+    </a>
+  ))}
+</div>

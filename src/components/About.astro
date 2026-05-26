@@ -1,6 +1,7 @@
 ---
+import Button from './Button.astro';
 ---
-<section class="container mx-auto px-4 flex justify-center pt-24 md:pt-36">
+<section id="sobre-mi" class="container mx-auto px-4 flex justify-center pt-24 md:pt-36">
   <div
     class="blur-bg border border-white/10 p-6 md:p-8 rounded-3xl text-center max-w-[700px] w-full shadow-xl"
     data-aos="fade-right"
@@ -15,13 +16,13 @@
       <p class="text-gray-300 mt-4 text-base md:text-lg leading-relaxed max-w-[600px]">
         En proceso de formación en Análisis y Desarrollo de Software, con dominio de lenguajes como JavaScript y Java, experiencia en bases de datos y control de versiones con Git. Desarrollo de interfaces web modernas y responsivas utilizando JavaScript, Bootstrap y Tailwind CSS.
       </p>
-      <a
-        href="https://github.com/152004E"
+      <Button
+        to="https://github.com/152004E"
         target="_blank"
-        class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2.5 rounded-full mt-6 transition duration-300 shadow-md hover:-translate-y-0.5"
-      >
-        Ver en GitHub <i class="fa-brands fa-github ml-1"></i>
-      </a>
+        text="Ver en GitHub"
+        iconRight="fa-brands fa-github"
+        className="mt-6"
+      />
     </div>
   </div>
 </section>

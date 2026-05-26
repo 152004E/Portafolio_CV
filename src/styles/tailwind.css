@@ -2,13 +2,20 @@
 
 @theme {
   --font-sans: 'Plus Jakarta Sans', sans-serif;
+  
+  --color-room-primary: #0d6efd;
+  --color-room-success: #10b981;
+  --color-room-error: #ef4444;
+  --color-room-dark: #09090b;
+  --color-room-card: rgba(20, 20, 20, 0.25);
+  
+  --shadow-glow: 0 0 15px rgba(13, 110, 253, 0.45);
+  --radius-room: 1rem;
 }
 
 body {
   font-family: var(--font-sans);
-  background: linear-gradient(135deg, #2b2e4a 20%, #536976 30%, #292e49 90%),
-    url("https://www.transparenttextures.com/patterns/black-linen.png");
-  background-blend-mode: overlay;
+  background: linear-gradient(135deg, #0a0a0f 0%, #0d1117 30%, #0a0a0f 100%);
   background-size: cover;
   background-attachment: fixed;
 }

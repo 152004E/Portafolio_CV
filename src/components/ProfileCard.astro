@@ -1,0 +1,23 @@
+---
+import Button from './Button.astro';
+
+interface Props {
+  imageSrc?: string;
+  alt?: string;
+}
+
+const { imageSrc = "/images/imagenparagithudoptimazadaOP.png", alt = "Emerson Reyes" } = Astro.props;
+---
+
+<div class="relative group">
+  <div class="absolute -inset-6 bg-gradient-to-r from-blue-500/20 via-purple-500/10 to-cyan-500/20 rounded-full blur-3xl opacity-40 group-hover:opacity-70 transition-all duration-700"></div>
+  <div class="relative w-[280px] h-[280px] sm:w-[320px] sm:h-[320px] md:w-[380px] md:h-[380px] rounded-full bg-gradient-to-b from-blue-600/30 via-blue-800/10 to-blue-900/30 border border-blue-400/20 flex items-end justify-center overflow-visible shadow-2xl shadow-blue-500/10">
+    <div class="absolute inset-0 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(59,130,246,0.1)_0%,transparent_70%)]"></div>
+    <img
+      class="w-[220px] sm:w-[250px] md:w-[300px] object-contain rounded-b-full z-10 relative"
+      src={imageSrc}
+      alt={alt}
+      loading="eager"
+    />
+  </div>
+</div>

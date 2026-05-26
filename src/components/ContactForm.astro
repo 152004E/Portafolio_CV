@@ -1,4 +1,5 @@
 ---
+import Button from './Button.astro';
 ---
 <section id="contacto" class="py-12">
   <div class="container mx-auto px-4 flex justify-center">
@@ -78,14 +79,13 @@
             </div>
           </div>
 
-          <button
+          <Button
             type="submit"
             id="submit-btn"
-            class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full transition duration-300 shadow-md flex items-center justify-center gap-2 hover:-translate-y-0.5 cursor-pointer mt-2"
-          >
-            <span>Enviar Mensaje</span>
-            <i class="fa-solid fa-paper-plane text-sm"></i>
-          </button>
+            text="Enviar Mensaje"
+            iconRight="fa-solid fa-paper-plane text-sm"
+            className="w-full mt-2 py-3"
+          />
         </form>
       </div>
 
@@ -98,12 +98,12 @@
         <p class="text-gray-300 mt-2 text-sm md:text-base leading-relaxed">
           Gracias por escribir. Te responderé lo antes posible.
         </p>
-        <button
+        <Button
           id="reset-btn"
-          class="border border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white font-semibold py-2 px-6 rounded-full mt-6 transition duration-300 cursor-pointer"
-        >
-          Enviar otro mensaje
-        </button>
+          text="Enviar otro mensaje"
+          variant="secondary"
+          className="mt-6 border-blue-500 hover:border-blue-600 !text-blue-400 hover:!text-white hover:bg-blue-600"
+        />
       </div>
     </div>
   </div>
