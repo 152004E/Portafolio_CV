@@ -175,6 +175,25 @@ const navLinks = [
         <i class="fa-solid fa-download"></i>
         Descargar CV
       </a>
+
+      <!-- THEME TOGGLE -->
+      <button id="theme-toggle"
+        class="
+          flex
+          items-center
+          justify-center
+          w-9
+          h-9
+          rounded-full
+          text-gray-300
+          hover:bg-white/[0.05]
+          hover:text-white
+          transition-all
+        "
+        aria-label="Cambiar tema"
+      >
+        <i id="theme-icon" class="fa-solid fa-sun text-sm"></i>
+      </button>
     </div>
 
     <!-- MOBILE BUTTON -->
@@ -233,10 +252,11 @@ const navLinks = [
         </a>
       ))}
 
+    
+
       <a
         href="#contacto"
         class="
-          mt-2
           rounded-xl
           bg-gradient-to-r
           from-blue-600
@@ -277,6 +297,29 @@ const navLinks = [
         <i class="fa-solid fa-download"></i>
         Descargar CV
       </a>
+
+      <button
+        id="theme-toggle-mobile"
+        class="
+          rounded-xl
+          border
+          border-white/10
+          bg-white/[0.03]
+          px-4
+          py-3
+          text-center
+          text-sm
+          font-semibold
+          text-gray-300
+          transition-all
+          duration-300
+          hover:bg-white/[0.08]
+          hover:text-white
+        "
+      >
+        <i id="theme-icon-mobile" class="fa-solid fa-sun"></i>
+        <span class="ml-2">Modo claro</span>
+      </button>
     </div>
   </div>
 </nav>
@@ -302,5 +345,37 @@ const navLinks = [
         menuIcon.classList.remove("fa-times");
       });
     });
+  }
+
+  // Theme toggle
+  const themeIcon = document.getElementById("theme-icon");
+  const themeIconMobile = document.getElementById("theme-icon-mobile");
+  const themeToggleMobile = document.getElementById("theme-toggle-mobile");
+  const themeToggle = document.getElementById("theme-toggle");
+
+  function toggleTheme() {
+    document.documentElement.classList.toggle("dark");
+
+    const isDark = document.documentElement.classList.contains("dark");
+    const iconClass = isDark ? "fa-sun" : "fa-moon";
+    const text = isDark ? "Modo claro" : "Modo oscuro";
+
+    if (themeIcon) {
+      themeIcon.className = `fa-solid ${iconClass} text-sm`;
+    }
+    if (themeIconMobile) {
+      themeIconMobile.className = `fa-solid ${iconClass}`;
+    }
+    if (themeToggleMobile) {
+      const span = themeToggleMobile.querySelector("span");
+      if (span) span.textContent = text;
+    }
+  }
+
+  if (themeToggle) {
+    themeToggle.addEventListener("click", toggleTheme);
+  }
+  if (themeToggleMobile) {
+    themeToggleMobile.addEventListener("click", toggleTheme);
   }
 </script>

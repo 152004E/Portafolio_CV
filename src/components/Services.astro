@@ -1,4 +1,6 @@
 ---
+import TechCard from './TechCard.astro';
+
 const categories = [
   {
     title: "Frontend",
@@ -37,6 +39,9 @@ const categories = [
       { name: "Git & GitHub", level: "Intermedio", icon: "fa-brands fa-git-alt", description: "Control de versiones, ramas, pull requests, flujo colaborativo." },
       { name: "Docker", level: "Básico", icon: "fa-brands fa-docker", description: "Contenedores, imágenes, docker-compose, entornos aislados." },
       { name: "Linux", level: "Intermedio", icon: "fa-brands fa-linux", description: "Terminal, comandos, permisos, scripts bash, servidores." },
+      { name: "Claude Code", level: "Básico", icon: "fa-solid fa-robot", description: "Asistente de codificación con IA para desarrollo asistido." },
+      { name: "OpenCode", level: "Básico", icon: "fa-solid fa-terminal", description: "CLI interactivo para ingeniería de software con IA." },
+      { name: "Ollama", level: "Básico", icon: "fa-solid fa-brain", description: "Ejecución local de modelos de lenguaje para desarrollo." },
     ],
   },
 ];
@@ -62,140 +67,73 @@ function getLevelColor(level: string) {
       </p>
     </div>
 
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
-      <!-- Frontend - derecha -->
-      <div class="lg:col-start-2" data-aos="fade-up">
-        <div class="flex items-center gap-3 mb-5">
-          <div class="flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.03] border border-white/10">
-            <i class="fa-solid fa-display text-blue-400 text-sm"></i>
-            <h3 class="text-white font-semibold text-lg">Frontend</h3>
-          </div>
-          <div class="flex-1 h-px bg-gradient-to-r from-blue-500/20 to-transparent"></div>
-        </div>
-        <div class="grid grid-cols-1 gap-3">
-          {categories[0].technologies.map((tech) => (
-            <div class="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] backdrop-blur-md p-4 transition-all duration-300 hover:-translate-y-1 hover:border-blue-500/40 hover:shadow-[0_0_25px_rgba(59,130,246,0.1)]">
-              <div class="absolute -top-20 -right-20 w-40 h-40 bg-blue-500/5 rounded-full blur-3xl group-hover:bg-blue-500/10 transition-all duration-500"></div>
-              <div class="relative z-10 flex items-start gap-3">
-                <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-blue-500/10 text-blue-400 text-base group-hover:bg-blue-500/20 group-hover:text-blue-300 transition-all duration-300">
-                  <i class={tech.icon}></i>
-                </div>
-                <div class="flex-1 min-w-0">
-                  <div class="flex items-center justify-between gap-2">
-                    <h4 class="text-white font-semibold text-sm">{tech.name}</h4>
-                    <span class={`shrink-0 px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider border ${getLevelColor(tech.level)}`}>
-                      {tech.level}
-                    </span>
-                  </div>
-                  <p class="text-gray-500 text-xs mt-1 leading-relaxed line-clamp-2">
-                    {tech.description}
-                  </p>
-                </div>
-              </div>
+    <div class="relative grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-0">
+      <!-- Vertical Divider -->
+      <div class="hidden lg:block absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-blue-500/20 via-blue-400/10 to-transparent -translate-x-1/2"></div>
+
+      <!-- Left Column: Backend + Tools -->
+      <div class="flex flex-col gap-10 lg:pr-8">
+        <div data-aos="fade-up" data-aos-delay="100">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.03] border border-white/10">
+              <i class="fa-solid fa-server text-blue-400 text-sm"></i>
+              <h3 class="text-white font-semibold text-lg">Backend</h3>
             </div>
-          ))}
+            <div class="flex-1 h-px bg-gradient-to-r from-blue-500/20 to-transparent"></div>
+          </div>
+          <div class="grid grid-cols-1 gap-3">
+            {categories[1].technologies.map((tech) => (
+              <TechCard icon={tech.icon} name={tech.name} level={tech.level} description={tech.description} />
+            ))}
+          </div>
+        </div>
+
+        <div data-aos="fade-up" data-aos-delay="300">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.03] border border-white/10">
+              <i class="fa-solid fa-tools text-blue-400 text-sm"></i>
+              <h3 class="text-white font-semibold text-lg">Herramientas</h3>
+            </div>
+            <div class="flex-1 h-px bg-gradient-to-r from-blue-500/20 to-transparent"></div>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {categories[3].technologies.map((tech) => (
+              <TechCard icon={tech.icon} name={tech.name} level={tech.level} description={tech.description} />
+            ))}
+          </div>
         </div>
       </div>
 
-      <!-- Backend - izquierda -->
-      <div class="lg:col-start-1 lg:row-start-1" data-aos="fade-up" data-aos-delay="100">
-        <div class="flex items-center gap-3 mb-5">
-          <div class="flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.03] border border-white/10">
-            <i class="fa-solid fa-server text-blue-400 text-sm"></i>
-            <h3 class="text-white font-semibold text-lg">Backend</h3>
-          </div>
-          <div class="flex-1 h-px bg-gradient-to-r from-blue-500/20 to-transparent"></div>
-        </div>
-        <div class="grid grid-cols-1 gap-3">
-          {categories[1].technologies.map((tech) => (
-            <div class="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] backdrop-blur-md p-4 transition-all duration-300 hover:-translate-y-1 hover:border-blue-500/40 hover:shadow-[0_0_25px_rgba(59,130,246,0.1)]">
-              <div class="absolute -top-20 -right-20 w-40 h-40 bg-blue-500/5 rounded-full blur-3xl group-hover:bg-blue-500/10 transition-all duration-500"></div>
-              <div class="relative z-10 flex items-start gap-3">
-                <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-blue-500/10 text-blue-400 text-base group-hover:bg-blue-500/20 group-hover:text-blue-300 transition-all duration-300">
-                  <i class={tech.icon}></i>
-                </div>
-                <div class="flex-1 min-w-0">
-                  <div class="flex items-center justify-between gap-2">
-                    <h4 class="text-white font-semibold text-sm">{tech.name}</h4>
-                    <span class={`shrink-0 px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider border ${getLevelColor(tech.level)}`}>
-                      {tech.level}
-                    </span>
-                  </div>
-                  <p class="text-gray-500 text-xs mt-1 leading-relaxed line-clamp-2">
-                    {tech.description}
-                  </p>
-                </div>
-              </div>
+      <!-- Right Column: Frontend + Databases -->
+      <div class="flex flex-col gap-10 lg:pl-8">
+        <div data-aos="fade-up">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.03] border border-white/10">
+              <i class="fa-solid fa-display text-blue-400 text-sm"></i>
+              <h3 class="text-white font-semibold text-lg">Frontend</h3>
             </div>
-          ))}
+            <div class="flex-1 h-px bg-gradient-to-r from-blue-500/20 to-transparent"></div>
+          </div>
+          <div class="grid grid-cols-1 gap-3">
+            {categories[0].technologies.map((tech) => (
+              <TechCard icon={tech.icon} name={tech.name} level={tech.level} description={tech.description} />
+            ))}
+          </div>
         </div>
-      </div>
 
-      <!-- Bases de Datos - derecha -->
-      <div class="lg:col-start-2" data-aos="fade-up" data-aos-delay="200">
-        <div class="flex items-center gap-3 mb-5">
-          <div class="flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.03] border border-white/10">
-            <i class="fa-solid fa-database text-blue-400 text-sm"></i>
-            <h3 class="text-white font-semibold text-lg">Bases de Datos</h3>
-          </div>
-          <div class="flex-1 h-px bg-gradient-to-r from-blue-500/20 to-transparent"></div>
-        </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          {categories[2].technologies.map((tech) => (
-            <div class="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] backdrop-blur-md p-4 transition-all duration-300 hover:-translate-y-1 hover:border-blue-500/40 hover:shadow-[0_0_25px_rgba(59,130,246,0.1)]">
-              <div class="absolute -top-20 -right-20 w-40 h-40 bg-blue-500/5 rounded-full blur-3xl group-hover:bg-blue-500/10 transition-all duration-500"></div>
-              <div class="relative z-10 flex items-start gap-3">
-                <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-blue-500/10 text-blue-400 text-base group-hover:bg-blue-500/20 group-hover:text-blue-300 transition-all duration-300">
-                  <i class={tech.icon}></i>
-                </div>
-                <div class="flex-1 min-w-0">
-                  <div class="flex items-center justify-between gap-2">
-                    <h4 class="text-white font-semibold text-sm">{tech.name}</h4>
-                    <span class={`shrink-0 px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider border ${getLevelColor(tech.level)}`}>
-                      {tech.level}
-                    </span>
-                  </div>
-                  <p class="text-gray-500 text-xs mt-1 leading-relaxed line-clamp-2">
-                    {tech.description}
-                  </p>
-                </div>
-              </div>
+        <div data-aos="fade-up" data-aos-delay="200">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.03] border border-white/10">
+              <i class="fa-solid fa-database text-blue-400 text-sm"></i>
+              <h3 class="text-white font-semibold text-lg">Bases de Datos</h3>
             </div>
-          ))}
-        </div>
-      </div>
-
-      <!-- Herramientas - izquierda -->
-      <div class="lg:col-start-1" data-aos="fade-up" data-aos-delay="300">
-        <div class="flex items-center gap-3 mb-5">
-          <div class="flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.03] border border-white/10">
-            <i class="fa-solid fa-tools text-blue-400 text-sm"></i>
-            <h3 class="text-white font-semibold text-lg">Herramientas</h3>
+            <div class="flex-1 h-px bg-gradient-to-r from-blue-500/20 to-transparent"></div>
           </div>
-          <div class="flex-1 h-px bg-gradient-to-r from-blue-500/20 to-transparent"></div>
-        </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          {categories[3].technologies.map((tech) => (
-            <div class="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] backdrop-blur-md p-4 transition-all duration-300 hover:-translate-y-1 hover:border-blue-500/40 hover:shadow-[0_0_25px_rgba(59,130,246,0.1)]">
-              <div class="absolute -top-20 -right-20 w-40 h-40 bg-blue-500/5 rounded-full blur-3xl group-hover:bg-blue-500/10 transition-all duration-500"></div>
-              <div class="relative z-10 flex items-start gap-3">
-                <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-blue-500/10 text-blue-400 text-base group-hover:bg-blue-500/20 group-hover:text-blue-300 transition-all duration-300">
-                  <i class={tech.icon}></i>
-                </div>
-                <div class="flex-1 min-w-0">
-                  <div class="flex items-center justify-between gap-2">
-                    <h4 class="text-white font-semibold text-sm">{tech.name}</h4>
-                    <span class={`shrink-0 px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider border ${getLevelColor(tech.level)}`}>
-                      {tech.level}
-                    </span>
-                  </div>
-                  <p class="text-gray-500 text-xs mt-1 leading-relaxed line-clamp-2">
-                    {tech.description}
-                  </p>
-                </div>
-              </div>
-            </div>
-          ))}
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {categories[2].technologies.map((tech) => (
+              <TechCard icon={tech.icon} name={tech.name} level={tech.level} description={tech.description} />
+            ))}
+          </div>
         </div>
       </div>
     </div>
