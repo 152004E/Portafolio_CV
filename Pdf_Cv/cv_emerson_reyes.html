@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Emerson Reyes — CV</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --accent:#0f172a;
+  --green:#166534;
+  --green-light:#dcfce7;
+  --ink:#111827;
+  --muted:#4b5563;
+  --faint:#9ca3af;
+  --rule:#e5e7eb;
+  --bg-side:#f8fafc;
+  --tag:#f1f5f9;
+  --tag-text:#1e3a5f;
+  --sans:'DM Sans',sans-serif;
+  --serif:'DM Serif Display',serif;
+}
+html{font-size:14px}
+body{font-family:var(--sans);background:#f1f5f9;color:var(--ink);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+
+.page{max-width:880px;margin:2rem auto;background:#fff;box-shadow:0 4px 40px rgba(0,0,0,0.1);display:grid;grid-template-columns:260px 1fr}
+
+/* ── SIDEBAR ── */
+.sidebar{background:var(--bg-side);padding:2.5rem 1.6rem;border-right:1px solid var(--rule);display:flex;flex-direction:column;gap:2rem}
+
+.avatar{width:72px;height:72px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:1.6rem;color:#fff;letter-spacing:-1px;margin-bottom:0.8rem}
+
+.name-block h1{font-family:var(--serif);font-size:1.7rem;font-weight:400;line-height:1.1;color:var(--accent)}
+.name-block h2{margin-top:0.4rem;font-size:0.72rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--green)}
+
+.contact-list{display:flex;flex-direction:column;gap:0.45rem}
+.contact-item{font-size:0.78rem;color:var(--muted);display:flex;align-items:center;gap:0.4rem}
+.contact-item svg{width:13px;height:13px;flex-shrink:0;color:var(--faint)}
+
+.s-title{font-size:0.65rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--faint);border-bottom:1px solid var(--rule);padding-bottom:0.35rem;margin-bottom:0.8rem}
+
+/* skill pills */
+.pill-group{display:flex;flex-wrap:wrap;gap:5px}
+.pill{font-size:0.72rem;font-weight:500;background:var(--tag);color:var(--tag-text);padding:3px 8px;border-radius:3px}
+.pill.accent{background:#e0f2fe;color:#0c4a6e}
+.pill.green{background:#dcfce7;color:#14532d}
+.pill.purple{background:#f3e8ff;color:#4c1d95}
+.pill.amber{background:#fef3c7;color:#78350f}
+
+/* lang bars */
+.lang-item{margin-bottom:0.7rem}
+.lang-label{display:flex;justify-content:space-between;font-size:0.78rem;font-weight:500;color:var(--ink);margin-bottom:0.3rem}
+.lang-level{font-size:0.7rem;color:var(--faint);font-weight:400}
+.bar{height:3px;background:var(--rule);border-radius:2px;overflow:hidden}
+.bar-fill{height:100%;background:var(--accent);border-radius:2px}
+
+/* soft skills */
+.soft-list{display:flex;flex-direction:column;gap:0.35rem}
+.soft-item{font-size:0.78rem;color:var(--muted);display:flex;align-items:center;gap:6px}
+.soft-item::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--green);flex-shrink:0}
+
+/* refs */
+.ref-item{margin-bottom:0.75rem}
+.ref-name{font-size:0.82rem;font-weight:600;color:var(--ink)}
+.ref-tel{font-size:0.75rem;color:var(--faint)}
+
+/* ── MAIN ── */
+.main{padding:2.5rem 2.5rem 3rem;display:flex;flex-direction:column;gap:2rem}
+
+.sec-title{font-size:0.65rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--faint);border-bottom:1px solid var(--rule);padding-bottom:0.35rem;margin-bottom:1rem}
+
+/* perfil */
+.perfil p{font-size:0.85rem;color:var(--muted);line-height:1.75}
+.perfil p+p{margin-top:0.6rem}
+
+/* experience */
+.entry{margin-bottom:1.4rem}
+.entry:last-child{margin-bottom:0}
+.entry-head{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;margin-bottom:0.15rem}
+.entry-title{font-size:0.92rem;font-weight:600;color:var(--ink)}
+.entry-period{font-size:0.72rem;color:var(--faint);white-space:nowrap;flex-shrink:0;background:var(--tag);padding:2px 7px;border-radius:3px}
+.entry-org{font-size:0.75rem;color:var(--green);font-weight:500;margin-bottom:0.45rem}
+.entry-desc{font-size:0.82rem;color:var(--muted);line-height:1.65}
+.entry-desc ul{padding-left:1.1rem}
+.entry-desc li{margin-bottom:0.2rem}
+
+/* projects */
+.projects-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.proj-card{border:1px solid var(--rule);border-radius:6px;padding:1rem 1rem 0.85rem;position:relative;overflow:hidden}
+.proj-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.proj-card.c1::before{background:#0f172a}
+.proj-card.c2::before{background:#166534}
+.proj-card.c3::before{background:#1e3a5f}
+.proj-card.c4::before{background:#78350f}
+.proj-name{font-size:0.88rem;font-weight:600;color:var(--ink);margin-bottom:0.3rem}
+.proj-desc{font-size:0.78rem;color:var(--muted);line-height:1.6}
+
+/* formacion bullet list */
+.form-list{padding-left:1rem;display:flex;flex-direction:column;gap:0.25rem}
+.form-list li{font-size:0.82rem;color:var(--muted);line-height:1.55}
+
+@media print{
+  body{background:#fff}
+  .page{margin:0;box-shadow:none;max-width:100%}
+  .sidebar{background:#f8fafc !important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- ──────────── SIDEBAR ──────────── -->
+<div class="sidebar">
+
+  <div>
+    <div class="avatar">ER</div>
+    <div class="name-block">
+      <h1>Emerson<br>Reyes</h1>
+      <h2>Full Stack Developer</h2>
+    </div>
+  </div>
+
+  <div>
+    <div class="s-title">Contacto</div>
+    <div class="contact-list">
+      <div class="contact-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        reyesemerson@gmail.com
+      </div>
+      <div class="contact-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .84h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg>
+        +57 322 246 3385
+      </div>
+      <div class="contact-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Bogotá, Colombia
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="s-title">Idiomas</div>
+    <div class="lang-item">
+      <div class="lang-label">Español <span class="lang-level">Nativo</span></div>
+      <div class="bar"><div class="bar-fill" style="width:100%"></div></div>
+    </div>
+    <div class="lang-item">
+      <div class="lang-label">Inglés <span class="lang-level">B1 Certificado</span></div>
+      <div class="bar"><div class="bar-fill" style="width:55%"></div></div>
+    </div>
+  </div>
+
+  <div>
+    <div class="s-title">Frontend</div>
+    <div class="pill-group">
+      <span class="pill accent">React</span>
+      <span class="pill accent">TypeScript</span>
+      <span class="pill accent">JavaScript</span>
+      <span class="pill accent">HTML5</span>
+      <span class="pill accent">CSS3</span>
+      <span class="pill accent">TailwindCSS</span>
+      <span class="pill accent">Bootstrap</span>
+    </div>
+  </div>
+
+  <div>
+    <div class="s-title">Backend</div>
+    <div class="pill-group">
+      <span class="pill green">Java</span>
+      <span class="pill green">Spring Boot</span>
+      <span class="pill green">Node.js</span>
+      <span class="pill green">PHP</span>
+    </div>
+  </div>
+
+  <div>
+    <div class="s-title">Bases de datos</div>
+    <div class="pill-group">
+      <span class="pill">PostgreSQL</span>
+      <span class="pill">MySQL</span>
+      <span class="pill">SQL</span>
+    </div>
+  </div>
+
+  <div>
+    <div class="s-title">DevOps y herramientas</div>
+    <div class="pill-group">
+      <span class="pill purple">Docker</span>
+      <span class="pill purple">Git / GitHub</span>
+      <span class="pill purple">Linux</span>
+      <span class="pill purple">Figma</span>
+      <span class="pill purple">VS Code</span>
+      <span class="pill purple">IntelliJ IDEA</span>
+    </div>
+  </div>
+
+  <div>
+    <div class="s-title">APIs y automatización</div>
+    <div class="pill-group">
+      <span class="pill amber">REST APIs</span>
+      <span class="pill amber">JWT Auth</span>
+      <span class="pill amber">Integración IA</span>
+      <span class="pill amber">Ollama</span>
+      <span class="pill amber">Claude Code</span>
+    </div>
+  </div>
+
+  <div>
+    <div class="s-title">Habilidades</div>
+    <div class="soft-list">
+      <div class="soft-item">Aprendizaje continuo</div>
+      <div class="soft-item">Resolución de problemas</div>
+      <div class="soft-item">Trabajo en equipo</div>
+      <div class="soft-item">Liderazgo</div>
+      <div class="soft-item">Gestión del tiempo</div>
+      <div class="soft-item">Adaptabilidad</div>
+      <div class="soft-item">Pensamiento analítico</div>
+    </div>
+  </div>
+
+  <div>
+    <div class="s-title">Referencias</div>
+    <div class="ref-item">
+      <div class="ref-name">Jesús Sánchez</div>
+      <div class="ref-tel">310 341 8641</div>
+    </div>
+    <div class="ref-item">
+      <div class="ref-name">Johan A. Leguizamo</div>
+      <div class="ref-tel">320 452 4778</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ──────────── MAIN ──────────── -->
+<div class="main">
+
+  <!-- PERFIL -->
+  <div>
+    <div class="sec-title">Perfil profesional</div>
+    <div class="perfil">
+      <p>Tecnólogo en Análisis y Desarrollo de Software graduado del SENA, con más de 3 años de experiencia desarrollando proyectos de forma autónoma y práctica real en la Fábrica de Software del SENA. Inglés B1 certificado, con capacidad para leer documentación técnica y colaborar en entornos internacionales.</p>
+      <p>Apasionado por el desarrollo Full Stack, interfaces modernas, sistemas escalables y automatización. Experiencia construyendo aplicaciones web completas con tecnologías frontend y backend, integrando bases de datos, APIs REST, autenticación JWT y arquitecturas modernas. Orientado al aprendizaje continuo, la innovación y la construcción de proyectos con impacto real.</p>
+    </div>
+  </div>
+
+  <!-- EXPERIENCIA -->
+  <div>
+    <div class="sec-title">Experiencia</div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <span class="entry-title">Desarrollador Full Stack — Proyectos Autónomos</span>
+        <span class="entry-period">2022 – Actualidad</span>
+      </div>
+      <div class="entry-org">Experiencia independiente · +3 años</div>
+      <div class="entry-desc">
+        <ul>
+          <li>Desarrollo de aplicaciones web completas con React, TypeScript, TailwindCSS en frontend.</li>
+          <li>Construcción de APIs REST con Spring Boot, Node.js y autenticación JWT.</li>
+          <li>Integración con bases de datos PostgreSQL y MySQL; diseño de esquemas relacionales.</li>
+          <li>Automatización de flujos y consumo de APIs externas e integración de modelos de IA.</li>
+          <li>Control de versiones con Git/GitHub y despliegue con Docker y entornos Linux.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <span class="entry-title">Desarrollador — Fábrica de Software SENA</span>
+        <span class="entry-period">SENA</span>
+      </div>
+      <div class="entry-org">Servicio Nacional de Aprendizaje · Práctica institucional</div>
+      <div class="entry-desc">
+        <ul>
+          <li>Participación en proyectos reales dentro del ecosistema de desarrollo de la Fábrica de Software.</li>
+          <li>Aplicación de metodologías de análisis de requerimientos y documentación técnica.</li>
+          <li>Trabajo colaborativo en equipo con estándares de desarrollo de software.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- FORMACIÓN -->
+  <div>
+    <div class="sec-title">Formación académica</div>
+    <div class="entry">
+      <div class="entry-head">
+        <span class="entry-title">Tecnólogo en Análisis y Desarrollo de Software</span>
+        <span class="entry-period">Graduado</span>
+      </div>
+      <div class="entry-org">Servicio Nacional de Aprendizaje — SENA</div>
+      <div class="entry-desc">
+        <ul class="form-list">
+          <li>Desarrollo de aplicaciones web modernas y responsivas.</li>
+          <li>Programación orientada a objetos y arquitectura de software.</li>
+          <li>Diseño y administración de bases de datos relacionales.</li>
+          <li>Construcción e integración de APIs REST.</li>
+          <li>Análisis de requerimientos y documentación técnica.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROYECTOS -->
+  <div>
+    <div class="sec-title">Proyectos destacados</div>
+    <div class="projects-grid">
+
+      <div class="proj-card c1">
+        <div class="proj-name">ROOM 911 Management System</div>
+        <div class="proj-desc">Sistema administrativo de control de acceso con autenticación biométrica, JWT, dashboards, reportes y gestión de empleados.</div>
+      </div>
+
+      <div class="proj-card c2">
+        <div class="proj-name">AlgoTrainer</div>
+        <div class="proj-desc">Plataforma interactiva de entrenamiento para speedcubers enfocada en reconocimiento y ejecución de algoritmos.</div>
+      </div>
+
+      <div class="proj-card c3">
+        <div class="proj-name">HuertaDirecta</div>
+        <div class="proj-desc">Plataforma web que conecta agricultores colombianos directamente con compradores de forma simple y accesible.</div>
+      </div>
+
+      <div class="proj-card c4">
+        <div class="proj-name">Portafolio Personal</div>
+        <div class="proj-desc">Portafolio profesional desarrollado para mostrar proyectos, habilidades y experiencia en desarrollo de software.</div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+</div>
+</body>
+</html>
