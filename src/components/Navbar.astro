@@ -16,8 +16,8 @@ const navLinks = [
       items-center
       gap-2
       rounded-full
-      border border-white/10
-      bg-black/60
+      border border-gray-200/60 dark:border-white/10
+      bg-white/70 dark:bg-black/60
       backdrop-blur-2xl
       px-3
       py-2
@@ -34,10 +34,10 @@ const navLinks = [
         gap-1
         pr-3
         border-r
-        border-white/10
+        border-gray-200 dark:border-white/10
         text-sm
         font-semibold
-        text-white
+        text-gray-800 dark:text-white
         tracking-wide
       "
     >
@@ -57,10 +57,10 @@ const navLinks = [
             px-4
             py-2
             text-sm
-            text-gray-300
+            text-gray-500 dark:text-gray-300
             transition-all
             duration-300
-            hover:text-white
+            hover:text-gray-900 dark:hover:text-white
           "
         >
           <span class="relative z-10">{link.label}</span>
@@ -71,7 +71,7 @@ const navLinks = [
               absolute
               inset-0
               rounded-full
-              bg-white/[0.04]
+              bg-gray-900/[0.04] dark:bg-white/[0.04]
               opacity-0
               transition-all
               duration-300
@@ -102,7 +102,7 @@ const navLinks = [
     </div>
 
     <!-- RIGHT ACTIONS -->
-    <div class="hidden md:flex items-center gap-2 pl-2 border-l border-white/10">
+    <div class="hidden md:flex items-center gap-2 pl-2 border-l border-gray-200 dark:border-white/10">
 
       <!-- LANGUAGE -->
       <button
@@ -114,9 +114,9 @@ const navLinks = [
           px-3
           py-2
           text-sm
-          text-gray-300
-          hover:bg-white/[0.05]
-          hover:text-white
+          text-gray-500 dark:text-gray-300
+          hover:bg-gray-900/[0.04] dark:hover:bg-white/[0.05]
+          hover:text-gray-900 dark:hover:text-white
           transition-all
         "
       >
@@ -185,14 +185,14 @@ const navLinks = [
           w-9
           h-9
           rounded-full
-          text-gray-300
-          hover:bg-white/[0.05]
-          hover:text-white
+          text-gray-500 dark:text-gray-300
+          hover:bg-gray-900/[0.04] dark:hover:bg-white/[0.05]
+          hover:text-gray-900 dark:hover:text-white
           transition-all
         "
         aria-label="Cambiar tema"
       >
-        <i id="theme-icon" class="fa-solid fa-sun text-sm"></i>
+        <i id="theme-icon" class="fa-solid fa-moon text-sm"></i>
       </button>
     </div>
 
@@ -207,8 +207,8 @@ const navLinks = [
         w-10
         h-10
         rounded-full
-        text-white
-        hover:bg-white/5
+        text-gray-700 dark:text-white
+        hover:bg-gray-900/5 dark:hover:bg-white/5
         transition-all
       "
     >
@@ -225,8 +225,8 @@ const navLinks = [
       mt-3
       rounded-3xl
       border
-      border-white/10
-      bg-black/80
+      border-gray-200/60 dark:border-white/10
+      bg-white/90 dark:bg-black/80
       backdrop-blur-2xl
       p-4
       shadow-2xl
@@ -241,11 +241,11 @@ const navLinks = [
             px-4
             py-3
             text-sm
-            text-gray-300
+            text-gray-500 dark:text-gray-300
             transition-all
             duration-300
-            hover:bg-white/[0.04]
-            hover:text-white
+            hover:bg-gray-900/[0.04] dark:hover:bg-white/[0.04]
+            hover:text-gray-900 dark:hover:text-white
           "
         >
           {link.label}
@@ -281,17 +281,17 @@ const navLinks = [
         class="
           rounded-xl
           border
-          border-white/10
-          bg-white/[0.03]
+          border-gray-200/60 dark:border-white/10
+          bg-gray-100/50 dark:bg-white/[0.03]
           px-4
           py-3
           text-center
           text-sm
           font-semibold
-          text-white
+          text-gray-700 dark:text-white
           transition-all
           duration-300
-          hover:bg-white/[0.08]
+          hover:bg-gray-200/50 dark:hover:bg-white/[0.08]
         "
       >
         <i class="fa-solid fa-download"></i>
@@ -303,22 +303,22 @@ const navLinks = [
         class="
           rounded-xl
           border
-          border-white/10
-          bg-white/[0.03]
+          border-gray-200/60 dark:border-white/10
+          bg-gray-100/50 dark:bg-white/[0.03]
           px-4
           py-3
           text-center
           text-sm
           font-semibold
-          text-gray-300
+          text-gray-500 dark:text-gray-300
           transition-all
           duration-300
-          hover:bg-white/[0.08]
-          hover:text-white
+          hover:bg-gray-200/50 dark:hover:bg-white/[0.08]
+          hover:text-gray-900 dark:hover:text-white
         "
       >
-        <i id="theme-icon-mobile" class="fa-solid fa-sun"></i>
-        <span class="ml-2">Modo claro</span>
+        <i id="theme-icon-mobile" class="fa-solid fa-moon"></i>
+        <span class="ml-2">Modo oscuro</span>
       </button>
     </div>
   </div>
@@ -347,16 +347,12 @@ const navLinks = [
     });
   }
 
-  // Theme toggle
   const themeIcon = document.getElementById("theme-icon");
   const themeIconMobile = document.getElementById("theme-icon-mobile");
   const themeToggleMobile = document.getElementById("theme-toggle-mobile");
   const themeToggle = document.getElementById("theme-toggle");
 
-  function toggleTheme() {
-    document.documentElement.classList.toggle("dark");
-
-    const isDark = document.documentElement.classList.contains("dark");
+  function updateUI(isDark) {
     const iconClass = isDark ? "fa-sun" : "fa-moon";
     const text = isDark ? "Modo claro" : "Modo oscuro";
 
@@ -372,10 +368,53 @@ const navLinks = [
     }
   }
 
+  function toggleTheme(event) {
+    const x = event.clientX;
+    const y = event.clientY;
+
+    const endRadius = Math.hypot(
+      Math.max(x, innerWidth - x),
+      Math.max(y, innerHeight - y)
+    );
+
+    if (!document.startViewTransition) {
+      document.documentElement.classList.toggle("dark");
+      const isDark = document.documentElement.classList.contains("dark");
+      localStorage.setItem("theme", isDark ? "dark" : "light");
+      updateUI(isDark);
+      return;
+    }
+
+    const transition = document.startViewTransition(() => {
+      document.documentElement.classList.toggle("dark");
+      const isDark = document.documentElement.classList.contains("dark");
+      localStorage.setItem("theme", isDark ? "dark" : "light");
+      updateUI(isDark);
+    });
+
+    transition.ready.then(() => {
+      document.documentElement.animate(
+        {
+          clipPath: [
+            `circle(0px at ${x}px ${y}px)`,
+            `circle(${endRadius}px at ${x}px ${y}px)`
+          ]
+        },
+        {
+          duration: 700,
+          easing: "ease-in-out",
+          pseudoElement: "::view-transition-new(root)"
+        }
+      );
+    });
+  }
+
   if (themeToggle) {
     themeToggle.addEventListener("click", toggleTheme);
   }
   if (themeToggleMobile) {
     themeToggleMobile.addEventListener("click", toggleTheme);
   }
+
+  updateUI(document.documentElement.classList.contains("dark"));
 </script>

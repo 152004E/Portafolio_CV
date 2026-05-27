@@ -26,7 +26,7 @@ const { stats = defaultStats } = Astro.props;
       class={`group relative overflow-hidden rounded-2xl p-5 md:p-6 transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02] ${
         stat.highlight
           ? "bg-gradient-to-br from-blue-600/90 to-blue-800/90 border border-blue-500/30 shadow-lg shadow-blue-500/15"
-          : "border border-white/10 bg-white/[0.03] backdrop-blur-md hover:border-blue-500/40 hover:shadow-[0_0_20px_rgba(59,130,246,0.1)]"
+          : "border border-gray-200/60 dark:border-white/10 bg-gray-50 dark:bg-white/[0.03] backdrop-blur-md hover:border-blue-500/40 hover:shadow-[0_0_20px_rgba(59,130,246,0.1)]"
       }`}
     >
       <div class="flex items-start gap-4">
@@ -43,7 +43,7 @@ const { stats = defaultStats } = Astro.props;
           }`}>
             {stat.number}
           </h3>
-          <p class="text-xs md:text-sm font-medium leading-relaxed mt-1 opacity-80 text-gray-300">
+          <p class="text-xs md:text-sm font-medium leading-relaxed mt-1 opacity-80 text-gray-500 dark:text-gray-300">
             {stat.description}
           </p>
         </div>

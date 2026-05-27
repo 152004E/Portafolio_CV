@@ -9,13 +9,13 @@ const { title, subtitle, alignment = "center" } = Astro.props;
 ---
 
 <div class={`mb-12 ${alignment === "center" ? "text-center" : "text-left"}`}>
-  <h3 class="font-bold text-white uppercase text-3xl md:text-4xl tracking-wider">
+  <h3 class="font-bold text-gray-900 dark:text-white uppercase text-3xl md:text-4xl tracking-wider">
     <span class="text-blue-400">&lt;</span>
     {title}
     <span class="text-blue-400"> /&gt;</span>
   </h3>
   {subtitle && (
-    <p class="text-gray-400 mt-2 text-sm md:text-base max-w-2xl mx-auto">
+    <p class="text-gray-500 dark:text-gray-400 mt-2 text-sm md:text-base max-w-2xl mx-auto">
       {subtitle}
     </p>
   )}
