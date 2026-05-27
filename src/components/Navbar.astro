@@ -1,98 +1,306 @@
 ---
 const navLinks = [
   { href: "#section-portada", label: "Inicio" },
+  { href: "#section-experiencia", label: "Experiencia" },
   { href: "#section-proyectos", label: "Proyectos" },
   { href: "#sobre-mi", label: "Sobre mí" },
-  { href: "#tecnologias", label: "Tecnologías" },
-  { href: "#contacto", label: "Contacto" },
 ];
 ---
 
-<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
-  <div id="nav-backdrop" class="border-b border-blue-500/10 backdrop-blur-xl bg-[#0a0a0f]/70 transition-all duration-300">
-    <div class="container mx-auto px-4">
-      <div class="flex items-center justify-between h-16 md:h-20">
+<nav class="fixed top-5 left-1/2 -translate-x-1/2 z-50 w-full px-4">
+  <div
+    class="
+      mx-auto
+      w-fit
+      flex
+      items-center
+      gap-2
+      rounded-full
+      border border-white/10
+      bg-black/60
+      backdrop-blur-2xl
+      px-3
+      py-2
+      shadow-[0_0_40px_rgba(59,130,246,0.08)]
+    "
+  >
+
+    <!-- LOGO -->
+    <a
+      href="#section-portada"
+      class="
+        hidden md:flex
+        items-center
+        gap-1
+        pr-3
+        border-r
+        border-white/10
+        text-sm
+        font-semibold
+        text-white
+        tracking-wide
+      "
+    >
+      <span class="text-blue-400">&lt;</span>
+      Emerson
+      <span class="text-cyan-400">/&gt;</span>
+    </a>
+
+    <!-- DESKTOP NAV -->
+    <div class="hidden md:flex items-center gap-1">
+      {navLinks.map((link) => (
         <a
-          href="#section-portada"
-          class="text-xl md:text-2xl font-bold text-white tracking-tight group"
+          href={link.href}
+          class="
+            group
+            relative
+            px-4
+            py-2
+            text-sm
+            text-gray-300
+            transition-all
+            duration-300
+            hover:text-white
+          "
         >
-          <span class="text-blue-400 group-hover:text-cyan-400 transition-colors">&lt;</span>
-          Emerson
-          <span class="text-blue-400 group-hover:text-cyan-400 transition-colors"> /&gt;</span>
+          <span class="relative z-10">{link.label}</span>
+
+          <!-- Hover Background -->
+          <span
+            class="
+              absolute
+              inset-0
+              rounded-full
+              bg-white/[0.04]
+              opacity-0
+              transition-all
+              duration-300
+              group-hover:opacity-100
+            "
+          ></span>
+
+          <!-- Glow Line -->
+          <span
+            class="
+              absolute
+              bottom-0
+              left-1/2
+              h-[2px]
+              w-0
+              -translate-x-1/2
+              rounded-full
+              bg-gradient-to-r
+              from-blue-500
+              to-cyan-400
+              transition-all
+              duration-300
+              group-hover:w-3/4
+            "
+          ></span>
         </a>
-        <div class="hidden md:flex items-center gap-1">
-          {navLinks.map((link) => (
-            <a
-              href={link.href}
-              class="relative px-4 py-2 text-sm font-medium text-gray-300 hover:text-white transition-all duration-300 group"
-            >
-              {link.label}
-              <span class="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2px] bg-gradient-to-r from-blue-500 to-cyan-400 group-hover:w-3/4 transition-all duration-300 rounded-full"></span>
-            </a>
-          ))}
-        </div>
-        <a
-          href="#contacto"
-          class="hidden md:inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-cyan-500 text-white px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/25 hover:scale-105 active:scale-95"
-        >
-          Hablemos
-          <i class="fa-solid fa-arrow-right text-xs"></i>
-        </a>
-        <button id="menu-toggle" class="md:hidden relative w-10 h-10 flex items-center justify-center text-white hover:text-blue-400 transition-colors" aria-label="Abrir menú">
-          <i id="menu-icon" class="fa-solid fa-bars text-xl transition-all duration-300"></i>
-        </button>
-      </div>
+      ))}
     </div>
-  </div>
-  <div id="mobile-menu" class="md:hidden hidden">
-    <div class="backdrop-blur-xl bg-[#0a0a0f]/95 border-b border-blue-500/10 shadow-2xl shadow-blue-500/5">
-      <div class="container mx-auto px-4 py-6 flex flex-col gap-2">
-        {navLinks.map((link) => (
-          <a
-            href={link.href}
-            class="block px-4 py-3 text-gray-300 hover:text-white font-medium rounded-xl hover:bg-white/5 transition-all duration-300 border-l-2 border-transparent hover:border-blue-500"
-          >
-            {link.label}
-          </a>
-        ))}
-        <a
-          href="#contacto"
-          class="mt-3 text-center bg-gradient-to-r from-blue-600 to-cyan-500 text-white px-5 py-3 rounded-xl font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/25"
-        >
-          Hablemos
-        </a>
+
+    <!-- RIGHT ACTIONS -->
+    <div class="hidden md:flex items-center gap-2 pl-2 border-l border-white/10">
+
+      <!-- LANGUAGE -->
+      <button
+        class="
+          flex
+          items-center
+          gap-2
+          rounded-full
+          px-3
+          py-2
+          text-sm
+          text-gray-300
+          hover:bg-white/[0.05]
+          hover:text-white
+          transition-all
+        "
+      >
+        🇨🇴 Español
+      </button>
+
+      <!-- STATUS -->
+      <div
+        class="
+          flex
+          items-center
+          gap-2
+          rounded-full
+          border
+          border-emerald-500/20
+          bg-emerald-500/10
+          px-3
+          py-2
+          text-xs
+          font-medium
+          text-emerald-400
+        "
+      >
+        <span class="relative flex h-2 w-2">
+          <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
+          <span class="relative inline-flex h-2 w-2 rounded-full bg-emerald-400"></span>
+        </span>
+
+        Disponible
       </div>
+
+      <!-- DOWNLOAD CV -->
+      <a
+        href="/cv.pdf"
+        download
+        class="
+          flex
+          items-center
+          gap-2
+          rounded-full
+          bg-gradient-to-r
+          from-blue-600
+          to-cyan-500
+          px-4
+          py-2
+          text-sm
+          font-semibold
+          text-white
+          transition-all
+          duration-300
+          hover:scale-105
+          hover:shadow-lg
+          hover:shadow-blue-500/25
+        "
+      >
+        <i class="fa-solid fa-download"></i>
+        Descargar CV
+      </a>
+    </div>
+
+    <!-- MOBILE BUTTON -->
+    <button
+      id="menu-toggle"
+      class="
+        md:hidden
+        flex
+        items-center
+        justify-center
+        w-10
+        h-10
+        rounded-full
+        text-white
+        hover:bg-white/5
+        transition-all
+      "
+    >
+      <i id="menu-icon" class="fa-solid fa-bars text-lg"></i>
+    </button>
+  </div>
+
+  <!-- MOBILE MENU -->
+  <div
+    id="mobile-menu"
+    class="
+      hidden
+      md:hidden
+      mt-3
+      rounded-3xl
+      border
+      border-white/10
+      bg-black/80
+      backdrop-blur-2xl
+      p-4
+      shadow-2xl
+    "
+  >
+    <div class="flex flex-col gap-2">
+      {navLinks.map((link) => (
+        <a
+          href={link.href}
+          class="
+            rounded-xl
+            px-4
+            py-3
+            text-sm
+            text-gray-300
+            transition-all
+            duration-300
+            hover:bg-white/[0.04]
+            hover:text-white
+          "
+        >
+          {link.label}
+        </a>
+      ))}
+
+      <a
+        href="#contacto"
+        class="
+          mt-2
+          rounded-xl
+          bg-gradient-to-r
+          from-blue-600
+          to-cyan-500
+          px-4
+          py-3
+          text-center
+          text-sm
+          font-semibold
+          text-white
+          transition-all
+          duration-300
+          hover:scale-[1.02]
+        "
+      >
+        Contactar
+      </a>
+
+      <a
+        href="/cv.pdf"
+        download
+        class="
+          rounded-xl
+          border
+          border-white/10
+          bg-white/[0.03]
+          px-4
+          py-3
+          text-center
+          text-sm
+          font-semibold
+          text-white
+          transition-all
+          duration-300
+          hover:bg-white/[0.08]
+        "
+      >
+        <i class="fa-solid fa-download"></i>
+        Descargar CV
+      </a>
     </div>
   </div>
 </nav>
 
 <script>
-  const menuToggle = document.getElementById('menu-toggle');
-  const menuIcon = document.getElementById('menu-icon');
-  const mobileMenu = document.getElementById('mobile-menu');
-  const navBackdrop = document.getElementById('nav-backdrop');
+  const menuToggle = document.getElementById("menu-toggle");
+  const menuIcon = document.getElementById("menu-icon");
+  const mobileMenu = document.getElementById("mobile-menu");
 
-  if (menuToggle && menuIcon && mobileMenu && navBackdrop) {
-    menuToggle.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-      menuIcon.classList.toggle('fa-bars');
-      menuIcon.classList.toggle('fa-times');
+  if (menuToggle && menuIcon && mobileMenu) {
+    menuToggle.addEventListener("click", () => {
+      mobileMenu.classList.toggle("hidden");
+
+      menuIcon.classList.toggle("fa-bars");
+      menuIcon.classList.toggle("fa-times");
     });
-    mobileMenu.querySelectorAll('a').forEach((link) => {
-      link.addEventListener('click', () => {
-        mobileMenu.classList.add('hidden');
-        menuIcon.classList.add('fa-bars');
-        menuIcon.classList.remove('fa-times');
+
+    mobileMenu.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        mobileMenu.classList.add("hidden");
+
+        menuIcon.classList.add("fa-bars");
+        menuIcon.classList.remove("fa-times");
       });
-    });
-    window.addEventListener('scroll', () => {
-      if (window.pageYOffset > 100) {
-        navBackdrop.classList.add('bg-[#0a0a0f]/90');
-        navBackdrop.classList.remove('bg-[#0a0a0f]/70');
-      } else {
-        navBackdrop.classList.add('bg-[#0a0a0f]/70');
-        navBackdrop.classList.remove('bg-[#0a0a0f]/90');
-      }
     });
   }
 </script>
