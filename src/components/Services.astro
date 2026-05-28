@@ -42,6 +42,9 @@ const categories = [
       { name: "Claude Code", level: "Básico", icon: "fa-solid fa-robot", description: "Asistente de codificación con IA para desarrollo asistido." },
       { name: "OpenCode", level: "Básico", icon: "fa-solid fa-terminal", description: "CLI interactivo para ingeniería de software con IA." },
       { name: "Ollama", level: "Básico", icon: "fa-solid fa-brain", description: "Ejecución local de modelos de lenguaje para desarrollo." },
+      { name: "Stitch", level: "Básico", icon: "fa-solid fa-code-branch", description: "Plataforma de diseño integrando IA." },
+
+      { name: "Power Automate", level: "Básico", icon: "fa-solid fa-bolt", description: "Automatización de procesos empresariales con Microsoft." },
     ],
   },
 ];
@@ -59,7 +62,7 @@ function getLevelColor(level: string) {
       <span class="inline-block bg-blue-500/20 text-blue-400 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-4">
         Skills
       </span>
-      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight">
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white leading-tight">
         Stack <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-300 to-cyan-400">Principal</span>
       </h2>
       <p class="text-gray-500 mt-3 text-sm md:text-base max-w-xl mx-auto">
@@ -75,9 +78,9 @@ function getLevelColor(level: string) {
       <div class="flex flex-col gap-10 lg:pr-8">
         <div data-aos="fade-up" data-aos-delay="100">
           <div class="flex items-center gap-3 mb-5">
-            <div class="flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.03] border border-white/10">
+            <div class="flex items-center gap-2 px-4 py-2 rounded-full bg-gray-100 dark:bg-white/[0.03] border border-gray-200/60 dark:border-white/10">
               <i class="fa-solid fa-server text-blue-400 text-sm"></i>
-              <h3 class="text-white font-semibold text-lg">Backend</h3>
+              <h3 class="text-gray-800 dark:text-white font-semibold text-lg">Backend</h3>
             </div>
             <div class="flex-1 h-px bg-gradient-to-r from-blue-500/20 to-transparent"></div>
           </div>
@@ -90,9 +93,9 @@ function getLevelColor(level: string) {
 
         <div data-aos="fade-up" data-aos-delay="300">
           <div class="flex items-center gap-3 mb-5">
-            <div class="flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.03] border border-white/10">
+            <div class="flex items-center gap-2 px-4 py-2 rounded-full bg-gray-100 dark:bg-white/[0.03] border border-gray-200/60 dark:border-white/10">
               <i class="fa-solid fa-tools text-blue-400 text-sm"></i>
-              <h3 class="text-white font-semibold text-lg">Herramientas</h3>
+              <h3 class="text-gray-800 dark:text-white font-semibold text-lg">Herramientas</h3>
             </div>
             <div class="flex-1 h-px bg-gradient-to-r from-blue-500/20 to-transparent"></div>
           </div>
@@ -108,9 +111,9 @@ function getLevelColor(level: string) {
       <div class="flex flex-col gap-10 lg:pl-8">
         <div data-aos="fade-up">
           <div class="flex items-center gap-3 mb-5">
-            <div class="flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.03] border border-white/10">
+            <div class="flex items-center gap-2 px-4 py-2 rounded-full bg-gray-100 dark:bg-white/[0.03] border border-gray-200/60 dark:border-white/10">
               <i class="fa-solid fa-display text-blue-400 text-sm"></i>
-              <h3 class="text-white font-semibold text-lg">Frontend</h3>
+              <h3 class="text-gray-800 dark:text-white font-semibold text-lg">Frontend</h3>
             </div>
             <div class="flex-1 h-px bg-gradient-to-r from-blue-500/20 to-transparent"></div>
           </div>
@@ -123,9 +126,9 @@ function getLevelColor(level: string) {
 
         <div data-aos="fade-up" data-aos-delay="200">
           <div class="flex items-center gap-3 mb-5">
-            <div class="flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.03] border border-white/10">
+            <div class="flex items-center gap-2 px-4 py-2 rounded-full bg-gray-100 dark:bg-white/[0.03] border border-gray-200/60 dark:border-white/10">
               <i class="fa-solid fa-database text-blue-400 text-sm"></i>
-              <h3 class="text-white font-semibold text-lg">Bases de Datos</h3>
+              <h3 class="text-gray-800 dark:text-white font-semibold text-lg">Bases de Datos</h3>
             </div>
             <div class="flex-1 h-px bg-gradient-to-r from-blue-500/20 to-transparent"></div>
           </div>
