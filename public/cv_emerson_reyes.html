@@ -101,10 +101,74 @@ a{color:inherit;text-decoration:none}
 .form-list{padding-left:1rem;display:flex;flex-direction:column;gap:0.25rem}
 .form-list li{font-size:0.82rem;color:var(--muted);line-height:1.55}
 
-@media print{
-  body{background:#fff}
-  .page{margin:0;box-shadow:none;max-width:100%}
-  .sidebar{background:#f8fafc !important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+@media screen and (max-width: 768px) {
+  body {
+    background: #fff;
+  }
+  .page {
+    margin: 0;
+    box-shadow: none;
+    grid-template-columns: 1fr;
+  }
+  .sidebar {
+    border-right: none;
+    border-bottom: 1px solid var(--rule);
+    padding: 2rem 1.5rem;
+    gap: 1.5rem;
+  }
+  .main {
+    padding: 2rem 1.5rem;
+    gap: 1.75rem;
+  }
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+  .entry-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.35rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .sidebar, .main {
+    padding: 1.5rem 1rem;
+  }
+  .avatar {
+    width: 60px;
+    height: 60px;
+    font-size: 1.4rem;
+  }
+  .name-block h1 {
+    font-size: 1.5rem;
+  }
+}
+
+@media print {
+  body {
+    background: #fff;
+  }
+  .page {
+    margin: 0;
+    box-shadow: none;
+    max-width: 100%;
+    grid-template-columns: 260px 1fr !important;
+  }
+  .sidebar {
+    background: #f8fafc !important;
+    border-right: 1px solid var(--rule) !important;
+    border-bottom: none !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .projects-grid {
+    grid-template-columns: 1fr 1fr !important;
+  }
+  .entry-head {
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: baseline !important;
+  }
 }
 </style>
 </head>
@@ -150,6 +214,10 @@ a{color:inherit;text-decoration:none}
       <div class="lang-label">Inglés <span class="lang-level">B1 Certificado</span></div>
       <div class="bar"><div class="bar-fill" style="width:55%"></div></div>
     </div>
+    <div class="lang-item">
+      <div class="lang-label">Lengua de Señas Colombiana (LSC) <span class="lang-level">Nivel 2 de 10</span></div>
+      <div class="bar"><div class="bar-fill" style="width:20%"></div></div>
+    </div>
   </div>
 
   <div>
@@ -190,7 +258,8 @@ a{color:inherit;text-decoration:none}
       <span class="pill purple">Docker</span>
       <span class="pill purple">Git / GitHub</span>
       <span class="pill purple">Linux</span>
-      <span class="pill purple">Figma</span>
+      <span class="pill purple">Stitch</span>
+      <span class="pill purple">Google Apps Script</span>
       <span class="pill purple">VS Code</span>
       <span class="pill purple">IntelliJ IDEA</span>
     </div>
@@ -204,6 +273,7 @@ a{color:inherit;text-decoration:none}
       <span class="pill amber">Integración IA</span>
       <span class="pill amber">Ollama</span>
       <span class="pill amber">Claude Code</span>
+      <span class="pill amber">Power Automate</span>
     </div>
   </div>
 
@@ -325,8 +395,8 @@ a{color:inherit;text-decoration:none}
       </div>
 
       <div class="proj-card c4">
-        <div class="proj-name">Portafolio Personal</div>
-        <div class="proj-desc">Portafolio profesional desarrollado para mostrar proyectos, habilidades y experiencia en desarrollo de software.</div>
+        <div class="proj-name">Ainglo</div>
+        <div class="proj-desc">Asistente inteligente para aprender inglés mediante IA con Telegram, reconocimiento de voz, TTS y diccionario inteligente.</div>
       </div>
 
     </div>
