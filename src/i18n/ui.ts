@@ -1,7 +1,7 @@
 export const languages = {
-  es: 'Español',
-  en: 'English',
-  zh: '中文',
+  es: '🇨🇴 Español',
+  en: '🇺🇸 English',
+  zh: '🇨🇳 中文',
 };
 
 export const defaultLang = 'es';
@@ -25,6 +25,27 @@ export const ui = {
     'hero.viewProjects': 'Ver Proyectos',
     'hero.contactMe': 'Contáctame',
     'hero.followMe': 'Sígueme en:',
+    
+    'about.badge': 'Descripción',
+    'about.p1': 'Tecnólogo en Análisis y Desarrollo de Software, con más de 3 años de experiencia desarrollando proyectos de forma autónoma y experiencia práctica en la Fábrica de Software del SENA. Con conocimientos sólidos en desarrollo Full Stack utilizando tecnologías como <span class="text-blue-400 font-medium">Java</span>, <span class="text-blue-400 font-medium">Spring Boot</span>, <span class="text-blue-400 font-medium">JavaScript</span>, <span class="text-blue-400 font-medium">React</span>, <span class="text-blue-400 font-medium">TypeScript</span> y <span class="text-blue-400 font-medium">Node.js</span>.',
+    'about.p2': 'Experiencia en construcción de interfaces web modernas y responsivas con Tailwind CSS.',
+    'about.github': 'Ver en GitHub',
+
+    'exp.badge': 'Trayectoria',
+    'exp.title1': 'Experiencia',
+    'exp.title2': ' y Trayectoria',
+    'exp.present': '2026 - Presente',
+    'exp.job1.title': 'Desarrollador Full Stack Junior',
+    'exp.job1.desc': '3 años de experiencia desarrollando aplicaciones web full stack con React, JavaScript, Node.js, Bootstrap y bases de datos. Participación en equipos ágiles (Scrum) creando interfaces modernas, consumiendo APIs y desarrollando funcionalidades completas. Proyectos independientes que fortalecieron resolución de problemas, diseño responsivo y organización.',
+    'exp.job2.title': 'Desarrollador Web y Proyectos Colaborativos',
+    'exp.job2.desc': 'Participé en el desarrollo de aplicaciones y plataformas web enfocadas en experiencia de usuario, estructura de componentes reutilizables y lógica de negocio. Trabajé en entornos colaborativos utilizando control de versiones, división de tareas y comunicación constante con equipos de trabajo.',
+    'exp.job3.title': 'Liderazgo en Equipos Académicos y Desarrollo',
+    'exp.job3.desc': 'Lideré pequeños equipos en proyectos académicos y personales, coordinando tareas y apoyando la planificación del desarrollo para cumplir objetivos establecidos. Durante esta etapa fortalecí habilidades de liderazgo, trabajo en equipo y adaptación a nuevas tecnologías.',
+
+    'stats.1': 'Proyectos desarrollados para clientes locales y startups digitales',
+    'stats.2': 'Años de experiencia en diseño y desarrollo web',
+    'stats.3': 'Proyectos integrando frontend, backend y bases de datos',
+    'stats.4': 'Aplicaciones diseñadas con enfoque en usabilidad y rendimiento'
   },
   en: {
     'nav.home': 'Home',
@@ -44,6 +65,27 @@ export const ui = {
     'hero.viewProjects': 'View Projects',
     'hero.contactMe': 'Contact Me',
     'hero.followMe': 'Follow me on:',
+
+    'about.badge': 'Description',
+    'about.p1': 'Software Analysis and Development Technologist, with over 3 years of experience developing projects autonomously and practical experience in the SENA Software Factory. Solid knowledge in Full Stack development using technologies such as <span class="text-blue-400 font-medium">Java</span>, <span class="text-blue-400 font-medium">Spring Boot</span>, <span class="text-blue-400 font-medium">JavaScript</span>, <span class="text-blue-400 font-medium">React</span>, <span class="text-blue-400 font-medium">TypeScript</span> and <span class="text-blue-400 font-medium">Node.js</span>.',
+    'about.p2': 'Experience in building modern and responsive web interfaces with Tailwind CSS.',
+    'about.github': 'View on GitHub',
+
+    'exp.badge': 'Career Path',
+    'exp.title1': 'Experience',
+    'exp.title2': ' & Career Path',
+    'exp.present': '2026 - Present',
+    'exp.job1.title': 'Junior Full Stack Developer',
+    'exp.job1.desc': '3 years of experience developing full stack web applications with React, JavaScript, Node.js, Bootstrap and databases. Participation in agile teams (Scrum) creating modern interfaces, consuming APIs and developing complete features. Independent projects that strengthened problem solving, responsive design and organization.',
+    'exp.job2.title': 'Web Developer and Collaborative Projects',
+    'exp.job2.desc': 'Participated in the development of web applications and platforms focused on user experience, reusable component structure and business logic. Worked in collaborative environments using version control, task division and constant communication with work teams.',
+    'exp.job3.title': 'Leadership in Academic Teams and Development',
+    'exp.job3.desc': 'Led small teams in academic and personal projects, coordinating tasks and supporting development planning to meet established goals. During this stage I strengthened leadership skills, teamwork and adaptation to new technologies.',
+
+    'stats.1': 'Projects developed for local clients and digital startups',
+    'stats.2': 'Years of experience in web design and development',
+    'stats.3': 'Projects integrating frontend, backend and databases',
+    'stats.4': 'Applications designed with a focus on usability and performance'
   },
   zh: {
     'nav.home': '首页',
@@ -63,5 +105,26 @@ export const ui = {
     'hero.viewProjects': '查看项目',
     'hero.contactMe': '联系我',
     'hero.followMe': '关注我:',
+
+    'about.badge': '描述',
+    'about.p1': '软件分析与开发技术员，拥有超过3年的自主项目开发经验，以及在SENA软件工厂的实践经验。在全栈开发方面拥有扎实的知识，熟练使用 <span class="text-blue-400 font-medium">Java</span>, <span class="text-blue-400 font-medium">Spring Boot</span>, <span class="text-blue-400 font-medium">JavaScript</span>, <span class="text-blue-400 font-medium">React</span>, <span class="text-blue-400 font-medium">TypeScript</span> 和 <span class="text-blue-400 font-medium">Node.js</span> 等技术。',
+    'about.p2': '具有使用 Tailwind CSS 构建现代且响应式 Web 界面的经验。',
+    'about.github': '在GitHub上查看',
+
+    'exp.badge': '职业发展',
+    'exp.title1': '经验',
+    'exp.title2': ' 与职业发展',
+    'exp.present': '2026 - 至今',
+    'exp.job1.title': '初级全栈开发工程师',
+    'exp.job1.desc': '拥有3年使用 React、JavaScript、Node.js、Bootstrap 和数据库开发全栈 Web 应用程序的经验。参与敏捷团队 (Scrum)，创建现代界面、使用 API 并开发完整功能。独立项目强化了解决问题、响应式设计和组织能力。',
+    'exp.job2.title': 'Web 开发和协作项目',
+    'exp.job2.desc': '参与 Web 应用程序和平台的开发，专注于用户体验、可重用组件结构和业务逻辑。在协作环境中使用版本控制、任务划分和与团队的持续沟通。',
+    'exp.job3.title': '学术团队和开发的领导力',
+    'exp.job3.desc': '在学术和个人项目中领导小型团队，协调任务并支持开发规划以实现既定目标。在此阶段，我加强了领导能力、团队合作和适应新技术的技能。',
+
+    'stats.1': '为本地客户和数字初创公司开发的项目',
+    'stats.2': '多年的网页设计和开发经验',
+    'stats.3': '集成前端、后端和数据库的项目',
+    'stats.4': '注重可用性和性能而设计的应用程序'
   }
 } as const;

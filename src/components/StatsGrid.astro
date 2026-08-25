@@ -1,4 +1,6 @@
 ---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
 interface Stat {
   number: string;
   description: string;
@@ -10,11 +12,14 @@ interface Props {
   stats?: Stat[];
 }
 
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
 const defaultStats: Stat[] = [
-  { number: "15+", description: "Proyectos desarrollados para clientes locales y startups digitales", icon: "fa-solid fa-rocket", highlight: true },
-  { number: "3", description: "Años de experiencia en diseño y desarrollo web", icon: "fa-solid fa-code" },
-  { number: "6", description: "Proyectos integrando frontend, backend y bases de datos", icon: "fa-solid fa-layer-group" },
-  { number: "2+", description: "Aplicaciones diseñadas con enfoque en usabilidad y rendimiento", icon: "fa-solid fa-gauge-high" },
+  { number: "15+", description: t('stats.1'), icon: "fa-solid fa-rocket", highlight: true },
+  { number: "3", description: t('stats.2'), icon: "fa-solid fa-code" },
+  { number: "6", description: t('stats.3'), icon: "fa-solid fa-layer-group" },
+  { number: "2+", description: t('stats.4'), icon: "fa-solid fa-gauge-high" },
 ];
 
 const { stats = defaultStats } = Astro.props;
