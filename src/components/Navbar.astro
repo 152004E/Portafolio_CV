@@ -10,6 +10,12 @@ const navLinks = [
   { href: "#section-proyectos", label: t('nav.projects') },
   { href: "#sobre-mi", label: t('nav.about') },
 ];
+
+const currentLangLabel = {
+  es: '🇨🇴 Español',
+  en: '🇺🇸 English',
+  zh: '🇨🇳 中文'
+}[lang];
 ---
 
 <nav class="fixed top-5 left-1/2 -translate-x-1/2 z-50 w-full px-4">
@@ -126,7 +132,7 @@ const navLinks = [
             transition-all
           "
         >
-          🇨🇴 Español <i class="fa-solid fa-chevron-down text-[10px] ml-1 opacity-70"></i>
+          {currentLangLabel} <i class="fa-solid fa-chevron-down text-[10px] ml-1 opacity-70"></i>
         </button>
 
         <!-- Dropdown Menu -->
@@ -136,7 +142,7 @@ const navLinks = [
             right-0
             top-full
             mt-2
-            w-64
+            w-40
             rounded-2xl
             border border-gray-200/60 dark:border-white/10
             bg-white/90 dark:bg-black/90
@@ -154,18 +160,16 @@ const navLinks = [
         >
           <div class="flex flex-col gap-1">
             <!-- Español -->
-            <a href="/" class="flex flex-col gap-1 rounded-xl px-3 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-white/5 transition-all">
+            <a href="/" class="flex items-center gap-2 rounded-xl px-3 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-white/5 transition-all">
               <span class="font-medium">🇨🇴 Español</span>
             </a>
             <!-- Inglés -->
-            <a href="/en" class="flex flex-col gap-1 rounded-xl px-3 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-white/5 transition-all">
+            <a href="/en" class="flex items-center gap-2 rounded-xl px-3 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-white/5 transition-all">
               <span class="font-medium">🇺🇸 Inglés</span>
-              <span class="text-[10px] text-gray-500 dark:text-gray-400 leading-tight">Alrededor de 1.500 millones de hablantes. Lengua franca en negocios, tecnología y ciencia.</span>
             </a>
             <!-- Chino Mandarín -->
-            <a href="/zh" class="flex flex-col gap-1 rounded-xl px-3 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-white/5 transition-all">
+            <a href="/zh" class="flex items-center gap-2 rounded-xl px-3 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-white/5 transition-all">
               <span class="font-medium">🇨🇳 Chino mandarín</span>
-              <span class="text-[10px] text-gray-500 dark:text-gray-400 leading-tight">Cerca de 1.100 millones de hablantes nativos, principalmente en China.</span>
             </a>
           </div>
         </div>
