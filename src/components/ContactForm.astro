@@ -1,9 +1,14 @@
 ---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
 const email = "reyesemerson643@gmail.com";
 const phoneNumber = "573222463385";
 const githubUrl = "https://github.com/152004E";
 const linkedinUrl = "https://www.linkedin.com/in/emerson-reyes-97920a386";
-const whatsappMessage = "¡Hola! Me gustaría saber más sobre tus servicios.";
+const whatsappMessage = lang === 'es' ? "¡Hola! Me gustaría saber más sobre tus servicios." : lang === 'en' ? "Hello! I would like to know more about your services." : "你好！我想了解更多关于您的服务。";
 const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`;
 ---
 
@@ -17,26 +22,28 @@ const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(what
         <div class="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.08),transparent_45%),radial-gradient(circle_at_bottom_right,rgba(6,182,212,0.06),transparent_35%)]"></div>
 
         <span class="inline-block bg-blue-500/20 text-blue-400 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-6">
-          Contacto
+          {lang === 'es' ? "Contacto" : lang === 'en' ? "Contact" : "联系"}
         </span>
 
         <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white leading-tight mb-4">
-          Hablemos de tu<br class="sm:hidden" />
+          {lang === 'es' ? "Hablemos de tu" : lang === 'en' ? "Let's talk about your" : "我们来谈谈你的"}<br class="sm:hidden" />
           <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-300 to-cyan-400">
-            próximo proyecto
+            {lang === 'es' ? "próximo proyecto" : lang === 'en' ? "next project" : "下一个项目"}
           </span>
         </h2>
 
         <p class="mx-auto max-w-2xl text-gray-400 text-sm md:text-base leading-relaxed mb-8">
-          Ya sea desarrollo frontend, backend, automatización, IA, o construir sistemas escalables —
-          estoy abierto a nuevas oportunidades y desafíos tecnológicos.
-          Conversemos y hagamos algo increíble juntos.
+          {lang === 'es' 
+            ? "Ya sea desarrollo frontend, backend, automatización, IA, o construir sistemas escalables — estoy abierto a nuevas oportunidades y desafíos tecnológicos. Conversemos y hagamos algo increíble juntos." 
+            : lang === 'en' 
+            ? "Whether it's frontend, backend, automation, AI, or building scalable systems — I'm open to new opportunities and tech challenges. Let's talk and build something amazing together." 
+            : "无论是前端、后端、自动化、AI，还是构建可扩展的系统——我都对新的机会和技术挑战持开放态度。让我们一起交谈，共创辉煌。"}
         </p>
 
         <div class="flex items-center justify-center gap-3 md:gap-4">
           <a
             href={`mailto:${email}`}
-            aria-label="Enviar correo"
+            aria-label={lang === 'es' ? "Enviar correo" : lang === 'en' ? "Send email" : "发送电子邮件"}
             class="flex h-11 w-11 md:h-12 md:w-12 items-center justify-center rounded-full border border-gray-200 dark:border-white/10 bg-gray-100 dark:bg-white/5 text-blue-400 transition-all duration-300 hover:-translate-y-1 hover:border-blue-500/40 hover:bg-blue-500/10 hover:shadow-[0_0_20px_rgba(59,130,246,0.25)]"
           >
             <i class="fa-solid fa-envelope text-lg"></i>
@@ -46,7 +53,7 @@ const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(what
             href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Contactar por WhatsApp"
+            aria-label={lang === 'es' ? "Contactar por WhatsApp" : lang === 'en' ? "Contact via WhatsApp" : "通过 WhatsApp 联系"}
             class="flex h-11 w-11 md:h-12 md:w-12 items-center justify-center rounded-full border border-gray-200 dark:border-white/10 bg-gray-100 dark:bg-white/5 text-green-400 transition-all duration-300 hover:-translate-y-1 hover:border-green-500/40 hover:bg-green-500/10 hover:shadow-[0_0_20px_rgba(34,197,94,0.25)]"
           >
             <i class="fa-brands fa-whatsapp text-lg"></i>
@@ -56,7 +63,7 @@ const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(what
             href={githubUrl}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Abrir perfil de GitHub"
+            aria-label={lang === 'es' ? "Abrir perfil de GitHub" : lang === 'en' ? "Open GitHub profile" : "打开 GitHub 个人资料"}
             class="flex h-11 w-11 md:h-12 md:w-12 items-center justify-center rounded-full border border-gray-200 dark:border-white/10 bg-gray-100 dark:bg-white/5 text-gray-700 dark:text-white transition-all duration-300 hover:-translate-y-1 hover:border-gray-400 dark:hover:border-white/40 hover:bg-gray-200 dark:hover:bg-white/10 hover:shadow-[0_0_20px_rgba(0,0,0,0.15)] dark:hover:shadow-[0_0_20px_rgba(255,255,255,0.15)]"
           >
             <i class="fa-brands fa-github text-lg"></i>
@@ -66,7 +73,7 @@ const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(what
             href={linkedinUrl}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Abrir perfil de LinkedIn"
+            aria-label={lang === 'es' ? "Abrir perfil de LinkedIn" : lang === 'en' ? "Open LinkedIn profile" : "打开 LinkedIn 个人资料"}
             class="flex h-11 w-11 md:h-12 md:w-12 items-center justify-center rounded-full border border-gray-200 dark:border-white/10 bg-gray-100 dark:bg-white/5 text-blue-500 dark:text-blue-300 transition-all duration-300 hover:-translate-y-1 hover:border-blue-400/40 hover:bg-blue-400/10 hover:shadow-[0_0_20px_rgba(96,165,250,0.25)]"
           >
             <i class="fa-brands fa-linkedin-in text-lg"></i>
@@ -74,7 +81,7 @@ const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(what
         </div>
 
         <p class="mt-8 text-xs text-gray-600">
-          Respuesta en menos de 24 horas ⚡
+          {lang === 'es' ? "Respuesta en menos de 24 horas ⚡" : lang === 'en' ? "Response in less than 24 hours ⚡" : "24 小时内回复 ⚡"}
         </p>
       </div>
     </div>
