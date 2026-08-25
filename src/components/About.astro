@@ -1,5 +1,9 @@
 ---
 import Button from './Button.astro';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <section id="sobre-mi" class="container mx-auto px-4 flex justify-center pt-24 md:pt-36">
@@ -13,7 +17,7 @@ import Button from './Button.astro';
 
       <div class="relative z-10">
         <span class="inline-flex items-center px-4 py-1.5 rounded-full bg-blue-500/20 border border-blue-500/30 text-blue-400 text-xs font-bold tracking-widest mb-6 uppercase shadow-[0_0_10px_rgba(59,130,246,0.2)]">
-          Descripción
+          {t('about.badge')}
         </span>
 
         <h1 class="text-4xl md:text-5xl lg:text-[56px] font-bold text-gray-900 dark:text-white mb-8 tracking-tight leading-[1.1]">
@@ -21,12 +25,8 @@ import Button from './Button.astro';
         </h1>
 
         <div class="space-y-6 text-gray-600 dark:text-gray-300 text-lg md:text-xl leading-relaxed max-w-4xl">
-          <p>
-            Tecnólogo en Análisis y Desarrollo de Software, con más de 3 años de experiencia desarrollando proyectos de forma autónoma y experiencia práctica en la Fábrica de Software del SENA. Con conocimientos sólidos en desarrollo Full Stack utilizando tecnologías como <span class="text-blue-400 font-medium">Java</span>, <span class="text-blue-400 font-medium">Spring Boot</span>, <span class="text-blue-400 font-medium">JavaScript</span>, <span class="text-blue-400 font-medium">React</span>, <span class="text-blue-400 font-medium">TypeScript</span> y <span class="text-blue-400 font-medium">Node.js</span>.
-          </p>
-          <p>
-            Experiencia en construcción de interfaces web modernas y responsivas con Tailwind CSS.
-          </p>
+          <p set:html={t('about.p1')}></p>
+          <p set:html={t('about.p2')}></p>
         </div>
 
         <div class="mt-12 flex flex-wrap gap-8 items-center pt-8 border-t border-gray-200 dark:border-white/5">
@@ -78,7 +78,7 @@ import Button from './Button.astro';
           <Button
             to="https://github.com/152004E"
             target="_blank"
-            text="Ver en GitHub"
+            text={t('about.github')}
             iconRight="fa-brands fa-github"
             className="border-blue-500/40 hover:bg-blue-500/10 shadow-[0_0_15px_rgba(59,130,246,0.2)] hover:shadow-[0_0_25px_rgba(59,130,246,0.4)]"
           />
