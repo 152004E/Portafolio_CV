@@ -1,11 +1,15 @@
----
-import TechCard from './TechCard.astro';
-import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import re
 
-const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
+with open('src/components/Services.astro', 'r', encoding='utf-8') as f:
+    content = f.read()
 
-const categories = [
+# Add imports
+content = content.replace(
+    "import TechCard from './TechCard.astro';",
+    "import TechCard from './TechCard.astro';\nimport { getLangFromUrl, useTranslations } from '../i18n/utils';\n\nconst lang = getLangFromUrl(Astro.url);\nconst t = useTranslations(lang);"
+)
+
+categories_replacement = """const categories = [
   {
     title: lang === 'es' ? "Frontend" : lang === 'en' ? "Frontend" : "前端",
     icon: "fa-solid fa-display",
@@ -50,19 +54,31 @@ const categories = [
       { name: "Power Automate", level: lang === 'es' ? "Básico" : lang === 'en' ? "Basic" : "初级", icon: "fa-solid fa-bolt", description: lang === 'es' ? "Automatización de procesos empresariales con Microsoft." : lang === 'en' ? "Business process automation with Microsoft." : "使用 Microsoft 实现业务流程自动化。" },
     ],
   },
-];
+];"""
 
-function getLevelColor(level: string) {
-  if (level === "Avanzado" || level === "Advanced" || level === "高级") return "bg-emerald-500/15 text-emerald-400 border-emerald-500/25";
-  if (level === "Intermedio" || level === "Intermediate" || level === "中级") return "bg-blue-500/15 text-blue-400 border-blue-500/25";
-  return "bg-yellow-500/15 text-yellow-400 border-yellow-500/25";
-}
----
+content = re.sub(r'const categories = \[\s*\{[\s\S]*?\];\n', categories_replacement + '\n', content)
 
-<section id="tecnologias" class="relative py-20 md:py-28 overflow-hidden">
-  <div class="container mx-auto px-4 relative z-10">
-    <div class="text-center mb-14" data-aos="fade-up">
-      <span class="inline-block bg-blue-500/20 text-blue-400 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-4">
+content = content.replace(
+    'if (level === "Avanzado") return "bg-emerald-500/15 text-emerald-400 border-emerald-500/25";',
+    'if (level === "Avanzado" || level === "Advanced" || level === "高级") return "bg-emerald-500/15 text-emerald-400 border-emerald-500/25";'
+)
+content = content.replace(
+    'if (level === "Intermedio") return "bg-blue-500/15 text-blue-400 border-blue-500/25";',
+    'if (level === "Intermedio" || level === "Intermediate" || level === "中级") return "bg-blue-500/15 text-blue-400 border-blue-500/25";'
+)
+
+# Header
+content = content.replace(
+    """<span class="inline-block bg-blue-500/20 text-blue-400 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-4">
+        Skills
+      </span>
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white leading-tight">
+        Stack <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-300 to-cyan-400">Principal</span>
+      </h2>
+      <p class="text-gray-500 mt-3 text-sm md:text-base max-w-xl mx-auto">
+        Tecnologías con las que trabajo día a día para construir soluciones completas y escalables.
+      </p>""",
+    """<span class="inline-block bg-blue-500/20 text-blue-400 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-4">
         {lang === 'es' ? "Skills" : lang === 'en' ? "Skills" : "技能"}
       </span>
       <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white leading-tight">
@@ -70,78 +86,28 @@ function getLevelColor(level: string) {
       </h2>
       <p class="text-gray-500 mt-3 text-sm md:text-base max-w-xl mx-auto">
         {lang === 'es' ? "Tecnologías con las que trabajo día a día para construir soluciones completas y escalables." : lang === 'en' ? "Technologies I work with daily to build complete and scalable solutions." : "我日常使用的技术，用于构建完整且可扩展的解决方案。"}
-      </p>
-    </div>
+      </p>"""
+)
 
-    <div class="relative grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-0">
-      <!-- Vertical Divider -->
-      <div class="hidden lg:block absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-blue-500/20 via-blue-400/10 to-transparent -translate-x-1/2"></div>
+# Replace titles using categories[idx].title
+content = content.replace(
+    '<h3 class="text-gray-800 dark:text-white font-semibold text-lg">Backend</h3>',
+    '<h3 class="text-gray-800 dark:text-white font-semibold text-lg">{categories[1].title}</h3>'
+)
+content = content.replace(
+    '<h3 class="text-gray-800 dark:text-white font-semibold text-lg">Herramientas</h3>',
+    '<h3 class="text-gray-800 dark:text-white font-semibold text-lg">{categories[3].title}</h3>'
+)
+content = content.replace(
+    '<h3 class="text-gray-800 dark:text-white font-semibold text-lg">Frontend</h3>',
+    '<h3 class="text-gray-800 dark:text-white font-semibold text-lg">{categories[0].title}</h3>'
+)
+content = content.replace(
+    '<h3 class="text-gray-800 dark:text-white font-semibold text-lg">Bases de Datos</h3>',
+    '<h3 class="text-gray-800 dark:text-white font-semibold text-lg">{categories[2].title}</h3>'
+)
 
-      <!-- Left Column: Backend + Tools -->
-      <div class="flex flex-col gap-10 lg:pr-8">
-        <div data-aos="fade-up" data-aos-delay="100">
-          <div class="flex items-center gap-3 mb-5">
-            <div class="flex items-center gap-2 px-4 py-2 rounded-full bg-gray-100 dark:bg-white/[0.03] border border-gray-200/60 dark:border-white/10">
-              <i class="fa-solid fa-server text-blue-400 text-sm"></i>
-              <h3 class="text-gray-800 dark:text-white font-semibold text-lg">{categories[1].title}</h3>
-            </div>
-            <div class="flex-1 h-px bg-gradient-to-r from-blue-500/20 to-transparent"></div>
-          </div>
-          <div class="grid grid-cols-1 gap-3">
-            {categories[1].technologies.map((tech) => (
-              <TechCard icon={tech.icon} name={tech.name} level={tech.level} description={tech.description} />
-            ))}
-          </div>
-        </div>
+with open('src/components/Services.astro', 'w', encoding='utf-8') as f:
+    f.write(content)
 
-        <div data-aos="fade-up" data-aos-delay="300">
-          <div class="flex items-center gap-3 mb-5">
-            <div class="flex items-center gap-2 px-4 py-2 rounded-full bg-gray-100 dark:bg-white/[0.03] border border-gray-200/60 dark:border-white/10">
-              <i class="fa-solid fa-tools text-blue-400 text-sm"></i>
-              <h3 class="text-gray-800 dark:text-white font-semibold text-lg">{categories[3].title}</h3>
-            </div>
-            <div class="flex-1 h-px bg-gradient-to-r from-blue-500/20 to-transparent"></div>
-          </div>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            {categories[3].technologies.map((tech) => (
-              <TechCard icon={tech.icon} name={tech.name} level={tech.level} description={tech.description} />
-            ))}
-          </div>
-        </div>
-      </div>
-
-      <!-- Right Column: Frontend + Databases -->
-      <div class="flex flex-col gap-10 lg:pl-8">
-        <div data-aos="fade-up">
-          <div class="flex items-center gap-3 mb-5">
-            <div class="flex items-center gap-2 px-4 py-2 rounded-full bg-gray-100 dark:bg-white/[0.03] border border-gray-200/60 dark:border-white/10">
-              <i class="fa-solid fa-display text-blue-400 text-sm"></i>
-              <h3 class="text-gray-800 dark:text-white font-semibold text-lg">{categories[0].title}</h3>
-            </div>
-            <div class="flex-1 h-px bg-gradient-to-r from-blue-500/20 to-transparent"></div>
-          </div>
-          <div class="grid grid-cols-1 gap-3">
-            {categories[0].technologies.map((tech) => (
-              <TechCard icon={tech.icon} name={tech.name} level={tech.level} description={tech.description} />
-            ))}
-          </div>
-        </div>
-
-        <div data-aos="fade-up" data-aos-delay="200">
-          <div class="flex items-center gap-3 mb-5">
-            <div class="flex items-center gap-2 px-4 py-2 rounded-full bg-gray-100 dark:bg-white/[0.03] border border-gray-200/60 dark:border-white/10">
-              <i class="fa-solid fa-database text-blue-400 text-sm"></i>
-              <h3 class="text-gray-800 dark:text-white font-semibold text-lg">{categories[2].title}</h3>
-            </div>
-            <div class="flex-1 h-px bg-gradient-to-r from-blue-500/20 to-transparent"></div>
-          </div>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            {categories[2].technologies.map((tech) => (
-              <TechCard icon={tech.icon} name={tech.name} level={tech.level} description={tech.description} />
-            ))}
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+print("Services.astro translated successfully!")
