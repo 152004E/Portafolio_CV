@@ -88,10 +88,24 @@ function getLevelColor(level: string) {
             <div class="flex-1 h-px bg-gradient-to-r from-blue-500/20 to-transparent"></div>
           </div>
           <div class="grid grid-cols-1 gap-3">
-            {categories[1].technologies.map((tech) => (
-              <TechCard icon={tech.icon} name={tech.name} level={tech.level} description={tech.description} />
+            {categories[1].technologies.map((tech, i) => (
+              <div class={i >= 3 ? "hidden tech-item-backend" : ""}>
+                <TechCard icon={tech.icon} name={tech.name} level={tech.level} description={tech.description} />
+              </div>
             ))}
           </div>
+          {categories[1].technologies.length > 3 && (
+            <button 
+              class="mt-4 flex items-center justify-center gap-2 w-full py-2.5 rounded-xl border border-gray-200 dark:border-white/10 text-gray-500 dark:text-gray-300 text-sm font-semibold transition-all hover:bg-gray-100 dark:hover:bg-white/[0.03] tech-toggle-btn"
+              data-target="tech-item-backend"
+              data-expanded="false"
+              data-text-more={lang === 'es' ? 'Ver más' : 'See more'}
+              data-text-less={lang === 'es' ? 'Ver menos' : 'See less'}
+            >
+              <span>{lang === 'es' ? 'Ver más' : 'See more'}</span>
+              <i class="fa-solid fa-chevron-down transition-transform duration-300"></i>
+            </button>
+          )}
         </div>
 
         <div data-aos="fade-up" data-aos-delay="300">
@@ -103,10 +117,25 @@ function getLevelColor(level: string) {
             <div class="flex-1 h-px bg-gradient-to-r from-blue-500/20 to-transparent"></div>
           </div>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            {categories[3].technologies.map((tech) => (
-              <TechCard icon={tech.icon} name={tech.name} level={tech.level} description={tech.description} />
+            {categories[3].technologies.map((tech, i) => (
+              <div class={i >= 4 ? "hidden tech-item-tools" : ""}> 
+                <!-- Changed to i >= 4 since tools uses a 2-column grid sm:grid-cols-2, so showing 4 initially is better balanced -->
+                <TechCard icon={tech.icon} name={tech.name} level={tech.level} description={tech.description} />
+              </div>
             ))}
           </div>
+          {categories[3].technologies.length > 4 && (
+            <button 
+              class="mt-4 flex items-center justify-center gap-2 w-full py-2.5 rounded-xl border border-gray-200 dark:border-white/10 text-gray-500 dark:text-gray-300 text-sm font-semibold transition-all hover:bg-gray-100 dark:hover:bg-white/[0.03] tech-toggle-btn"
+              data-target="tech-item-tools"
+              data-expanded="false"
+              data-text-more={lang === 'es' ? 'Ver más' : 'See more'}
+              data-text-less={lang === 'es' ? 'Ver menos' : 'See less'}
+            >
+              <span>{lang === 'es' ? 'Ver más' : 'See more'}</span>
+              <i class="fa-solid fa-chevron-down transition-transform duration-300"></i>
+            </button>
+          )}
         </div>
       </div>
 
@@ -121,10 +150,24 @@ function getLevelColor(level: string) {
             <div class="flex-1 h-px bg-gradient-to-r from-blue-500/20 to-transparent"></div>
           </div>
           <div class="grid grid-cols-1 gap-3">
-            {categories[0].technologies.map((tech) => (
-              <TechCard icon={tech.icon} name={tech.name} level={tech.level} description={tech.description} />
+            {categories[0].technologies.map((tech, i) => (
+              <div class={i >= 3 ? "hidden tech-item-frontend" : ""}>
+                <TechCard icon={tech.icon} name={tech.name} level={tech.level} description={tech.description} />
+              </div>
             ))}
           </div>
+          {categories[0].technologies.length > 3 && (
+            <button 
+              class="mt-4 flex items-center justify-center gap-2 w-full py-2.5 rounded-xl border border-gray-200 dark:border-white/10 text-gray-500 dark:text-gray-300 text-sm font-semibold transition-all hover:bg-gray-100 dark:hover:bg-white/[0.03] tech-toggle-btn"
+              data-target="tech-item-frontend"
+              data-expanded="false"
+              data-text-more={lang === 'es' ? 'Ver más' : 'See more'}
+              data-text-less={lang === 'es' ? 'Ver menos' : 'See less'}
+            >
+              <span>{lang === 'es' ? 'Ver más' : 'See more'}</span>
+              <i class="fa-solid fa-chevron-down transition-transform duration-300"></i>
+            </button>
+          )}
         </div>
 
         <div data-aos="fade-up" data-aos-delay="200">
@@ -136,12 +179,61 @@ function getLevelColor(level: string) {
             <div class="flex-1 h-px bg-gradient-to-r from-blue-500/20 to-transparent"></div>
           </div>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            {categories[2].technologies.map((tech) => (
-              <TechCard icon={tech.icon} name={tech.name} level={tech.level} description={tech.description} />
+            {categories[2].technologies.map((tech, i) => (
+              <div class={i >= 3 ? "hidden tech-item-db" : ""}>
+                <TechCard icon={tech.icon} name={tech.name} level={tech.level} description={tech.description} />
+              </div>
             ))}
           </div>
+          {categories[2].technologies.length > 3 && (
+            <button 
+              class="mt-4 flex items-center justify-center gap-2 w-full py-2.5 rounded-xl border border-gray-200 dark:border-white/10 text-gray-500 dark:text-gray-300 text-sm font-semibold transition-all hover:bg-gray-100 dark:hover:bg-white/[0.03] tech-toggle-btn"
+              data-target="tech-item-db"
+              data-expanded="false"
+              data-text-more={lang === 'es' ? 'Ver más' : 'See more'}
+              data-text-less={lang === 'es' ? 'Ver menos' : 'See less'}
+            >
+              <span>{lang === 'es' ? 'Ver más' : 'See more'}</span>
+              <i class="fa-solid fa-chevron-down transition-transform duration-300"></i>
+            </button>
+          )}
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const toggleBtns = document.querySelectorAll('.tech-toggle-btn');
+    toggleBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const targetClass = btn.getAttribute('data-target');
+        const hiddenItems = document.querySelectorAll(`.${targetClass}`);
+        const isExpanded = btn.getAttribute('data-expanded') === 'true';
+        
+        hiddenItems.forEach(item => {
+          if (isExpanded) {
+            item.classList.add('hidden');
+          } else {
+            item.classList.remove('hidden');
+            item.style.animation = 'fadeIn 0.5s ease-out forwards';
+          }
+        });
+        
+        btn.setAttribute('data-expanded', !isExpanded);
+        
+        const span = btn.querySelector('span');
+        const icon = btn.querySelector('i');
+        
+        if (isExpanded) {
+          span.textContent = btn.getAttribute('data-text-more');
+          icon.style.transform = 'rotate(0deg)';
+        } else {
+          span.textContent = btn.getAttribute('data-text-less');
+          icon.style.transform = 'rotate(180deg)';
+        }
+      });
+    });
+  });
+</script>
