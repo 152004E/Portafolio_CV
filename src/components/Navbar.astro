@@ -13,8 +13,7 @@ const navLinks = [
 
 const currentLangLabel = {
   es: '🇨🇴 Español',
-  en: '🇺🇸 English',
-  zh: '🇨🇳 中文'
+  en: '🇺🇸 English'
 }[lang];
 ---
 
@@ -167,10 +166,7 @@ const currentLangLabel = {
             <a href="/en" class="flex items-center gap-2 rounded-xl px-3 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-white/5 transition-all">
               <span class="font-medium">🇺🇸 Inglés</span>
             </a>
-            <!-- Chino Mandarín -->
-            <a href="/zh" class="flex items-center gap-2 rounded-xl px-3 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-white/5 transition-all">
-              <span class="font-medium">🇨🇳 Chino mandarín</span>
-            </a>
+            
           </div>
         </div>
       </div>
@@ -202,7 +198,7 @@ const currentLangLabel = {
 
       <!-- DOWNLOAD CV -->
       <a
-        href="/cv_emerson_reyes.html"
+        href={lang === 'es' ? "/cv_emerson_reyes.html" : "/cv_emerson_reyes_en.html"}
         download
         class="
           flex
@@ -313,9 +309,7 @@ const currentLangLabel = {
         <a href="/en" class="flex items-center gap-2 rounded-xl px-4 py-3 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-white/5 transition-all">
           🇺🇸 Inglés
         </a>
-        <a href="/zh" class="flex items-center gap-2 rounded-xl px-4 py-3 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-white/5 transition-all">
-          🇨🇳 Chino mandarín
-        </a>
+        
       </div>
 
       <a
@@ -340,7 +334,7 @@ const currentLangLabel = {
       </a>
 
       <a
-        href="/cv_emerson_reyes.html"
+        href={lang === 'es' ? "/cv_emerson_reyes.html" : "/cv_emerson_reyes_en.html"}
         download
         class="
           rounded-xl

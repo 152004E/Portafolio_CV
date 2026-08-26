@@ -1,7 +1,6 @@
 export const languages = {
   es: '🇨🇴 Español',
   en: '🇺🇸 English',
-  zh: '🇨🇳 中文',
 };
 
 export const defaultLang = 'es';
@@ -86,45 +85,5 @@ export const ui = {
     'stats.2': 'Years of experience in web design and development',
     'stats.3': 'Projects integrating frontend, backend and databases',
     'stats.4': 'Applications designed with a focus on usability and performance'
-  },
-  zh: {
-    'nav.home': '首页',
-    'nav.experience': '经验',
-    'nav.projects': '项目',
-    'nav.about': '关于我',
-    'nav.contact': '联系',
-    'nav.downloadCV': '下载简历',
-    'nav.languages': '语言',
-    'nav.darkmode': '深色模式',
-    'nav.lightmode': '浅色模式',
-    'nav.available': '可用的',
-    'hero.hello': '&lt;你好，我是&gt;',
-    'hero.role1': '软件开发工程师',
-    'hero.role2': 'UX/UI 设计师',
-    'hero.quote': '"不理解而建造，就如同空中楼阁。"',
-    'hero.viewProjects': '查看项目',
-    'hero.contactMe': '联系我',
-    'hero.followMe': '关注我:',
-
-    'about.badge': '描述',
-    'about.p1': '软件分析与开发技术员，拥有超过3年的自主项目开发经验，以及在SENA软件工厂的实践经验。在全栈开发方面拥有扎实的知识，熟练使用 <span class="text-blue-400 font-medium">Java</span>, <span class="text-blue-400 font-medium">Spring Boot</span>, <span class="text-blue-400 font-medium">JavaScript</span>, <span class="text-blue-400 font-medium">React</span>, <span class="text-blue-400 font-medium">TypeScript</span> 和 <span class="text-blue-400 font-medium">Node.js</span> 等技术。',
-    'about.p2': '具有使用 Tailwind CSS 构建现代且响应式 Web 界面的经验。',
-    'about.github': '在GitHub上查看',
-
-    'exp.badge': '职业发展',
-    'exp.title1': '经验',
-    'exp.title2': ' 与职业发展',
-    'exp.present': '2026 - 至今',
-    'exp.job1.title': '初级全栈开发工程师',
-    'exp.job1.desc': '拥有3年使用 React、JavaScript、Node.js、Bootstrap 和数据库开发全栈 Web 应用程序的经验。参与敏捷团队 (Scrum)，创建现代界面、使用 API 并开发完整功能。独立项目强化了解决问题、响应式设计和组织能力。',
-    'exp.job2.title': 'Web 开发和协作项目',
-    'exp.job2.desc': '参与 Web 应用程序和平台的开发，专注于用户体验、可重用组件结构和业务逻辑。在协作环境中使用版本控制、任务划分和与团队的持续沟通。',
-    'exp.job3.title': '学术团队和开发的领导力',
-    'exp.job3.desc': '在学术和个人项目中领导小型团队，协调任务并支持开发规划以实现既定目标。在此阶段，我加强了领导能力、团队合作和适应新技术的技能。',
-
-    'stats.1': '为本地客户和数字初创公司开发的项目',
-    'stats.2': '多年的网页设计和开发经验',
-    'stats.3': '集成前端、后端和数据库的项目',
-    'stats.4': '注重可用性和性能而设计的应用程序'
   }
 } as const;

@@ -23,14 +23,14 @@ const projects: Project[] = [
   {
     id: "room911",
     name: "ROOM 911",
-    category: lang === 'es' ? "Seguridad Empresarial" : lang === 'en' ? "Enterprise Security" : "企业安全",
-    description: lang === 'es' ? "Sistema empresarial de control de acceso biométrico con JWT, dashboards en tiempo real y gestión de empleados. Implementa detección de anomalías y registro de entrada/salida." : lang === 'en' ? "Enterprise biometric access control system with JWT, real-time dashboards and employee management. Implements anomaly detection and check-in/out logging." : "带有 JWT、实时仪表板和员工管理的企业生物识别访问控制系统。实现异常检测和签到/签退记录。",
+    category: lang === 'es' ? "Seguridad Empresarial" : "Enterprise Security" ,
+    description: lang === 'es' ? "Sistema empresarial de control de acceso biométrico con JWT, dashboards en tiempo real y gestión de empleados. Implementa detección de anomalías y registro de entrada/salida." : "Enterprise biometric access control system with JWT, real-time dashboards and employee management. Implements anomaly detection and check-in/out logging." ,
     stack: [
       { name: "Spring Boot", icon: "fa-solid fa-leaf", color: "text-green-500" },
       { name: "React", icon: "fa-brands fa-react", color: "text-cyan-400" },
       { name: "PostgreSQL", icon: "fa-solid fa-database", color: "text-blue-400" },
     ],
-    status: lang === 'es' ? "Producción" : lang === 'en' ? "Production" : "生产",
+    status: lang === 'es' ? "Producción" : "Production" ,
     statusColor: "text-emerald-400",
     statusBg: "bg-emerald-500/10 border-emerald-500/20",
     image: "",
@@ -43,14 +43,14 @@ const projects: Project[] = [
   {
     id: "huertadirecta",
     name: "HuertaDirecta",
-    category: lang === 'es' ? "Agri-tech" : lang === 'en' ? "Agri-tech" : "农业科技",
-    description: lang === 'es' ? "Plataforma web que conecta campesinos colombianos con compradores, facilitando la venta directa de productos agrícolas frescos con inventario en tiempo real." : lang === 'en' ? "Web platform connecting Colombian farmers with buyers, facilitating direct sales of fresh agricultural products with real-time inventory." : "连接哥伦比亚农民与买家的网络平台，通过实时库存促进新鲜农产品的直接销售。",
+    category: lang === 'es' ? "Agri-tech" : "Agri-tech" ,
+    description: lang === 'es' ? "Plataforma web que conecta campesinos colombianos con compradores, facilitando la venta directa de productos agrícolas frescos con inventario en tiempo real." : "Web platform connecting Colombian farmers with buyers, facilitating direct sales of fresh agricultural products with real-time inventory." ,
     stack: [
       { name: "React", icon: "fa-brands fa-react", color: "text-cyan-400" },
       { name: "Tailwind", icon: "fa-brands fa-css3-alt", color: "text-blue-400" },
       { name: "Node.js", icon: "fa-brands fa-node-js", color: "text-green-500" },
     ],
-    status: lang === 'es' ? "Completado" : lang === 'en' ? "Completed" : "已完成",
+    status: lang === 'es' ? "Completado" : "Completed" ,
     statusColor: "text-gray-400",
     statusBg: "bg-white/5 border-white/10",
     image: "",
@@ -62,13 +62,13 @@ const projects: Project[] = [
   {
     id: "algotrainer",
     name: "AlgoTrainer",
-    category: lang === 'es' ? "Utilidad / Juegos" : lang === 'en' ? "Utility / Gaming" : "实用工具 / 游戏",
-    description: lang === 'es' ? "Plataforma interactiva para speedcubers enfocada en reconocimiento de patrones, entrenamiento de algoritmos y optimización de finger tricks con visualizaciones 3D." : lang === 'en' ? "Interactive platform for speedcubers focused on pattern recognition, algorithm training and finger trick optimization with 3D visualizations." : "面向魔方速拧爱好者的互动平台，专注于模式识别、算法训练和带有 3D 可视化的指法优化。",
+    category: lang === 'es' ? "Utilidad / Juegos" : "Utility / Gaming" ,
+    description: lang === 'es' ? "Plataforma interactiva para speedcubers enfocada en reconocimiento de patrones, entrenamiento de algoritmos y optimización de finger tricks con visualizaciones 3D." : "Interactive platform for speedcubers focused on pattern recognition, algorithm training and finger trick optimization with 3D visualizations." ,
     stack: [
       { name: "React", icon: "fa-brands fa-react", color: "text-cyan-400" },
       { name: "TypeScript", icon: "fa-brands fa-js", color: "text-blue-400" },
     ],
-    status: lang === 'es' ? "En Progreso" : lang === 'en' ? "In Progress" : "进行中",
+    status: lang === 'es' ? "En Progreso" : "In Progress" ,
     statusColor: "text-cyan-400",
     statusBg: "bg-cyan-500/10 border-cyan-500/20",
     image: "",
@@ -80,15 +80,15 @@ const projects: Project[] = [
   {
     id: "ainglo",
     name: "Ainglo",
-    category: lang === 'es' ? "IA / Educación" : lang === 'en' ? "AI / Education" : "人工智能 / 教育",
-    description: lang === 'es' ? "Asistente inteligente para aprender inglés mediante IA, enfocado en hispanohablantes. Corrección de escritura, conversaciones naturales, análisis de speaking, TTS y diccionario inteligente. Integración con Telegram." : lang === 'en' ? "Intelligent AI assistant for learning English, focused on Spanish speakers. Writing correction, natural conversations, speaking analysis, TTS and smart dictionary. Telegram integration." : "用于学习英语的智能 AI 助手，专为讲西班牙语的人设计。写作纠正、自然对话、口语分析、TTS 和智能词典。Telegram 集成。",
+    category: lang === 'es' ? "IA / Educación" : "AI / Education" ,
+    description: lang === 'es' ? "Asistente inteligente para aprender inglés mediante IA, enfocado en hispanohablantes. Corrección de escritura, conversaciones naturales, análisis de speaking, TTS y diccionario inteligente. Integración con Telegram." : "Intelligent AI assistant for learning English, focused on Spanish speakers. Writing correction, natural conversations, speaking analysis, TTS and smart dictionary. Telegram integration." ,
     stack: [
       { name: "Python", icon: "fa-brands fa-python", color: "text-yellow-400" },
       { name: "Gemini API", icon: "fa-solid fa-brain", color: "text-blue-400" },
       { name: "Groq API", icon: "fa-solid fa-bolt", color: "text-green-400" },
       { name: "SQLite", icon: "fa-solid fa-database", color: "text-blue-300" },
     ],
-    status: lang === 'es' ? "En Progreso" : lang === 'en' ? "In Progress" : "进行中",
+    status: lang === 'es' ? "En Progreso" : "In Progress" ,
     statusColor: "text-cyan-400",
     statusBg: "bg-cyan-500/10 border-cyan-500/20",
     image: "",
@@ -107,10 +107,10 @@ const projects: Project[] = [
   <div class="container mx-auto px-4 relative z-10">
     <div class="text-center mb-14" data-aos="fade-up">
       <span class="inline-block bg-blue-500/20 text-blue-400 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-4">
-        {lang === 'es' ? 'Proyectos' : lang === 'en' ? 'Projects' : '项目'}
-      </span>
+        {lang === 'es' ? 'Proyectos' : 'Projects' 
+      }</span>
       <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white leading-tight">
-        {lang === 'es' ? 'Últimos ' : lang === 'en' ? 'Latest ' : '最新 '}<span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-300 to-cyan-400">{lang === 'es' ? 'Proyectos' : lang === 'en' ? 'Projects' : '项目'}</span>
+        {lang === 'es' ? 'Últimos ' : 'Latest ' }<span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-300 to-cyan-400">{lang === 'es' ? 'Proyectos' : 'Projects' }</span>
       </h2>
     </div>
 
@@ -191,7 +191,7 @@ const projects: Project[] = [
                     class={`inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-[13px] font-semibold transition-all duration-300 ${
                       link.primary
                         ? "bg-gradient-to-r from-blue-600 to-cyan-500 text-white shadow-lg shadow-blue-500/20 hover:shadow-blue-500/40 hover:scale-[1.02]"
-                        : "border border-gray-200 dark:border-white/10 text-gray-500 dark:text-gray-300 hover:border-blue-500/40 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-white/[0.03]"
+                        : "border border-gray-200 dark:border-white/10 text-gray-500 dark:text-gray-300 hover:border-blue-500/40 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-white/[0.03]"}
                     }`}
                   >
                     {link.icon && <i class={link.icon}></i>}
@@ -209,8 +209,8 @@ const projects: Project[] = [
     <div class="flex items-center justify-center gap-3 mt-8" data-aos="fade-up" data-aos-delay="200">
       <button id="prev-project" class="flex items-center gap-2 px-5 py-2.5 rounded-xl border border-gray-200 dark:border-white/10 text-gray-500 dark:text-gray-300 text-sm font-semibold transition-all duration-300 hover:border-blue-500/40 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-white/[0.03] hover:-translate-x-1">
         <i class="fa-solid fa-arrow-left"></i>
-        {lang === 'es' ? 'Anterior' : lang === 'en' ? 'Previous' : '上一个'}
-      </button>
+        {lang === 'es' ? 'Anterior' : 'Previous' 
+      }</button>
       <div class="flex gap-1.5">
         <span id="project-dot-0" class="w-2 h-2 rounded-full bg-cyan-400 transition-all duration-300"></span>
         <span id="project-dot-1" class="w-2 h-2 rounded-full bg-gray-300 dark:bg-white/20 transition-all duration-300"></span>
@@ -218,8 +218,8 @@ const projects: Project[] = [
         <span id="project-dot-3" class="w-2 h-2 rounded-full bg-gray-300 dark:bg-white/20 transition-all duration-300"></span>
       </div>
       <button id="next-project" class="flex items-center gap-2 px-5 py-2.5 rounded-xl border border-gray-200 dark:border-white/10 text-gray-500 dark:text-gray-300 text-sm font-semibold transition-all duration-300 hover:border-blue-500/40 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-white/[0.03] hover:translate-x-1">
-        {lang === 'es' ? 'Siguiente' : lang === 'en' ? 'Next' : '下一个'}
-        <i class="fa-solid fa-arrow-right"></i>
+        {lang === 'es' ? 'Siguiente' : 'Next' 
+        }<i class="fa-solid fa-arrow-right"></i>
       </button>
     </div>
   </div>

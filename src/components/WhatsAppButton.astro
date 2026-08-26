@@ -5,7 +5,7 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
 const phoneNumber = "573222463385";
-const message = lang === 'es' ? "¡Hola! Me gustaría saber más sobre tus servicios." : lang === 'en' ? "Hello! I would like to know more about your services." : "你好！我想了解更多关于您的服务。";
+const message = lang === 'es' ? "¡Hola! Me gustaría saber más sobre tus servicios." : "Hello! I would like to know more about your services." ;
 const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 ---
 
@@ -14,8 +14,8 @@ const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(mess
   target="_blank"
   rel="noopener noreferrer"
   class="fixed bottom-6 right-6 z-50 w-14 h-14 bg-green-500 hover:bg-green-400 rounded-full flex items-center justify-center text-white text-3xl shadow-lg shadow-green-500/30 transition-all duration-300 hover:scale-110 hover:shadow-xl hover:shadow-green-500/40 active:scale-95 animate__animated animate__fadeInUp animate__delay-3s"
-  aria-label={lang === 'es' ? "Contactar por WhatsApp" : lang === 'en' ? "Contact via WhatsApp" : "通过 WhatsApp 联系"}
-  title={lang === 'es' ? "Escríbeme por WhatsApp" : lang === 'en' ? "Message me on WhatsApp" : "在 WhatsApp 上给我发信息"}
+  aria-label={lang === 'es' ? "Contactar por WhatsApp" : "Contact via WhatsApp"} }
+  title={lang === 'es' ? "Escríbeme por WhatsApp" : "Message me on WhatsApp"} }
 >
   <i class="fa-brands fa-whatsapp"></i>
 </a>
