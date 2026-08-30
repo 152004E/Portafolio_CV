@@ -44,3 +44,6 @@ Para evitar el síndrome de "visión de túnel" y asegurar soluciones robustas:
    - El momento de inicialización (DOMContentLoaded, hidratación, etc).
 2. **Cuestiona los Cimientos, no solo la Superficie:** Si una solución obvia o un cambio de estilo no se refleja, retrocede un paso y asume que el evento o la condición que debería aplicarlo nunca se cumplió. Evalúa cómo interactúan las herramientas (ej. `getBoundingClientRect` dentro de un pin de GSAP).
 3. **Atención a los Síntomas Reales:** Si el usuario reporta que "no se ven los cambios", tu primera hipótesis siempre debe ser un fallo fundamental en la lógica (ej. la clase no se está aplicando), NO culpar a la caché del navegador ni minimizar el problema. Cambia de enfoque y mira desde más arriba.
+
+# Gestión de Artefactos
+1. **Comunicación Explícita de Nombres:** Siempre que generes, actualices o solicites revisión de un "Artifact" (como planes de implementación o resúmenes), DEBES escribir explícitamente el nombre del archivo (ej. `mi_plan.md`) en tu respuesta de chat. Así el usuario sabrá exactamente cuál documento abrir en caso de que haya múltiples artefactos en la interfaz.

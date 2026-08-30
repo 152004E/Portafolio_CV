@@ -116,15 +116,32 @@ function getLevelColor(level: string) {
             </div>
             <div class="flex-1 h-px bg-gradient-to-r from-blue-500/20 to-transparent"></div>
           </div>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div class="flex flex-wrap gap-4">
             {categories[3].technologies.map((tech, i) => (
-              <div class={i >= 4 ? "hidden tech-item-tools" : ""}> 
-                <!-- Changed to i >= 4 since tools uses a 2-column grid sm:grid-cols-2, so showing 4 initially is better balanced -->
-                <TechCard icon={tech.icon} name={tech.name} level={tech.level} description={tech.description} />
+              <div class={`group relative cursor-pointer ${i >= 8 ? "hidden tech-item-tools" : ""}`}>
+                <!-- Icon Circle -->
+                <div class="w-14 h-14 rounded-2xl bg-white dark:bg-white/[0.05] border border-gray-200 dark:border-white/10 flex items-center justify-center group-hover:border-blue-500/50 group-hover:bg-blue-500/10 group-hover:-translate-y-1 transition-all duration-300 shadow-sm">
+                  <i class={`${tech.icon} text-2xl text-gray-600 dark:text-gray-300 group-hover:text-blue-400 transition-colors`}></i>
+                </div>
+
+                <!-- Tooltip / Toast -->
+                <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-3 w-56 p-3 bg-gray-900 dark:bg-black/95 border border-white/10 rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 transform translate-y-2 group-hover:translate-y-0 pointer-events-none">
+                  <div class="flex items-center justify-between mb-1.5">
+                    <span class="font-bold text-white text-xs truncate mr-2">{tech.name}</span>
+                    <span class={`shrink-0 text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded ${getLevelColor(tech.level)}`}>
+                      {tech.level}
+                    </span>
+                  </div>
+                  <p class="text-xs text-gray-400 leading-tight">
+                    {tech.description}
+                  </p>
+                  <!-- Triangle pointer -->
+                  <div class="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-gray-900 dark:bg-black/95 border-b border-r border-white/10 rotate-45"></div>
+                </div>
               </div>
             ))}
           </div>
-          {categories[3].technologies.length > 4 && (
+          {categories[3].technologies.length > 8 && (
             <button 
               class="mt-4 flex items-center justify-center gap-2 w-full py-2.5 rounded-xl border border-gray-200 dark:border-white/10 text-gray-500 dark:text-gray-300 text-sm font-semibold transition-all hover:bg-gray-100 dark:hover:bg-white/[0.03] tech-toggle-btn"
               data-target="tech-item-tools"
