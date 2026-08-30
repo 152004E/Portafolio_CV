@@ -16,6 +16,17 @@ const currentLangLabel = {
   en: '🇺🇸 English'
 }[lang];
 ---
+<style>
+  .nav-link.active {
+    color: #111827 !important;
+  }
+  :global(.dark) .nav-link.active {
+    color: #ffffff !important;
+  }
+  .nav-link.active .nav-glow {
+    width: 75% !important;
+  }
+</style>
 
 <nav class="fixed top-5 left-1/2 -translate-x-1/2 z-50 w-full px-4">
   <div
@@ -62,6 +73,7 @@ const currentLangLabel = {
         <a
           href={link.href}
           class="
+            nav-link
             group
             relative
             px-4
@@ -92,6 +104,7 @@ const currentLangLabel = {
           <!-- Glow Line -->
           <span
             class="
+              nav-glow
               absolute
               bottom-0
               left-1/2
@@ -550,4 +563,34 @@ const currentLangLabel = {
 
   updateUI(document.documentElement.classList.contains("dark"));
   updateAnimUI(document.documentElement.classList.contains("cinematic-enabled"));
+
+  // Scroll Spy for Navbar
+  const navLinksList = document.querySelectorAll('.nav-link');
+  const sections = Array.from(navLinksList).map(link => {
+    const id = link.getAttribute('href');
+    return id ? document.querySelector(id) : null;
+  }).filter(Boolean);
+
+  const observerOptions = {
+    root: null,
+    rootMargin: '-20% 0px -60% 0px',
+    threshold: 0
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const targetId = '#' + entry.target.id;
+        navLinksList.forEach(link => {
+          if (link.getAttribute('href') === targetId) {
+            link.classList.add('active');
+          } else {
+            link.classList.remove('active');
+          }
+        });
+      }
+    });
+  }, observerOptions);
+
+  sections.forEach(section => observer.observe(section));
 </script>
