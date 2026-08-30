@@ -12,7 +12,7 @@ import Footer from '../components/Footer.astro';
 
 <Layout>
   <main class="overflow-x-hidden">
-    <div class="gsap-horizontal-wrapper w-full">
+    <div class="gsap-horizontal-wrapper w-full" data-direction="ltr">
       <div class="gsap-horizontal-container flex flex-col w-full">
         <div class="gsap-horizontal-panel w-full md:w-screen shrink-0">
           <Hero />
@@ -22,10 +22,39 @@ import Footer from '../components/Footer.astro';
         </div>
       </div>
     </div>
-    <Services />
-    <Projects />
-    <Experience />
-    <ContactForm />
+    <div class="gsap-horizontal-wrapper w-full" data-direction="rtl">
+      <div class="gsap-horizontal-container flex flex-col w-full">
+        <!-- Panel 1: Projects (Slides in from left) -->
+        <div class="gsap-horizontal-panel w-full md:w-screen min-h-screen shrink-0 flex items-center justify-center">
+          <div class="w-full">
+            <Projects />
+          </div>
+        </div>
+        <!-- Panel 2: Skills (Visible first when scrolling down) -->
+        <div class="gsap-horizontal-panel w-full md:w-screen min-h-screen shrink-0 flex items-center justify-center">
+          <div class="w-full">
+            <Services />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="gsap-horizontal-wrapper w-full" data-direction="ltr">
+      <div class="gsap-horizontal-container flex flex-col w-full">
+        <!-- Panel 1: Experience (Visible first when scrolling down) -->
+        <div class="gsap-horizontal-panel w-full md:w-screen min-h-screen shrink-0 flex items-center justify-center">
+          <div class="w-full">
+            <Experience />
+          </div>
+        </div>
+        <!-- Panel 2: Contact (Slides in from right) -->
+        <div class="gsap-horizontal-panel w-full md:w-screen min-h-screen shrink-0 flex items-center justify-center">
+          <div class="w-full">
+            <ContactForm />
+          </div>
+        </div>
+      </div>
+    </div>
     <Footer />
   </main>
 </Layout>

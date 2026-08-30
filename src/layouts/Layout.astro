@@ -56,6 +56,10 @@ const { title = lang === 'es' ? "Emerson Reyes - Portafolio profesional" : "Emer
         z-index: 1;
       }
 
+      html:not(.cinematic-enabled) .cinematic-spacer {
+        display: none !important;
+      }
+
       @keyframes float-orb-1 {
         0%, 100% { transform: translate(0, 0) scale(1); }
         25% { transform: translate(40px, -30px) scale(1.05); }
@@ -149,15 +153,20 @@ const { title = lang === 'es' ? "Emerson Reyes - Portafolio profesional" : "Emer
           if(targetId && targetId.startsWith('#') && document.querySelector(targetId)){
              e.preventDefault();
              
+             const triggers = ScrollTrigger.getAll();
+             
              if (targetId === '#section-portada') {
                lenis.scrollTo(0);
-             } else if (targetId === '#sobre-mi') {
-               const container = document.querySelector('.gsap-horizontal-container');
-               if (container) {
-                 lenis.scrollTo(container.getBoundingClientRect().width);
-               } else {
-                 lenis.scrollTo(targetId, { offset: -50 });
-               }
+             } else if (targetId === '#sobre-mi' && triggers.length > 0) {
+               lenis.scrollTo(triggers[0].end); // Wrapper 1 End
+             } else if (targetId === '#tecnologias' && triggers.length > 1) {
+               lenis.scrollTo(triggers[1].start); // Wrapper 2 Start
+             } else if (targetId === '#section-proyectos' && triggers.length > 1) {
+               lenis.scrollTo(triggers[1].end); // Wrapper 2 End
+             } else if (targetId === '#section-experiencia' && triggers.length > 2) {
+               lenis.scrollTo(triggers[2].start); // Wrapper 3 Start
+             } else if (targetId === '#contacto' && triggers.length > 2) {
+               lenis.scrollTo(triggers[2].end); // Wrapper 3 End
              } else {
                lenis.scrollTo(targetId, { offset: -50 });
              }
@@ -170,26 +179,43 @@ const { title = lang === 'es' ? "Emerson Reyes - Portafolio profesional" : "Emer
 
         // Use context for easy cleanup
         ctx = gsap.context(() => {
-          const wrapper = document.querySelector('.gsap-horizontal-wrapper');
-          const container = document.querySelector('.gsap-horizontal-container');
-          const panels = gsap.utils.toArray('.gsap-horizontal-panel');
+          const wrappers = document.querySelectorAll('.gsap-horizontal-wrapper');
+          wrappers.forEach(wrapper => {
+            const container = wrapper.querySelector('.gsap-horizontal-container');
+            if (!container) return;
+            const panels = gsap.utils.toArray(container.querySelectorAll('.gsap-horizontal-panel'));
+            const direction = wrapper.getAttribute('data-direction') || 'ltr';
 
-          if (wrapper && container && panels && panels.length > 0) {
-            // Apply flex row layout dynamically to prevent breaking plain mode
-            container.classList.remove('flex-col');
-            container.setAttribute('style', `display: flex; flex-direction: row; width: ${panels.length * 100}vw;`);
+            if (panels.length > 0) {
+              container.classList.remove('flex-col');
+              container.setAttribute('style', `display: flex; flex-direction: row; width: ${panels.length * 100}vw;`);
 
-            gsap.to(panels, {
-              xPercent: -100 * (panels.length - 1),
-              ease: "none",
-              scrollTrigger: {
-                trigger: wrapper,
-                pin: true,
-                scrub: 1,
-                end: () => "+=" + container.getBoundingClientRect().width
+              if (direction === 'rtl') {
+                gsap.set(panels, { xPercent: -100 * (panels.length - 1) });
+                gsap.to(panels, {
+                  xPercent: 0,
+                  ease: "none",
+                  scrollTrigger: {
+                    trigger: wrapper,
+                    pin: true,
+                    scrub: 1,
+                    end: () => "+=" + container.getBoundingClientRect().width
+                  }
+                });
+              } else {
+                gsap.to(panels, {
+                  xPercent: -100 * (panels.length - 1),
+                  ease: "none",
+                  scrollTrigger: {
+                    trigger: wrapper,
+                    pin: true,
+                    scrub: 1,
+                    end: () => "+=" + container.getBoundingClientRect().width
+                  }
+                });
               }
-            });
-          }
+            }
+          });
         });
       }
 
@@ -208,11 +234,11 @@ const { title = lang === 'es' ? "Emerson Reyes - Portafolio profesional" : "Emer
         }
         
         // Restore flex layout
-        const container = document.querySelector('.gsap-horizontal-container');
-        if (container) {
+        const containers = document.querySelectorAll('.gsap-horizontal-container');
+        containers.forEach(container => {
           container.removeAttribute('style');
           container.classList.add('flex-col');
-        }
+        });
       }
 
       // Initialize
