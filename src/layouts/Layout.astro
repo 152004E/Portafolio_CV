@@ -148,29 +148,46 @@ const { title = lang === 'es' ? "Emerson Reyes - Portafolio profesional" : "Emer
         });
         gsap.ticker.lagSmoothing(0);
 
-        // Override Navbar click for smooth scrolling
         navLinksHandler = (e: Event) => {
           const targetId = (e.currentTarget as Element).getAttribute('href');
           if(targetId && targetId.startsWith('#') && document.querySelector(targetId)){
              e.preventDefault();
              
-             const triggers = ScrollTrigger.getAll();
-             
              if (targetId === '#section-portada') {
                lenis.scrollTo(0);
-             } else if (targetId === '#sobre-mi' && triggers.length > 0) {
-               lenis.scrollTo(triggers[0].end); // Wrapper 1 End
-             } else if (targetId === '#tecnologias' && triggers.length > 1) {
-               lenis.scrollTo(triggers[1].start); // Wrapper 2 Start
-             } else if (targetId === '#section-proyectos' && triggers.length > 1) {
-               lenis.scrollTo(triggers[1].end); // Wrapper 2 End
-             } else if (targetId === '#section-experiencia' && triggers.length > 2) {
-               lenis.scrollTo(triggers[2].start); // Wrapper 3 Start
-             } else if (targetId === '#contacto' && triggers.length > 2) {
-               lenis.scrollTo(triggers[2].end); // Wrapper 3 End
-             } else {
-               lenis.scrollTo(targetId, { offset: -50 });
+               return;
              }
+             
+             const targetEl = document.querySelector(targetId);
+             if (!targetEl) return;
+             
+             const wrapper = targetEl.closest('.gsap-horizontal-wrapper');
+             if (wrapper) {
+                const trigger = ScrollTrigger.getAll().find(t => t.trigger === wrapper);
+                if (trigger) {
+                   const container = wrapper.querySelector('.gsap-horizontal-container');
+                   const panels = Array.from(container.querySelectorAll('.gsap-horizontal-panel'));
+                   const panel = targetEl.closest('.gsap-horizontal-panel');
+                   const panelIndex = panels.indexOf(panel);
+                   const direction = wrapper.getAttribute('data-direction');
+                   
+                   let progress = 0;
+                   if (panels.length > 1) {
+                      if (direction === 'rtl') {
+                         const visualIndex = panels.length - 1 - panelIndex;
+                         progress = visualIndex / (panels.length - 1);
+                      } else {
+                         progress = panelIndex / (panels.length - 1);
+                      }
+                   }
+                   
+                   const scrollPos = trigger.start + (trigger.end - trigger.start) * progress;
+                   lenis.scrollTo(scrollPos);
+                   return;
+                }
+             }
+             
+             lenis.scrollTo(targetEl, { offset: -50 });
           }
         };
         
