@@ -135,9 +135,10 @@ const { title = lang === 'es' ? "Emerson Reyes - Portafolio profesional" : "Emer
         if (!document.documentElement.classList.contains('cinematic-enabled')) return;
 
         lenis = new Lenis({
-          duration: 1.2,
+          duration: 0.4,
           easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
           smoothWheel: true,
+          wheelMultiplier: 1.8,
         });
 
         lenis.on('scroll', ScrollTrigger.update);
@@ -198,8 +199,8 @@ const { title = lang === 'es' ? "Emerson Reyes - Portafolio profesional" : "Emer
                   scrollTrigger: {
                     trigger: wrapper,
                     pin: true,
-                    scrub: 1,
-                    end: () => "+=" + container.getBoundingClientRect().width
+                    scrub: true,
+                    end: () => "+=" + (container.getBoundingClientRect().width * 0.4)
                   }
                 });
               } else {
@@ -209,8 +210,8 @@ const { title = lang === 'es' ? "Emerson Reyes - Portafolio profesional" : "Emer
                   scrollTrigger: {
                     trigger: wrapper,
                     pin: true,
-                    scrub: 1,
-                    end: () => "+=" + container.getBoundingClientRect().width
+                    scrub: true,
+                    end: () => "+=" + (container.getBoundingClientRect().width * 0.4)
                   }
                 });
               }

@@ -14,10 +14,10 @@ import Footer from '../components/Footer.astro';
   <main class="overflow-x-hidden">
     <div class="gsap-horizontal-wrapper w-full" data-direction="ltr">
       <div class="gsap-horizontal-container flex flex-col w-full">
-        <div class="gsap-horizontal-panel w-full md:w-screen shrink-0">
+        <div class="gsap-horizontal-panel w-screen shrink-0">
           <Hero />
         </div>
-        <div class="gsap-horizontal-panel w-full md:w-screen shrink-0 flex items-center">
+        <div class="gsap-horizontal-panel w-screen shrink-0 flex items-center">
           <About />
         </div>
       </div>
@@ -25,13 +25,13 @@ import Footer from '../components/Footer.astro';
     <div class="gsap-horizontal-wrapper w-full" data-direction="rtl">
       <div class="gsap-horizontal-container flex flex-col w-full">
         <!-- Panel 1: Projects (Slides in from left) -->
-        <div class="gsap-horizontal-panel w-full md:w-screen min-h-screen shrink-0 flex items-center justify-center">
+        <div class="gsap-horizontal-panel w-screen min-h-screen shrink-0 flex items-center justify-center">
           <div class="w-full">
             <Projects />
           </div>
         </div>
         <!-- Panel 2: Skills (Visible first when scrolling down) -->
-        <div class="gsap-horizontal-panel w-full md:w-screen min-h-screen shrink-0 flex items-center justify-center">
+        <div class="gsap-horizontal-panel w-screen min-h-screen shrink-0 flex items-center justify-center">
           <div class="w-full">
             <Services />
           </div>
@@ -42,19 +42,21 @@ import Footer from '../components/Footer.astro';
     <div class="gsap-horizontal-wrapper w-full" data-direction="ltr">
       <div class="gsap-horizontal-container flex flex-col w-full">
         <!-- Panel 1: Experience (Visible first when scrolling down) -->
-        <div class="gsap-horizontal-panel w-full md:w-screen min-h-screen shrink-0 flex items-center justify-center">
+        <div class="gsap-horizontal-panel w-screen min-h-screen shrink-0 flex items-center justify-center">
           <div class="w-full">
             <Experience />
           </div>
         </div>
-        <!-- Panel 2: Contact (Slides in from right) -->
-        <div class="gsap-horizontal-panel w-full md:w-screen min-h-screen shrink-0 flex items-center justify-center">
-          <div class="w-full">
+        <!-- Panel 2: Contact y Footer -->
+        <div class="gsap-horizontal-panel w-screen h-screen overflow-hidden shrink-0 flex flex-col justify-between">
+          <div class="w-full grow flex items-center justify-center">
             <ContactForm />
+          </div>
+          <div class="w-full shrink-0">
+            <Footer />
           </div>
         </div>
       </div>
     </div>
-    <Footer />
   </main>
 </Layout>
