@@ -166,24 +166,28 @@ const { title = lang === 'es' ? "Emerson Reyes - Portafolio profesional" : "Emer
                 const trigger = ScrollTrigger.getAll().find(t => t.trigger === wrapper);
                 if (trigger) {
                    const container = wrapper.querySelector('.gsap-horizontal-container');
-                   const panels = Array.from(container.querySelectorAll('.gsap-horizontal-panel'));
-                   const panel = targetEl.closest('.gsap-horizontal-panel');
-                   const panelIndex = panels.indexOf(panel);
-                   const direction = wrapper.getAttribute('data-direction');
-                   
-                   let progress = 0;
-                   if (panels.length > 1) {
-                      if (direction === 'rtl') {
-                         const visualIndex = panels.length - 1 - panelIndex;
-                         progress = visualIndex / (panels.length - 1);
-                      } else {
-                         progress = panelIndex / (panels.length - 1);
-                      }
+                   if (container) {
+                       const panels = Array.from(container.querySelectorAll('.gsap-horizontal-panel'));
+                       const panel = targetEl.closest('.gsap-horizontal-panel');
+                       if (panel) {
+                           const panelIndex = panels.indexOf(panel);
+                           const direction = wrapper.getAttribute('data-direction');
+                           
+                           let progress = 0;
+                           if (panels.length > 1) {
+                              if (direction === 'rtl') {
+                                 const visualIndex = panels.length - 1 - panelIndex;
+                                 progress = visualIndex / (panels.length - 1);
+                              } else {
+                                 progress = panelIndex / (panels.length - 1);
+                              }
+                           }
+                           
+                           const scrollPos = trigger.start + (trigger.end - trigger.start) * progress;
+                           lenis.scrollTo(scrollPos);
+                           return;
+                       }
                    }
-                   
-                   const scrollPos = trigger.start + (trigger.end - trigger.start) * progress;
-                   lenis.scrollTo(scrollPos);
-                   return;
                 }
              }
              
