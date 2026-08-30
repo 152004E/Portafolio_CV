@@ -224,6 +224,25 @@ const currentLangLabel = {
         {t('nav.downloadCV')}
       </a>
 
+      <!-- ANIMATION TOGGLE -->
+      <button id="anim-toggle"
+        class="
+          flex
+          items-center
+          justify-center
+          w-9
+          h-9
+          rounded-full
+          text-gray-500 dark:text-gray-300
+          hover:bg-gray-900/[0.04] dark:hover:bg-white/[0.05]
+          hover:text-gray-900 dark:hover:text-white
+          transition-all
+        "
+        title="Modo Cinemático"
+      >
+        <i id="anim-icon" class="fa-solid fa-wand-magic-sparkles text-sm text-blue-500"></i>
+      </button>
+
       <!-- THEME TOGGLE -->
       <button id="theme-toggle"
         class="
@@ -357,6 +376,29 @@ const currentLangLabel = {
       </a>
 
       <button
+        id="anim-toggle-mobile"
+        class="
+          rounded-xl
+          border
+          border-gray-200/60 dark:border-white/10
+          bg-gray-100/50 dark:bg-white/[0.03]
+          px-4
+          py-3
+          text-center
+          text-sm
+          font-semibold
+          text-gray-500 dark:text-gray-300
+          transition-all
+          duration-300
+          hover:bg-gray-200/50 dark:hover:bg-white/[0.08]
+          hover:text-gray-900 dark:hover:text-white
+        "
+      >
+        <i id="anim-icon-mobile" class="fa-solid fa-wand-magic-sparkles text-blue-500"></i>
+        <span class="ml-2">Modo Cinemático</span>
+      </button>
+
+      <button
         id="theme-toggle-mobile"
         class="
           rounded-xl
@@ -409,6 +451,38 @@ const currentLangLabel = {
   const themeIconMobile = document.getElementById("theme-icon-mobile");
   const themeToggleMobile = document.getElementById("theme-toggle-mobile");
   const themeToggle = document.getElementById("theme-toggle");
+
+  const animIcon = document.getElementById("anim-icon");
+  const animIconMobile = document.getElementById("anim-icon-mobile");
+  const animToggleMobile = document.getElementById("anim-toggle-mobile");
+  const animToggle = document.getElementById("anim-toggle");
+
+  function updateAnimUI(isCinematic) {
+    if (animIcon) {
+      animIcon.className = isCinematic ? "fa-solid fa-wand-magic-sparkles text-sm text-blue-500" : "fa-solid fa-align-left text-sm text-gray-500 dark:text-gray-400";
+    }
+    if (animIconMobile) {
+      animIconMobile.className = isCinematic ? "fa-solid fa-wand-magic-sparkles text-blue-500" : "fa-solid fa-align-left text-gray-500 dark:text-gray-400";
+    }
+    if (animToggleMobile) {
+      const span = animToggleMobile.querySelector("span");
+      if (span) span.textContent = isCinematic ? "Modo Cinemático" : "Modo Plano";
+    }
+    if (animToggle) {
+      animToggle.title = isCinematic ? "Modo Cinemático" : "Modo Plano";
+    }
+  }
+
+  function toggleAnim() {
+    document.documentElement.classList.toggle("cinematic-enabled");
+    const isCinematic = document.documentElement.classList.contains("cinematic-enabled");
+    localStorage.setItem("cinematic-mode", isCinematic ? "true" : "false");
+    updateAnimUI(isCinematic);
+    window.dispatchEvent(new Event('cinematic-toggled'));
+  }
+
+  if (animToggle) animToggle.addEventListener("click", toggleAnim);
+  if (animToggleMobile) animToggleMobile.addEventListener("click", toggleAnim);
 
   function updateUI(isDark) {
     const iconClass = isDark ? "fa-sun" : "fa-moon";
@@ -475,4 +549,5 @@ const currentLangLabel = {
   }
 
   updateUI(document.documentElement.classList.contains("dark"));
+  updateAnimUI(document.documentElement.classList.contains("cinematic-enabled"));
 </script>

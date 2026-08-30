@@ -83,6 +83,12 @@ const { title = lang === 'es' ? "Emerson Reyes - Portafolio profesional" : "Emer
         if (localStorage.getItem("theme") === "dark") {
           document.documentElement.classList.add("dark");
         }
+        
+        // Cinematic mode default to true unless explicitly disabled
+        const cinematicPref = localStorage.getItem("cinematic-mode");
+        if (cinematicPref === null || cinematicPref === "true") {
+          document.documentElement.classList.add("cinematic-enabled");
+        }
       })();
     </script>
   </head>
@@ -106,6 +112,110 @@ const { title = lang === 'es' ? "Emerson Reyes - Portafolio profesional" : "Emer
       AOS.init({
         duration: 500, // Duración en milisegundos (0.5s)
         once: true, // Solo una vez por scroll
+      });
+    </script>
+
+    <!-- GSAP & Lenis Setup -->
+    <script>
+      import Lenis from 'lenis';
+      import { gsap } from 'gsap';
+      import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+      gsap.registerPlugin(ScrollTrigger);
+
+      let lenis;
+      let ctx;
+      let navLinksHandler;
+
+      function initCinematic() {
+        if (!document.documentElement.classList.contains('cinematic-enabled')) return;
+
+        lenis = new Lenis({
+          duration: 1.2,
+          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+          smoothWheel: true,
+        });
+
+        lenis.on('scroll', ScrollTrigger.update);
+
+        gsap.ticker.add((time) => {
+          lenis.raf(time * 1000);
+        });
+        gsap.ticker.lagSmoothing(0);
+
+        // Override Navbar click for smooth scrolling
+        navLinksHandler = (e) => {
+          const targetId = e.currentTarget.getAttribute('href');
+          if(targetId && targetId.startsWith('#') && document.querySelector(targetId)){
+             e.preventDefault();
+             lenis.scrollTo(targetId, { offset: -50 });
+          }
+        };
+        
+        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+          anchor.addEventListener('click', navLinksHandler);
+        });
+
+        // Use context for easy cleanup
+        ctx = gsap.context(() => {
+          const wrapper = document.querySelector('.gsap-horizontal-wrapper');
+          const container = document.querySelector('.gsap-horizontal-container');
+          const panels = gsap.utils.toArray('.gsap-horizontal-panel');
+
+          if (wrapper && container && panels.length > 0) {
+            // Apply flex row layout dynamically to prevent breaking plain mode
+            container.classList.remove('flex-col', 'md:flex-row');
+            container.style.display = 'flex';
+            container.style.flexDirection = 'row';
+            container.style.width = `${panels.length * 100}vw`;
+
+            gsap.to(panels, {
+              xPercent: -100 * (panels.length - 1),
+              ease: "none",
+              scrollTrigger: {
+                trigger: wrapper,
+                pin: true,
+                scrub: 1,
+                end: () => "+=" + container.offsetWidth
+              }
+            });
+          }
+        });
+      }
+
+      function destroyCinematic() {
+        if (ctx) ctx.revert();
+        
+        if (lenis) {
+          lenis.destroy();
+          gsap.ticker.remove(lenis.raf);
+        }
+
+        if (navLinksHandler) {
+          document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+            anchor.removeEventListener('click', navLinksHandler);
+          });
+        }
+        
+        // Restore flex layout
+        const container = document.querySelector('.gsap-horizontal-container');
+        if (container) {
+          container.style.flexDirection = '';
+          container.style.width = '100%';
+          container.classList.add('flex-col', 'md:flex-row');
+        }
+      }
+
+      // Initialize
+      initCinematic();
+
+      // Listen for toggle
+      window.addEventListener('cinematic-toggled', () => {
+        if (document.documentElement.classList.contains('cinematic-enabled')) {
+          initCinematic();
+        } else {
+          destroyCinematic();
+        }
       });
     </script>
   </body>
