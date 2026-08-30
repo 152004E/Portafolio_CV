@@ -16,7 +16,6 @@ export const ui = {
     'nav.languages': 'Idiomas',
     'nav.darkmode': 'Modo oscuro',
     'nav.lightmode': 'Modo claro',
-    'nav.available': 'Disponible',
     'hero.hello': '&lt;Hola, soy&gt;',
     'hero.role1': 'Desarrollador de Software',
     'hero.role2': 'UX/UI Designer',

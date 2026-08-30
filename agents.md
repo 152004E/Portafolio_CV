@@ -35,3 +35,12 @@ ANTES de comenzar a programar o sugerir cambios estructurales, DEBES usar `view_
 - `docs/DATA_STRUCTURE.md`: Tipos globales e interfaces de datos del cliente.
 - `docs/PLAN.md` y `docs/ROADMAP.md`: Tareas pendientes, estado actual del proyecto y visión a largo plazo.
 - `docs/FUTURE.md`: Funcionalidades planeadas para implementaciones futuras.
+
+# Metodología de Resolución de Problemas (Lecciones Aprendidas)
+Para evitar el síndrome de "visión de túnel" y asegurar soluciones robustas:
+1. **Escaneo Holístico (Full-Cycle Scanning):** Nunca asumas que la lógica existente funciona perfectamente. Antes de aplicar cambios visuales (CSS) o superficiales, audita todo el flujo del componente:
+   - La lógica (JavaScript/Astro/React) que dispara el estado.
+   - El entorno arquitectónico (ej. layouts complejos, contenedores fijados por GSAP, etc).
+   - El momento de inicialización (DOMContentLoaded, hidratación, etc).
+2. **Cuestiona los Cimientos, no solo la Superficie:** Si una solución obvia o un cambio de estilo no se refleja, retrocede un paso y asume que el evento o la condición que debería aplicarlo nunca se cumplió. Evalúa cómo interactúan las herramientas (ej. `getBoundingClientRect` dentro de un pin de GSAP).
+3. **Atención a los Síntomas Reales:** Si el usuario reporta que "no se ven los cambios", tu primera hipótesis siempre debe ser un fallo fundamental en la lógica (ej. la clase no se está aplicando), NO culpar a la caché del navegador ni minimizar el problema. Cambia de enfoque y mira desde más arriba.

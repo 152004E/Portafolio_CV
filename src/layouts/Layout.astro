@@ -15,7 +15,7 @@ const { title = lang === 'es' ? "Emerson Reyes - Portafolio profesional" : "Emer
 ---
 
 <!DOCTYPE html>
-<html lang={lang} class="scroll-smooth">
+<html lang={lang} class="scroll-smooth" style="scroll-padding-top: 80px;">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -148,7 +148,19 @@ const { title = lang === 'es' ? "Emerson Reyes - Portafolio profesional" : "Emer
           const targetId = (e.currentTarget as Element).getAttribute('href');
           if(targetId && targetId.startsWith('#') && document.querySelector(targetId)){
              e.preventDefault();
-             lenis.scrollTo(targetId, { offset: -50 });
+             
+             if (targetId === '#section-portada') {
+               lenis.scrollTo(0);
+             } else if (targetId === '#sobre-mi') {
+               const container = document.querySelector('.gsap-horizontal-container');
+               if (container) {
+                 lenis.scrollTo(container.getBoundingClientRect().width);
+               } else {
+                 lenis.scrollTo(targetId, { offset: -50 });
+               }
+             } else {
+               lenis.scrollTo(targetId, { offset: -50 });
+             }
           }
         };
         
@@ -164,7 +176,7 @@ const { title = lang === 'es' ? "Emerson Reyes - Portafolio profesional" : "Emer
 
           if (wrapper && container && panels && panels.length > 0) {
             // Apply flex row layout dynamically to prevent breaking plain mode
-            container.classList.remove('flex-col', 'md:flex-row');
+            container.classList.remove('flex-col');
             container.setAttribute('style', `display: flex; flex-direction: row; width: ${panels.length * 100}vw;`);
 
             gsap.to(panels, {
@@ -199,7 +211,7 @@ const { title = lang === 'es' ? "Emerson Reyes - Portafolio profesional" : "Emer
         const container = document.querySelector('.gsap-horizontal-container');
         if (container) {
           container.removeAttribute('style');
-          container.classList.add('flex-col', 'md:flex-row');
+          container.classList.add('flex-col');
         }
       }
 
