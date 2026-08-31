@@ -72,6 +72,16 @@ import Footer from '../../components/Footer.astro';
         const container = document.getElementById('dynamic-cinematic-container');
         if (!source || !container) return;
         
+        const isCinematic = document.documentElement.classList.contains('cinematic-enabled');
+
+        if (!isCinematic) {
+            Array.from(source.children).forEach(p => {
+                container.appendChild(p);
+            });
+            source.remove();
+            return;
+        }
+        
         const panelsMap = {};
         Array.from(source.children).forEach(p => {
             panelsMap[p.getAttribute('data-id')] = p;

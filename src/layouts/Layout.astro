@@ -266,14 +266,7 @@ const { title = lang === 'es' ? "Emerson Reyes - Portafolio profesional" : "Emer
       // Initialize
       initCinematic();
 
-      // Listen for toggle
-      window.addEventListener('cinematic-toggled', () => {
-        if (document.documentElement.classList.contains('cinematic-enabled')) {
-          initCinematic();
-        } else {
-          destroyCinematic();
-        }
-      });
+
 
       // Curve Swipe Transition
       const svg = document.getElementById("curve-swipe-svg");
@@ -296,12 +289,12 @@ const { title = lang === 'es' ? "Emerson Reyes - Portafolio profesional" : "Emer
            
            setTimeout(() => {
                gsap.to(path, {
-                   duration: 0.35,
+                   duration: 0.55,
                    attr: { d: outMid },
                    ease: "power2.in",
                    onComplete: () => {
                        gsap.to(path, {
-                           duration: 0.35,
+                           duration: 0.55,
                            attr: { d: outEnd },
                            ease: "power2.out",
                            onComplete: () => {
@@ -311,7 +304,7 @@ const { title = lang === 'es' ? "Emerson Reyes - Portafolio profesional" : "Emer
                        });
                    }
                });
-           }, 50);
+           }, 400);
         }
 
         document.querySelectorAll('.curve-transition-link').forEach(link => {
@@ -325,17 +318,19 @@ const { title = lang === 'es' ? "Emerson Reyes - Portafolio profesional" : "Emer
                path.setAttribute("d", inStart);
                
                gsap.to(path, {
-                   duration: 0.35,
+                   duration: 0.55,
                    attr: { d: inMid },
                    ease: "power2.in",
                    onComplete: () => {
                        gsap.to(path, {
-                           duration: 0.35,
+                           duration: 0.55,
                            attr: { d: inEnd },
                            ease: "power2.out",
                            onComplete: () => {
                                sessionStorage.setItem("curve-transition", "true");
-                               window.location.href = targetUrl;
+                               setTimeout(() => {
+                                   window.location.href = targetUrl;
+                               }, 150);
                            }
                        });
                    }

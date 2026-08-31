@@ -474,11 +474,16 @@ const currentLangLabel = {
   }
 
   function toggleAnim() {
-    document.documentElement.classList.toggle("cinematic-enabled");
     const isCinematic = document.documentElement.classList.contains("cinematic-enabled");
-    localStorage.setItem("cinematic-mode", isCinematic ? "true" : "false");
-    updateAnimUI(isCinematic);
-    window.dispatchEvent(new Event('cinematic-toggled'));
+    localStorage.setItem("cinematic-mode", isCinematic ? "false" : "true");
+    
+    // Add a simple fade out effect before reloading
+    document.body.style.transition = "opacity 0.2s ease-out";
+    document.body.style.opacity = "0";
+    
+    setTimeout(() => {
+        window.location.reload();
+    }, 200);
   }
 
   if (animToggle) animToggle.addEventListener("click", toggleAnim);
