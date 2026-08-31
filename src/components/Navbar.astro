@@ -194,11 +194,11 @@ const currentLangLabel = {
 
 
 
-      <!-- DOWNLOAD CV -->
+      <!-- VIEW CV -->
       <a
-        href={lang === 'es' ? "/cv_emerson_reyes.html" : "/cv_emerson_reyes_en.html"}
-        download
+        href={lang === 'es' ? "/cv" : "/en/cv"}
         class="
+          curve-transition-link
           flex
           items-center
           gap-2
@@ -218,8 +218,8 @@ const currentLangLabel = {
           hover:shadow-blue-500/25
         "
       >
-        <i class="fa-solid fa-download"></i>
-        {t('nav.downloadCV')}
+        <i class="fa-regular fa-eye"></i>
+        {t('nav.viewCV')}
       </a>
 
       <!-- ANIMATION TOGGLE -->
@@ -351,10 +351,11 @@ const currentLangLabel = {
         {t('nav.contact')}
       </a>
 
+      <!-- VIEW CV MOBILE -->
       <a
-        href={lang === 'es' ? "/cv_emerson_reyes.html" : "/cv_emerson_reyes_en.html"}
-        download
+        href={lang === 'es' ? "/cv" : "/en/cv"}
         class="
+          curve-transition-link
           rounded-xl
           border
           border-gray-200/60 dark:border-white/10
@@ -370,8 +371,8 @@ const currentLangLabel = {
           hover:bg-gray-200/50 dark:hover:bg-white/8
         "
       >
-        <i class="fa-solid fa-download"></i>
-        {t('nav.downloadCV')}
+        <i class="fa-regular fa-eye"></i>
+        {t('nav.viewCV')}
       </a>
 
       <button
