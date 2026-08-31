@@ -1,0 +1,37 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Curriculum Vitae - Emerson Reyes">
+  <style is:global>
+    /* Ocultar el navbar principal y el botón de whatsapp en esta vista */
+    nav, #whatsapp-btn { 
+      display: none !important; 
+    }
+    
+    /* Prevenir scroll del body porque el iframe tendrá su propio scroll si es necesario */
+    body {
+      overflow: hidden;
+    }
+  </style>
+  
+  <div class="h-screen w-screen flex flex-col bg-gray-900 relative z-50">
+    <!-- Header custom para CV -->
+    <div class="h-16 shrink-0 flex items-center justify-between px-6 bg-gray-950 border-b border-white/10 shadow-lg">
+      <a href="/" class="curve-transition-link flex items-center gap-2 text-gray-400 hover:text-white transition-colors">
+        <i class="fa-solid fa-arrow-left"></i>
+        <span class="font-medium">Volver al Portafolio</span>
+      </a>
+      
+      <a href="/cv_emerson_reyes.html" download class="flex items-center gap-2 rounded-full bg-linear-to-r from-blue-600 to-cyan-500 px-5 py-2 text-sm font-semibold text-white hover:scale-105 transition-all shadow-lg hover:shadow-blue-500/25">
+        <i class="fa-solid fa-download"></i>
+        Descargar CV
+      </a>
+    </div>
+    
+    <!-- CV Viewer -->
+    <div class="grow w-full bg-white">
+      <iframe src="/cv_emerson_reyes.html" class="w-full h-full border-0"></iframe>
+    </div>
+  </div>
+</Layout>

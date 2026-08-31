@@ -66,7 +66,7 @@ function getLevelColor(level: string) {
         {lang === 'es' ? "Skills" : "Skills" 
       }</span>
       <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white leading-tight">
-        {lang === 'es' ? "Stack" : "Main" }<span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-300 to-cyan-400">{lang === 'es' ? "Principal" : "Stack" }</span>
+        {lang === 'es' ? "Stack" : "Main" }<span class="text-transparent bg-clip-text bg-linear-to-r from-blue-400 via-blue-300 to-cyan-400">{lang === 'es' ? "Principal" : "Stack" }</span>
       </h2>
       <p class="text-gray-500 mt-3 text-sm md:text-base max-w-xl mx-auto">
         {lang === 'es' ? "Tecnologías con las que trabajo día a día para construir soluciones completas y escalables." : "Technologies I work with daily to build complete and scalable solutions." 
@@ -75,17 +75,17 @@ function getLevelColor(level: string) {
 
     <div class="relative grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-0">
       <!-- Vertical Divider -->
-      <div class="hidden lg:block absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-blue-500/20 via-blue-400/10 to-transparent -translate-x-1/2"></div>
+      <div class="hidden lg:block absolute left-1/2 top-0 bottom-0 w-px bg-linear-to-b from-blue-500/20 via-blue-400/10 to-transparent -translate-x-1/2"></div>
 
       <!-- Left Column: Backend + Tools -->
       <div class="flex flex-col gap-10 lg:pr-8">
         <div data-aos="fade-up" data-aos-delay="100">
           <div class="flex items-center gap-3 mb-5">
-            <div class="flex items-center gap-2 px-4 py-2 rounded-full bg-gray-100 dark:bg-white/[0.03] border border-gray-200/60 dark:border-white/10">
+            <div class="flex items-center gap-2 px-4 py-2 rounded-full bg-gray-100 dark:bg-white/3 border border-gray-200/60 dark:border-white/10">
               <i class="fa-solid fa-server text-blue-400 text-sm"></i>
               <h3 class="text-gray-800 dark:text-white font-semibold text-lg">{categories[1].title}</h3>
             </div>
-            <div class="flex-1 h-px bg-gradient-to-r from-blue-500/20 to-transparent"></div>
+            <div class="flex-1 h-px bg-linear-to-r from-blue-500/20 to-transparent"></div>
           </div>
           <div class="grid grid-cols-1 gap-3">
             {categories[1].technologies.map((tech, i) => (
@@ -96,7 +96,7 @@ function getLevelColor(level: string) {
           </div>
           {categories[1].technologies.length > 3 && (
             <button 
-              class="mt-4 flex items-center justify-center gap-2 w-full py-2.5 rounded-xl border border-gray-200 dark:border-white/10 text-gray-500 dark:text-gray-300 text-sm font-semibold transition-all hover:bg-gray-100 dark:hover:bg-white/[0.03] tech-toggle-btn"
+              class="mt-4 flex items-center justify-center gap-2 w-full py-2.5 rounded-xl border border-gray-200 dark:border-white/10 text-gray-500 dark:text-gray-300 text-sm font-semibold transition-all hover:bg-gray-100 dark:hover:bg-white/3 tech-toggle-btn"
               data-target="tech-item-backend"
               data-expanded="false"
               data-text-more={lang === 'es' ? 'Ver más' : 'See more'}
@@ -110,23 +110,40 @@ function getLevelColor(level: string) {
 
         <div data-aos="fade-up" data-aos-delay="300">
           <div class="flex items-center gap-3 mb-5">
-            <div class="flex items-center gap-2 px-4 py-2 rounded-full bg-gray-100 dark:bg-white/[0.03] border border-gray-200/60 dark:border-white/10">
+            <div class="flex items-center gap-2 px-4 py-2 rounded-full bg-gray-100 dark:bg-white/3 border border-gray-200/60 dark:border-white/10">
               <i class="fa-solid fa-tools text-blue-400 text-sm"></i>
               <h3 class="text-gray-800 dark:text-white font-semibold text-lg">{categories[3].title}</h3>
             </div>
-            <div class="flex-1 h-px bg-gradient-to-r from-blue-500/20 to-transparent"></div>
+            <div class="flex-1 h-px bg-linear-to-r from-blue-500/20 to-transparent"></div>
           </div>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div class="flex flex-wrap gap-4">
             {categories[3].technologies.map((tech, i) => (
-              <div class={i >= 4 ? "hidden tech-item-tools" : ""}> 
-                <!-- Changed to i >= 4 since tools uses a 2-column grid sm:grid-cols-2, so showing 4 initially is better balanced -->
-                <TechCard icon={tech.icon} name={tech.name} level={tech.level} description={tech.description} />
+              <div class={`group relative cursor-pointer ${i >= 8 ? "hidden tech-item-tools" : ""}`}>
+                <!-- Icon Circle -->
+                <div class="w-14 h-14 rounded-2xl bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 flex items-center justify-center group-hover:border-blue-500/50 group-hover:bg-blue-500/10 group-hover:-translate-y-1 transition-all duration-300 shadow-sm">
+                  <i class={`${tech.icon} text-2xl text-gray-600 dark:text-gray-300 group-hover:text-blue-400 transition-colors`}></i>
+                </div>
+
+                <!-- Tooltip / Toast -->
+                <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-3 w-56 p-3 bg-gray-900 dark:bg-black/95 border border-white/10 rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 transform translate-y-2 group-hover:translate-y-0 pointer-events-none">
+                  <div class="flex items-center justify-between mb-1.5">
+                    <span class="font-bold text-white text-xs truncate mr-2">{tech.name}</span>
+                    <span class={`shrink-0 text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded ${getLevelColor(tech.level)}`}>
+                      {tech.level}
+                    </span>
+                  </div>
+                  <p class="text-xs text-gray-400 leading-tight">
+                    {tech.description}
+                  </p>
+                  <!-- Triangle pointer -->
+                  <div class="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-gray-900 dark:bg-black/95 border-b border-r border-white/10 rotate-45"></div>
+                </div>
               </div>
             ))}
           </div>
-          {categories[3].technologies.length > 4 && (
+          {categories[3].technologies.length > 8 && (
             <button 
-              class="mt-4 flex items-center justify-center gap-2 w-full py-2.5 rounded-xl border border-gray-200 dark:border-white/10 text-gray-500 dark:text-gray-300 text-sm font-semibold transition-all hover:bg-gray-100 dark:hover:bg-white/[0.03] tech-toggle-btn"
+              class="mt-4 flex items-center justify-center gap-2 w-full py-2.5 rounded-xl border border-gray-200 dark:border-white/10 text-gray-500 dark:text-gray-300 text-sm font-semibold transition-all hover:bg-gray-100 dark:hover:bg-white/3 tech-toggle-btn"
               data-target="tech-item-tools"
               data-expanded="false"
               data-text-more={lang === 'es' ? 'Ver más' : 'See more'}
@@ -143,11 +160,11 @@ function getLevelColor(level: string) {
       <div class="flex flex-col gap-10 lg:pl-8">
         <div data-aos="fade-up">
           <div class="flex items-center gap-3 mb-5">
-            <div class="flex items-center gap-2 px-4 py-2 rounded-full bg-gray-100 dark:bg-white/[0.03] border border-gray-200/60 dark:border-white/10">
+            <div class="flex items-center gap-2 px-4 py-2 rounded-full bg-gray-100 dark:bg-white/3 border border-gray-200/60 dark:border-white/10">
               <i class="fa-solid fa-display text-blue-400 text-sm"></i>
               <h3 class="text-gray-800 dark:text-white font-semibold text-lg">{categories[0].title}</h3>
             </div>
-            <div class="flex-1 h-px bg-gradient-to-r from-blue-500/20 to-transparent"></div>
+            <div class="flex-1 h-px bg-linear-to-r from-blue-500/20 to-transparent"></div>
           </div>
           <div class="grid grid-cols-1 gap-3">
             {categories[0].technologies.map((tech, i) => (
@@ -158,7 +175,7 @@ function getLevelColor(level: string) {
           </div>
           {categories[0].technologies.length > 3 && (
             <button 
-              class="mt-4 flex items-center justify-center gap-2 w-full py-2.5 rounded-xl border border-gray-200 dark:border-white/10 text-gray-500 dark:text-gray-300 text-sm font-semibold transition-all hover:bg-gray-100 dark:hover:bg-white/[0.03] tech-toggle-btn"
+              class="mt-4 flex items-center justify-center gap-2 w-full py-2.5 rounded-xl border border-gray-200 dark:border-white/10 text-gray-500 dark:text-gray-300 text-sm font-semibold transition-all hover:bg-gray-100 dark:hover:bg-white/3 tech-toggle-btn"
               data-target="tech-item-frontend"
               data-expanded="false"
               data-text-more={lang === 'es' ? 'Ver más' : 'See more'}
@@ -172,11 +189,11 @@ function getLevelColor(level: string) {
 
         <div data-aos="fade-up" data-aos-delay="200">
           <div class="flex items-center gap-3 mb-5">
-            <div class="flex items-center gap-2 px-4 py-2 rounded-full bg-gray-100 dark:bg-white/[0.03] border border-gray-200/60 dark:border-white/10">
+            <div class="flex items-center gap-2 px-4 py-2 rounded-full bg-gray-100 dark:bg-white/3 border border-gray-200/60 dark:border-white/10">
               <i class="fa-solid fa-database text-blue-400 text-sm"></i>
               <h3 class="text-gray-800 dark:text-white font-semibold text-lg">{categories[2].title}</h3>
             </div>
-            <div class="flex-1 h-px bg-gradient-to-r from-blue-500/20 to-transparent"></div>
+            <div class="flex-1 h-px bg-linear-to-r from-blue-500/20 to-transparent"></div>
           </div>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {categories[2].technologies.map((tech, i) => (
@@ -187,7 +204,7 @@ function getLevelColor(level: string) {
           </div>
           {categories[2].technologies.length > 3 && (
             <button 
-              class="mt-4 flex items-center justify-center gap-2 w-full py-2.5 rounded-xl border border-gray-200 dark:border-white/10 text-gray-500 dark:text-gray-300 text-sm font-semibold transition-all hover:bg-gray-100 dark:hover:bg-white/[0.03] tech-toggle-btn"
+              class="mt-4 flex items-center justify-center gap-2 w-full py-2.5 rounded-xl border border-gray-200 dark:border-white/10 text-gray-500 dark:text-gray-300 text-sm font-semibold transition-all hover:bg-gray-100 dark:hover:bg-white/3 tech-toggle-btn"
               data-target="tech-item-db"
               data-expanded="false"
               data-text-more={lang === 'es' ? 'Ver más' : 'See more'}
@@ -217,21 +234,23 @@ function getLevelColor(level: string) {
             item.classList.add('hidden');
           } else {
             item.classList.remove('hidden');
-            item.style.animation = 'fadeIn 0.5s ease-out forwards';
+            if (item instanceof HTMLElement) {
+              item.style.animation = 'fadeIn 0.5s ease-out forwards';
+            }
           }
         });
         
-        btn.setAttribute('data-expanded', !isExpanded);
+        btn.setAttribute('data-expanded', String(!isExpanded));
         
         const span = btn.querySelector('span');
         const icon = btn.querySelector('i');
         
         if (isExpanded) {
-          span.textContent = btn.getAttribute('data-text-more');
-          icon.style.transform = 'rotate(0deg)';
+          if (span) span.textContent = btn.getAttribute('data-text-more');
+          if (icon) icon.style.transform = 'rotate(0deg)';
         } else {
-          span.textContent = btn.getAttribute('data-text-less');
-          icon.style.transform = 'rotate(180deg)';
+          if (span) span.textContent = btn.getAttribute('data-text-less');
+          if (icon) icon.style.transform = 'rotate(180deg)';
         }
       });
     });

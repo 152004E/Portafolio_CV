@@ -6,9 +6,11 @@ const t = useTranslations(lang);
 
 const navLinks = [
   { href: "#section-portada", label: t('nav.home') },
-  { href: "#section-experiencia", label: t('nav.experience') },
-  { href: "#section-proyectos", label: t('nav.projects') },
   { href: "#sobre-mi", label: t('nav.about') },
+  { href: "#tecnologias", label: t('nav.skills') },
+  { href: "#section-proyectos", label: t('nav.projects') },
+  { href: "#section-experiencia", label: t('nav.experience') },
+
 ];
 
 const currentLangLabel = {
@@ -16,6 +18,22 @@ const currentLangLabel = {
   en: '🇺🇸 English'
 }[lang];
 ---
+<style is:global>
+  .nav-link.active {
+    color: #1f2937 !important;
+    font-weight: 600 !important;
+  }
+  .dark .nav-link.active {
+    color: #ffffff !important;
+  }
+  .nav-link.active .nav-bg {
+    opacity: 1 !important;
+  }
+  .nav-link.active .nav-glow {
+    width: 75% !important;
+    opacity: 1 !important;
+  }
+</style>
 
 <nav class="fixed top-5 left-1/2 -translate-x-1/2 z-50 w-full px-4">
   <div
@@ -62,6 +80,7 @@ const currentLangLabel = {
         <a
           href={link.href}
           class="
+            nav-link
             group
             relative
             px-4
@@ -78,10 +97,11 @@ const currentLangLabel = {
           <!-- Hover Background -->
           <span
             class="
+              nav-bg
               absolute
               inset-0
               rounded-full
-              bg-gray-900/[0.04] dark:bg-white/[0.04]
+              bg-gray-900/4 dark:bg-white/4
               opacity-0
               transition-all
               duration-300
@@ -92,14 +112,15 @@ const currentLangLabel = {
           <!-- Glow Line -->
           <span
             class="
+              nav-glow
               absolute
               bottom-0
               left-1/2
-              h-[2px]
+              h-0.5
               w-0
               -translate-x-1/2
               rounded-full
-              bg-gradient-to-r
+              bg-linear-to-r
               from-blue-500
               to-cyan-400
               transition-all
@@ -126,7 +147,7 @@ const currentLangLabel = {
             py-2
             text-sm
             text-gray-500 dark:text-gray-300
-            hover:bg-gray-900/[0.04] dark:hover:bg-white/[0.05]
+            hover:bg-gray-900/4 dark:hover:bg-white/5
             hover:text-gray-900 dark:hover:text-white
             transition-all
           "
@@ -171,41 +192,18 @@ const currentLangLabel = {
         </div>
       </div>
 
-      <!-- STATUS -->
-      <div
-        class="
-          flex
-          items-center
-          gap-2
-          rounded-full
-          border
-          border-emerald-500/20
-          bg-emerald-500/10
-          px-3
-          py-2
-          text-xs
-          font-medium
-          text-emerald-400
-        "
-      >
-        <span class="relative flex h-2 w-2">
-          <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
-          <span class="relative inline-flex h-2 w-2 rounded-full bg-emerald-400"></span>
-        </span>
 
-        {t('nav.available')}
-      </div>
 
-      <!-- DOWNLOAD CV -->
+      <!-- VIEW CV -->
       <a
-        href={lang === 'es' ? "/cv_emerson_reyes.html" : "/cv_emerson_reyes_en.html"}
-        download
+        href={lang === 'es' ? "/cv" : "/en/cv"}
         class="
+          curve-transition-link
           flex
           items-center
           gap-2
           rounded-full
-          bg-gradient-to-r
+          bg-linear-to-r
           from-blue-600
           to-cyan-500
           px-4
@@ -220,9 +218,28 @@ const currentLangLabel = {
           hover:shadow-blue-500/25
         "
       >
-        <i class="fa-solid fa-download"></i>
-        {t('nav.downloadCV')}
+        <i class="fa-regular fa-eye"></i>
+        {t('nav.viewCV')}
       </a>
+
+      <!-- ANIMATION TOGGLE -->
+      <button id="anim-toggle"
+        class="
+          flex
+          items-center
+          justify-center
+          w-9
+          h-9
+          rounded-full
+          text-gray-500 dark:text-gray-300
+          hover:bg-gray-900/4 dark:hover:bg-white/5
+          hover:text-gray-900 dark:hover:text-white
+          transition-all
+        "
+        title="Modo Cinemático"
+      >
+        <i id="anim-icon" class="fa-solid fa-wand-magic-sparkles text-sm text-blue-500"></i>
+      </button>
 
       <!-- THEME TOGGLE -->
       <button id="theme-toggle"
@@ -234,7 +251,7 @@ const currentLangLabel = {
           h-9
           rounded-full
           text-gray-500 dark:text-gray-300
-          hover:bg-gray-900/[0.04] dark:hover:bg-white/[0.05]
+          hover:bg-gray-900/4 dark:hover:bg-white/5
           hover:text-gray-900 dark:hover:text-white
           transition-all
         "
@@ -285,6 +302,7 @@ const currentLangLabel = {
         <a
           href={link.href}
           class="
+            nav-link
             rounded-xl
             px-4
             py-3
@@ -292,7 +310,7 @@ const currentLangLabel = {
             text-gray-500 dark:text-gray-300
             transition-all
             duration-300
-            hover:bg-gray-900/[0.04] dark:hover:bg-white/[0.04]
+            hover:bg-gray-900/4 dark:hover:bg-white/4
             hover:text-gray-900 dark:hover:text-white
           "
         >
@@ -316,7 +334,7 @@ const currentLangLabel = {
         href="#contacto"
         class="
           rounded-xl
-          bg-gradient-to-r
+          bg-linear-to-r
           from-blue-600
           to-cyan-500
           px-4
@@ -333,14 +351,15 @@ const currentLangLabel = {
         {t('nav.contact')}
       </a>
 
+      <!-- VIEW CV MOBILE -->
       <a
-        href={lang === 'es' ? "/cv_emerson_reyes.html" : "/cv_emerson_reyes_en.html"}
-        download
+        href={lang === 'es' ? "/cv" : "/en/cv"}
         class="
+          curve-transition-link
           rounded-xl
           border
           border-gray-200/60 dark:border-white/10
-          bg-gray-100/50 dark:bg-white/[0.03]
+          bg-gray-100/50 dark:bg-white/3
           px-4
           py-3
           text-center
@@ -349,20 +368,20 @@ const currentLangLabel = {
           text-gray-700 dark:text-white
           transition-all
           duration-300
-          hover:bg-gray-200/50 dark:hover:bg-white/[0.08]
+          hover:bg-gray-200/50 dark:hover:bg-white/8
         "
       >
-        <i class="fa-solid fa-download"></i>
-        {t('nav.downloadCV')}
+        <i class="fa-regular fa-eye"></i>
+        {t('nav.viewCV')}
       </a>
 
       <button
-        id="theme-toggle-mobile"
+        id="anim-toggle-mobile"
         class="
           rounded-xl
           border
           border-gray-200/60 dark:border-white/10
-          bg-gray-100/50 dark:bg-white/[0.03]
+          bg-gray-100/50 dark:bg-white/3
           px-4
           py-3
           text-center
@@ -371,7 +390,30 @@ const currentLangLabel = {
           text-gray-500 dark:text-gray-300
           transition-all
           duration-300
-          hover:bg-gray-200/50 dark:hover:bg-white/[0.08]
+          hover:bg-gray-200/50 dark:hover:bg-white/8
+          hover:text-gray-900 dark:hover:text-white
+        "
+      >
+        <i id="anim-icon-mobile" class="fa-solid fa-wand-magic-sparkles text-blue-500"></i>
+        <span class="ml-2">Modo Cinemático</span>
+      </button>
+
+      <button
+        id="theme-toggle-mobile"
+        class="
+          rounded-xl
+          border
+          border-gray-200/60 dark:border-white/10
+          bg-gray-100/50 dark:bg-white/3
+          px-4
+          py-3
+          text-center
+          text-sm
+          font-semibold
+          text-gray-500 dark:text-gray-300
+          transition-all
+          duration-300
+          hover:bg-gray-200/50 dark:hover:bg-white/8
           hover:text-gray-900 dark:hover:text-white
         "
       >
@@ -409,6 +451,43 @@ const currentLangLabel = {
   const themeIconMobile = document.getElementById("theme-icon-mobile");
   const themeToggleMobile = document.getElementById("theme-toggle-mobile");
   const themeToggle = document.getElementById("theme-toggle");
+
+  const animIcon = document.getElementById("anim-icon");
+  const animIconMobile = document.getElementById("anim-icon-mobile");
+  const animToggleMobile = document.getElementById("anim-toggle-mobile");
+  const animToggle = document.getElementById("anim-toggle");
+
+  function updateAnimUI(isCinematic) {
+    if (animIcon) {
+      animIcon.className = isCinematic ? "fa-solid fa-wand-magic-sparkles text-sm text-blue-500" : "fa-solid fa-align-left text-sm text-gray-500 dark:text-gray-400";
+    }
+    if (animIconMobile) {
+      animIconMobile.className = isCinematic ? "fa-solid fa-wand-magic-sparkles text-blue-500" : "fa-solid fa-align-left text-gray-500 dark:text-gray-400";
+    }
+    if (animToggleMobile) {
+      const span = animToggleMobile.querySelector("span");
+      if (span) span.textContent = isCinematic ? "Modo Cinemático" : "Modo Plano";
+    }
+    if (animToggle) {
+      animToggle.title = isCinematic ? "Modo Cinemático" : "Modo Plano";
+    }
+  }
+
+  function toggleAnim() {
+    const isCinematic = document.documentElement.classList.contains("cinematic-enabled");
+    localStorage.setItem("cinematic-mode", isCinematic ? "false" : "true");
+    
+    // Add a simple fade out effect before reloading
+    document.body.style.transition = "opacity 0.2s ease-out";
+    document.body.style.opacity = "0";
+    
+    setTimeout(() => {
+        window.location.reload();
+    }, 200);
+  }
+
+  if (animToggle) animToggle.addEventListener("click", toggleAnim);
+  if (animToggleMobile) animToggleMobile.addEventListener("click", toggleAnim);
 
   function updateUI(isDark) {
     const iconClass = isDark ? "fa-sun" : "fa-moon";
@@ -475,4 +554,73 @@ const currentLangLabel = {
   }
 
   updateUI(document.documentElement.classList.contains("dark"));
+  updateAnimUI(document.documentElement.classList.contains("cinematic-enabled"));
+
+  // ── Scroll Spy ──────────────────────────────────────────────
+  function initScrollSpy() {
+    const navLinksList = document.querySelectorAll('.nav-link');
+    if (!navLinksList.length) return;
+
+    const sectionsMap = new Map();
+    navLinksList.forEach(link => {
+      const href = link.getAttribute('href');
+      if (href && href.startsWith('#')) {
+        const el = document.querySelector(href);
+        if (el) sectionsMap.set(href, el);
+      }
+    });
+
+    function setActive(href) {
+      navLinksList.forEach(link => {
+        if (link.getAttribute('href') === href) {
+          link.classList.add('active');
+        } else {
+          link.classList.remove('active');
+        }
+      });
+    }
+
+    function updateActive() {
+      let best = '#section-portada';
+      let bestScore = -Infinity;
+
+      sectionsMap.forEach((el, href) => {
+        const rect = el.getBoundingClientRect();
+
+        // Visible area overlap with viewport
+        const vTop = Math.max(0, rect.top);
+        const vBottom = Math.min(window.innerHeight, rect.bottom);
+        const vLeft = Math.max(0, rect.left);
+        const vRight = Math.min(window.innerWidth, rect.right);
+        const visibleArea = Math.max(0, vBottom - vTop) * Math.max(0, vRight - vLeft);
+
+        // Distance from viewport center (lower = better)
+        const cx = rect.left + rect.width / 2;
+        const cy = rect.top + rect.height / 2;
+        const dist = Math.hypot(cx - innerWidth / 2, cy - innerHeight / 2);
+
+        const score = visibleArea - dist * 50;
+        if (score > bestScore) {
+          bestScore = score;
+          best = href;
+        }
+      });
+
+      setActive(best);
+    }
+
+    window.addEventListener('scroll', updateActive, { passive: true });
+    window.addEventListener('resize', updateActive);
+    updateActive();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initScrollSpy);
+  } else {
+    initScrollSpy();
+  }
+
+  window.addEventListener('cinematic-toggled', () => {
+    setTimeout(initScrollSpy, 300);
+  });
 </script>
