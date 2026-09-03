@@ -618,7 +618,7 @@ function getLevelColor(level: string) {
   <!-- ═══════════════════════════════════════════════════════════════ -->
   <!-- MODAL DE 3 PANELES: GSAP Interruptible Timeline + Caída        -->
   <!-- ═══════════════════════════════════════════════════════════════ -->
-  <div class="skills-nav" id="skillsNav" aria-hidden="true">
+  <div class="skills-nav z-[100000]" id="skillsNav" aria-hidden="true">
     <div class="skills-nav-bg" id="skillsNavBg"></div>
 
     <!-- 1. Panel Superior: Detalles de Tecnología y Proyectos -->
@@ -704,7 +704,7 @@ function getLevelColor(level: string) {
           <i class="fa-solid fa-layer-group mr-1.5"></i>
           {lang === 'es' ? 'Ver Proyectos' : 'View Projects'}
         </a>
-        <a href="https://github.com/152004E" target="_blank" rel="noopener noreferrer" class="skills-action-btn cursor-pointer">
+        <a id="skillsMiddleGithubAction" href="https://github.com/152004E" target="_blank" rel="noopener noreferrer" class="skills-action-btn cursor-pointer">
           <i class="fa-brands fa-github mr-1.5"></i> GitHub
         </a>
       </div>
@@ -731,7 +731,7 @@ function getLevelColor(level: string) {
   .skills-nav {
     position: fixed;
     inset: 0;
-    z-index: 9999;
+    z-index: 100000;
     padding: 1rem;
     pointer-events: none;
     visibility: hidden;
@@ -968,6 +968,11 @@ function getLevelColor(level: string) {
 
     if (!nav || !navBg) return;
 
+    // Portal modal to document.body so it is a direct child of body and sits above Navbar and WhatsApp
+    if (nav.parentElement !== document.body) {
+      document.body.appendChild(nav);
+    }
+
     let isOpen = false;
     let exitSpeed = 1.4;
     let tl: gsap.core.Timeline | null = null;
@@ -1135,16 +1140,35 @@ function getLevelColor(level: string) {
       if (modalLevel) modalLevel.textContent = level;
       if (modalDesc) modalDesc.textContent = desc;
 
+      // Diccionario de repositorios específicos por cada proyecto
+      const projectUrls: Record<string, string> = {
+        'ROOM 911': 'https://github.com/152004E/room-911-management-system',
+        'DuoBalance': 'https://github.com/152004E/DuoBalance-app',
+        'HuertaDirecta': 'https://github.com/HuertaDirectaProject/HdirectaJava',
+        'AlgoTrainer': 'https://github.com/152004E/Algotrainer',
+        'Ainglo': 'https://github.com/152004E/Ainglo',
+        'Portafolio CV': 'https://github.com/152004E/Portafolio_CV',
+      };
+
       if (modalProjects) {
         if (projects.length === 0) {
           modalProjects.innerHTML = `<span class="text-xs text-gray-400 italic">No especificado</span>`;
         } else {
-          modalProjects.innerHTML = projects.map(p => `
-            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-blue-500/10 dark:bg-white/5 border border-blue-500/20 text-xs font-semibold text-blue-600 dark:text-cyan-300 shadow-xs">
-              <i class="fa-solid fa-check text-[10px] text-emerald-400"></i>
-              ${p}
-            </span>
-          `).join('');
+          modalProjects.innerHTML = projects.map(p => {
+            const url = projectUrls[p] || 'https://github.com/152004E';
+            return `
+              <a 
+                href="${url}" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-blue-500/10 dark:bg-white/5 hover:bg-blue-500/20 dark:hover:bg-white/10 border border-blue-500/20 hover:border-blue-500/40 text-xs font-semibold text-blue-600 dark:text-cyan-300 transition-all hover:scale-105 shadow-xs" 
+                title="Ver repositorio de ${p}"
+              >
+                <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-emerald-400"></i>
+                <span>${p}</span>
+              </a>
+            `;
+          }).join('');
         }
       }
 
@@ -1152,6 +1176,7 @@ function getLevelColor(level: string) {
       const middleTitle = document.getElementById('skillsMiddleTitle');
       const middleDesc = document.getElementById('skillsMiddleDesc');
       const middleIcon = document.getElementById('skillsMiddleBadgeIcon');
+      const middleGithubBtn = document.getElementById('skillsMiddleGithubAction') as HTMLAnchorElement | null;
 
       if (middleIcon) middleIcon.className = `${icon} text-xl text-black`;
       if (middleTitle) {
@@ -1164,6 +1189,15 @@ function getLevelColor(level: string) {
         } else {
           middleDesc.textContent = desc;
         }
+      }
+
+      if (middleGithubBtn) {
+        const primaryProject = projects[0];
+        const targetRepoUrl = (primaryProject && projectUrls[primaryProject]) 
+          ? projectUrls[primaryProject] 
+          : 'https://github.com/152004E';
+        middleGithubBtn.href = targetRepoUrl;
+        middleGithubBtn.title = primaryProject ? `Repositorio de ${primaryProject}` : 'GitHub';
       }
     }
 
