@@ -88,9 +88,9 @@ const { title = lang === 'es' ? "Emerson Reyes - Portafolio profesional" : "Emer
           document.documentElement.classList.add("dark");
         }
         
-        // Cinematic mode default to true unless explicitly disabled
+        // Cinematic mode default to false (Modo Plano por defecto)
         const cinematicPref = localStorage.getItem("cinematic-mode");
-        if (cinematicPref === null || cinematicPref === "true") {
+        if (cinematicPref === "true") {
           document.documentElement.classList.add("cinematic-enabled");
         }
       })();

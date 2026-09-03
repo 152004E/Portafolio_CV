@@ -236,9 +236,9 @@ const currentLangLabel = {
           hover:text-gray-900 dark:hover:text-white
           transition-all
         "
-        title="Modo Cinemático"
+        title={t('nav.flatmode')}
       >
-        <i id="anim-icon" class="fa-solid fa-wand-magic-sparkles text-sm text-blue-500"></i>
+        <i id="anim-icon" class="fa-solid fa-align-left text-sm text-gray-500 dark:text-gray-400"></i>
       </button>
 
       <!-- THEME TOGGLE -->
@@ -394,8 +394,8 @@ const currentLangLabel = {
           hover:text-gray-900 dark:hover:text-white
         "
       >
-        <i id="anim-icon-mobile" class="fa-solid fa-wand-magic-sparkles text-blue-500"></i>
-        <span class="ml-2">Modo Cinemático</span>
+        <i id="anim-icon-mobile" class="fa-solid fa-align-left text-gray-500 dark:text-gray-400"></i>
+        <span class="ml-2">{t('nav.flatmode')}</span>
       </button>
 
       <button
@@ -424,7 +424,7 @@ const currentLangLabel = {
   </div>
 </nav>
 
-<script define:vars={{ lightText: t('nav.lightmode'), darkText: t('nav.darkmode') }}>
+<script define:vars={{ lightText: t('nav.lightmode'), darkText: t('nav.darkmode'), cinematicText: t('nav.cinematicmode'), flatText: t('nav.flatmode') }}>
   const menuToggle = document.getElementById("menu-toggle");
   const menuIcon = document.getElementById("menu-icon");
   const mobileMenu = document.getElementById("mobile-menu");
@@ -466,10 +466,10 @@ const currentLangLabel = {
     }
     if (animToggleMobile) {
       const span = animToggleMobile.querySelector("span");
-      if (span) span.textContent = isCinematic ? "Modo Cinemático" : "Modo Plano";
+      if (span) span.textContent = isCinematic ? cinematicText : flatText;
     }
     if (animToggle) {
-      animToggle.title = isCinematic ? "Modo Cinemático" : "Modo Plano";
+      animToggle.title = isCinematic ? cinematicText : flatText;
     }
   }
 

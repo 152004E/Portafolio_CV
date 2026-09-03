@@ -539,7 +539,7 @@ function createCvDoc(lang = 'es') {
           new TableCell({
             width: { size: leftWidth, type: WidthType.DXA },
             shading: { fill: cLightBg, type: ShadingType.CLEAR },
-            margins: { top: 300, bottom: 300, left: 300, right: 300 },
+            margins: { top: 200, bottom: 200, left: 200, right: 200 },
             borders: {
               top: { style: BorderStyle.NONE },
               bottom: { style: BorderStyle.NONE },
@@ -550,7 +550,7 @@ function createCvDoc(lang = 'es') {
           }),
           new TableCell({
             width: { size: rightWidth, type: WidthType.DXA },
-            margins: { top: 300, bottom: 300, left: 400, right: 300 },
+            margins: { top: 200, bottom: 200, left: 250, right: 200 },
             borders: noBorder,
             children: rightColChildren
           })
@@ -564,7 +564,7 @@ function createCvDoc(lang = 'es') {
       {
         properties: {
           page: {
-            margin: { top: 720, bottom: 720, left: 720, right: 720 }
+            margin: { top: 360, bottom: 360, left: 360, right: 360 }
           }
         },
         children: [table]
