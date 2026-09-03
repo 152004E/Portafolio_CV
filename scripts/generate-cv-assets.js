@@ -274,7 +274,46 @@ function createCvDoc(lang = 'es') {
     ).map(skill => new Paragraph({
       spacing: { after: 40 },
       children: [new TextRun({ text: skill, size: 16, color: cMuted, font: 'Arial' })]
-    }))
+    })),
+
+    // Referencias
+    createSidebarHeader(isEs ? 'Referencias' : 'References'),
+    new Paragraph({
+      spacing: { after: 30 },
+      children: [
+        new TextRun({ text: 'Jesús Sánchez', bold: true, size: 16, color: cAccent, font: 'Arial' })
+      ]
+    }),
+    new Paragraph({
+      spacing: { after: 60 },
+      children: [
+        new TextRun({ text: '310 341 8641', size: 15, color: cMuted, font: 'Arial' })
+      ]
+    }),
+    new Paragraph({
+      spacing: { after: 30 },
+      children: [
+        new TextRun({ text: 'Johan A. Leguizamo', bold: true, size: 16, color: cAccent, font: 'Arial' })
+      ]
+    }),
+    new Paragraph({
+      spacing: { after: 60 },
+      children: [
+        new TextRun({ text: '320 452 4778', size: 15, color: cMuted, font: 'Arial' })
+      ]
+    }),
+    new Paragraph({
+      spacing: { after: 30 },
+      children: [
+        new TextRun({ text: 'Efrain Manotas', bold: true, size: 16, color: cAccent, font: 'Arial' })
+      ]
+    }),
+    new Paragraph({
+      spacing: { after: 60 },
+      children: [
+        new TextRun({ text: '300 782 7571', size: 15, color: cMuted, font: 'Arial' })
+      ]
+    })
   ];
 
   const rightColChildren = [
@@ -470,64 +509,55 @@ function createCvDoc(lang = 'es') {
       ? [
           {
             name: 'ROOM 911 Management System',
-            desc: 'Sistema administrativo de control de acceso con autenticación biométrica, JWT, dashboards, reportes y gestión de empleados.'
+            desc: 'Sistema de control de acceso con autenticación biométrica, JWT, dashboards y gestión de empleados.'
+          },
+          {
+            name: 'DuoBalance',
+            desc: 'Plataforma web y móvil para gestión y división de gastos compartidos con NestJS, PostgreSQL y React Native.'
           },
           {
             name: 'AlgoTrainer',
-            desc: 'Plataforma interactiva de entrenamiento para speedcubers enfocada en reconocimiento y ejecución de algoritmos.'
+            desc: 'Plataforma de entrenamiento para speedcubers con reconocimiento y medición de algoritmos.'
           },
           {
             name: 'HuertaDirecta',
-            desc: 'Plataforma web que conecta agricultores colombianos directamente con compradores de forma simple y accesible.'
+            desc: 'Plataforma agrotech que conecta agricultores directamente con compradores sin intermediarios.'
           },
           {
             name: 'Ainglo',
-            desc: 'Asistente inteligente para aprender inglés mediante IA con Telegram, reconocimiento de voz, TTS y diccionario inteligente.'
+            desc: 'Asistente de IA para aprender inglés por Telegram con reconocimiento de voz, TTS y diccionario.'
           }
         ]
       : [
           {
             name: 'ROOM 911 Management System',
-            desc: 'Administrative access control system featuring biometric authentication, JWT, analytical dashboards, reporting, and staff administration.'
+            desc: 'Access control system with biometric authentication, JWT, dashboards, and staff management.'
+          },
+          {
+            name: 'DuoBalance',
+            desc: 'Web and mobile shared expense management platform with NestJS, PostgreSQL, and React Native.'
           },
           {
             name: 'AlgoTrainer',
-            desc: 'Interactive algorithm training platform for speedcubers focusing on pattern recognition and execution timers.'
+            desc: 'Speedcuber algorithm training platform focusing on pattern recognition and execution timers.'
           },
           {
             name: 'HuertaDirecta',
-            desc: 'Agrotech web platform connecting Colombian farmers directly to wholesale buyers transparently and accessibly.'
+            desc: 'Agrotech platform directly connecting local farmers with wholesale buyers transparently.'
           },
           {
             name: 'Ainglo',
-            desc: 'AI English learning assistant via Telegram with voice recognition, text-to-speech, and context dictionary.'
+            desc: 'AI English learning assistant via Telegram with voice recognition, TTS, and smart dictionary.'
           }
         ]
     ).map(proj => new Paragraph({
-      spacing: { after: 80 },
+      spacing: { after: 60 },
       children: [
         new TextRun({ text: proj.name, bold: true, size: 17, color: cAccent, font: 'Arial' }),
-        new TextRun({ text: ' — ', size: 17, color: '64748B' }),
-        new TextRun({ text: proj.desc, size: 17, color: cMuted, font: 'Arial' })
+        new TextRun({ text: ' — ', size: 16, color: '64748B' }),
+        new TextRun({ text: proj.desc, size: 16, color: cMuted, font: 'Arial' })
       ]
-    })),
-
-    // REFERENCIAS
-    createMainHeader(isEs ? 'Referencias' : 'References'),
-    new Paragraph({
-      spacing: { after: 60 },
-      children: [
-        new TextRun({ text: 'Jesús Sánchez', bold: true, size: 18, color: cAccent, font: 'Arial' }),
-        new TextRun({ text: '  ·  310 341 8641', size: 17, color: cMuted, font: 'Arial' })
-      ]
-    }),
-    new Paragraph({
-      spacing: { after: 60 },
-      children: [
-        new TextRun({ text: 'Johan A. Leguizamo', bold: true, size: 18, color: cAccent, font: 'Arial' }),
-        new TextRun({ text: '  ·  320 452 4778', size: 17, color: cMuted, font: 'Arial' })
-      ]
-    })
+    }))
   ];
 
   const table = new Table({
