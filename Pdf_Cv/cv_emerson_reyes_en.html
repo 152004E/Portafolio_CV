@@ -30,7 +30,8 @@ a{color:inherit;text-decoration:none}
 /* ── SIDEBAR ── */
 .sidebar{background:var(--bg-side);padding:2.5rem 1.6rem;border-right:1px solid var(--rule);display:flex;flex-direction:column;gap:2rem}
 
-.avatar{width:72px;height:72px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:1.6rem;color:#fff;letter-spacing:-1px;margin-bottom:0.8rem}
+.profile-header{display:flex;align-items:center;gap:1rem}
+.avatar{width:72px;height:72px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:1.6rem;color:#fff;letter-spacing:-1px;flex-shrink:0}
 
 .name-block h1{font-family:var(--serif);font-size:1.7rem;font-weight:400;line-height:1.1;color:var(--accent)}
 .name-block h2{margin-top:0.4rem;font-size:0.72rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--green)}
@@ -144,14 +145,22 @@ a{color:inherit;text-decoration:none}
   }
 }
 
+@page {
+  size: A4 portrait;
+  margin: 10mm 12mm;
+}
+
 @media print {
-  body {
-    background: #fff;
+  html, body {
+    background: #fff !important;
+    width: 100% !important;
   }
   .page {
-    margin: 0;
-    box-shadow: none;
-    max-width: 100%;
+    margin: 0 !important;
+    box-shadow: none !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    display: grid !important;
     grid-template-columns: 260px 1fr !important;
   }
   .sidebar {
@@ -169,6 +178,10 @@ a{color:inherit;text-decoration:none}
     justify-content: space-between !important;
     align-items: baseline !important;
   }
+  .entry, .proj-card, .ref-item, .lang-item, .pill-group {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
 }
 </style>
 </head>
@@ -178,7 +191,7 @@ a{color:inherit;text-decoration:none}
 <!-- ──────────── SIDEBAR ──────────── -->
 <div class="sidebar">
 
-  <div>
+  <div class="profile-header">
     <div class="avatar">ER</div>
     <div class="name-block">
       <h1>Emerson<br>Reyes</h1>
@@ -290,17 +303,7 @@ a{color:inherit;text-decoration:none}
     </div>
   </div>
 
-  <div>
-    <div class="s-title">References</div>
-    <div class="ref-item">
-      <div class="ref-name">Jesús Sánchez</div>
-      <div class="ref-tel">310 341 8641</div>
-    </div>
-    <div class="ref-item">
-      <div class="ref-name">Johan A. Leguizamo</div>
-      <div class="ref-tel">320 452 4778</div>
-    </div>
-  </div>
+
 
 </div>
 
@@ -399,6 +402,21 @@ a{color:inherit;text-decoration:none}
         <div class="proj-desc">Intelligent AI assistant for learning English with Telegram, voice recognition, TTS, and a smart dictionary.</div>
       </div>
 
+    </div>
+  </div>
+
+  <!-- REFERENCIAS -->
+  <div>
+    <div class="sec-title">References</div>
+    <div style="display: flex; gap: 4rem;">
+      <div class="ref-item">
+        <div class="entry-title" style="margin-bottom: 0.15rem;">Jesús Sánchez</div>
+        <div class="entry-desc">310 341 8641</div>
+      </div>
+      <div class="ref-item">
+        <div class="entry-title" style="margin-bottom: 0.15rem;">Johan A. Leguizamo</div>
+        <div class="entry-desc">320 452 4778</div>
+      </div>
     </div>
   </div>
 
