@@ -10,51 +10,401 @@ const categories = [
     title: lang === 'es' ? "Frontend" : "Frontend",
     icon: "fa-solid fa-display",
     technologies: [
-      { name: "React", level: lang === 'es' ? "Intermedio" : "Intermediate", icon: "fa-brands fa-react", description: lang === 'es' ? "Componentes funcionales, hooks, estado global, React Router." : "Functional components, hooks, global state, React Router." },
-      { name: "TypeScript", level: lang === 'es' ? "Intermedio" : "Intermediate", icon: "fa-brands fa-js", description: lang === 'es' ? "Tipado estático, interfaces, genéricos, tipos avanzados." : "Static typing, interfaces, generics, advanced types." },
-      { name: "JavaScript", level: lang === 'es' ? "Intermedio" : "Intermediate", icon: "fa-brands fa-js", description: lang === 'es' ? "ES6+, asincronía, manipulación del DOM, fetch API." : "ES6+, async, DOM manipulation, fetch API." },
-      { name: "TailwindCSS", level: lang === 'es' ? "Avanzado" : "Advanced", icon: "fa-brands fa-css3-alt", description: lang === 'es' ? "Diseño utility-first, responsive, custom config, animaciones." : "Utility-first design, responsive, custom config, animations." },
-      { name: "Bootstrap", level: lang === 'es' ? "Avanzado" : "Advanced", icon: "fa-brands fa-bootstrap", description: lang === 'es' ? "Grid system, componentes, personalización de temas." : "Grid system, components, theme customization." },
-      { name: "HTML & CSS", level: lang === 'es' ? "Avanzado" : "Advanced", icon: "fa-brands fa-html5", description: lang === 'es' ? "Semántica web, flexbox, grid, animaciones CSS, SASS." : "Web semantics, flexbox, grid, CSS animations, SASS." },
+      { 
+        name: "React", 
+        level: lang === 'es' ? "Intermedio" : "Intermediate", 
+        icon: "fa-brands fa-react", 
+        description: lang === 'es' ? "Componentes funcionales, hooks, estado global, React Router." : "Functional components, hooks, global state, React Router.",
+        projects: ["ROOM 911", "DuoBalance", "AlgoTrainer", "HuertaDirecta", "Portafolio CV"],
+        highlights: lang === 'es' 
+          ? [
+              "Desarrollo de interfaces reactivas con estado global y custom hooks.",
+              "Consumo e integración de APIs REST protegidas con autenticación JWT.",
+              "Diseño modular de componentes reutilizables con alto rendimiento."
+            ]
+          : [
+              "Reactive UI development using global state and custom hooks.",
+              "Consumption and integration of protected REST APIs with JWT auth.",
+              "Modular design of reusable, high-performance web components."
+            ]
+      },
+      { 
+        name: "TypeScript", 
+        level: lang === 'es' ? "Intermedio" : "Intermediate", 
+        icon: "fa-brands fa-js", 
+        description: lang === 'es' ? "Tipado estático, interfaces, genéricos, tipos avanzados." : "Static typing, interfaces, generics, advanced types.",
+        projects: ["DuoBalance", "AlgoTrainer", "Portafolio CV"],
+        highlights: lang === 'es'
+          ? [
+              "Tipado estricto de entidades, DTOs y modelos de datos relacionales.",
+              "Definición de contratos de API e interfaces para reducir errores en tiempo de ejecución.",
+              "Arquitectura de software escalable con genéricos y tipos utilitarios."
+            ]
+          : [
+              "Strict typing for entities, DTOs, and relational database models.",
+              "API contract and interface definitions preventing runtime exceptions.",
+              "Scalable software architecture leveraging generics and utility types."
+            ]
+      },
+      { 
+        name: "JavaScript", 
+        level: lang === 'es' ? "Intermedio" : "Intermediate", 
+        icon: "fa-brands fa-js", 
+        description: lang === 'es' ? "ES6+, asincronía, manipulación del DOM, fetch API." : "ES6+, async, DOM manipulation, fetch API.",
+        projects: ["HuertaDirecta", "AlgoTrainer", "Proyectos Web"],
+        highlights: lang === 'es'
+          ? [
+              "Programación asíncrona avanzada con async/await, promesas y manejo de errores.",
+              "Manipulación dinámica del DOM y optimización de eventos del navegador.",
+              "Lógica matemática para reconocimiento y cronometraje de algoritmos de speedcubing."
+            ]
+          : [
+              "Advanced asynchronous workflows with async/await, promises, and error handling.",
+              "Dynamic DOM manipulation and event listener optimization.",
+              "Algorithmic math logic for speedcuber pattern recognition."
+            ]
+      },
+      { 
+        name: "TailwindCSS", 
+        level: lang === 'es' ? "Avanzado" : "Advanced", 
+        icon: "fa-brands fa-css3-alt", 
+        description: lang === 'es' ? "Diseño utility-first, responsive, custom config, animaciones." : "Utility-first design, responsive, custom config, animations.",
+        projects: ["DuoBalance", "HuertaDirecta", "Portafolio CV"],
+        highlights: lang === 'es'
+          ? [
+              "Construcción de interfaces responsivas y adaptativas para móvil y escritorio.",
+              "Implementación de modo oscuro dinámico y variables de diseño personalizadas.",
+              "Efectos glassmorphism, micro-interacciones y transiciones fluidas."
+            ]
+          : [
+              "Building adaptive and responsive interfaces across mobile and desktop.",
+              "Dynamic dark mode implementations and custom design tokens.",
+              "Glassmorphic styling, micro-interactions, and fluid transitions."
+            ]
+      },
+      { 
+        name: "Bootstrap", 
+        level: lang === 'es' ? "Avanzado" : "Advanced", 
+        icon: "fa-brands fa-bootstrap", 
+        description: lang === 'es' ? "Grid system, componentes, personalización de temas." : "Grid system, components, theme customization.",
+        projects: ["ROOM 911", "Sistemas SENA"],
+        highlights: lang === 'es'
+          ? [
+              "Maquetación del panel administrativo y dashboards de gestión de empleados.",
+              "Sistemas de grillas responsivas y validación de formularios empresariales.",
+              "Personalización de temas y componentes modulares corporativos."
+            ]
+          : [
+              "Dashboard layouts and employee management views in enterprise systems.",
+              "Responsive grid structures and enterprise form validation.",
+              "Customizing corporate component systems and UI styling."
+            ]
+      },
+      { 
+        name: "HTML & CSS", 
+        level: lang === 'es' ? "Avanzado" : "Advanced", 
+        icon: "fa-brands fa-html5", 
+        description: lang === 'es' ? "Semántica web, flexbox, grid, animaciones CSS, SASS." : "Web semantics, flexbox, grid, CSS animations, SASS.",
+        projects: ["ROOM 911", "DuoBalance", "AlgoTrainer", "HuertaDirecta", "Portafolio CV"],
+        highlights: lang === 'es'
+          ? [
+              "Marcado semántico accesible y optimizado para motores de búsqueda (SEO).",
+              "Maquetación avanzada con Flexbox y CSS Grid para layouts complejos.",
+              "Hojas de estilo para impresión y generación de documentos PDF de 2 columnas."
+            ]
+          : [
+              "Accessible semantic markup optimized for search engine indexing (SEO).",
+              "Advanced layouts using Flexbox and multi-column CSS Grid.",
+              "Print-specific stylesheets and dual-column PDF document generation."
+            ]
+      },
     ],
   },
   {
     title: lang === 'es' ? "Backend" : "Backend",
     icon: "fa-solid fa-server",
     technologies: [
-      { name: "Java", level: lang === 'es' ? "Intermedio" : "Intermediate", icon: "fa-brands fa-java", description: lang === 'es' ? "POO, colecciones, streams, manejo de excepciones, JDBC." : "OOP, collections, streams, exception handling, JDBC." },
-      { name: "Spring Boot", level: lang === 'es' ? "Intermedio" : "Intermediate", icon: "fa-solid fa-leaf", description: lang === 'es' ? "REST APIs, JPA, seguridad, inyección de dependencias." : "REST APIs, JPA, security, dependency injection." },
-      { name: "Node.js", level: lang === 'es' ? "Intermedio" : "Intermediate", icon: "fa-brands fa-node-js", description: lang === 'es' ? "Express, APIs REST, manejo de paquetes, npm." : "Express, REST APIs, package management, npm." },
-      { name: "PHP", level: lang === 'es' ? "Básico" : "Basic", icon: "fa-brands fa-php", description: lang === 'es' ? "Lógica del lado del servidor, conexión a bases de datos." : "Server-side logic, database connection." },
+      { 
+        name: "NestJS", 
+        level: lang === 'es' ? "Intermedio" : "Intermediate", 
+        icon: "fa-solid fa-server", 
+        description: lang === 'es' ? "Arquitectura modular, controladores REST, servicios inyectables, Prisma." : "Modular architecture, REST controllers, injectable services, Prisma.",
+        projects: ["DuoBalance"],
+        highlights: lang === 'es'
+          ? [
+              "Diseño de arquitectura modular con controladores, servicios y validación DTO.",
+              "Autenticación JWT completa con refresh tokens, guards y bcrypt.",
+              "Lógica financiera de liquidación neta y balance de gastos compartidos con Prisma ORM."
+            ]
+          : [
+              "Modular architecture with controllers, dependency-injected services, and DTO validation.",
+              "Complete JWT authentication with refresh tokens, guards, and bcrypt hashing.",
+              "Net settlement calculations and shared balance algorithms via Prisma ORM."
+            ]
+      },
+      { 
+        name: "Java", 
+        level: lang === 'es' ? "Intermedio" : "Intermediate", 
+        icon: "fa-brands fa-java", 
+        description: lang === 'es' ? "POO, colecciones, streams, manejo de excepciones, JDBC." : "OOP, collections, streams, exception handling, JDBC.",
+        projects: ["ROOM 911", "Sistemas SENA"],
+        highlights: lang === 'es'
+          ? [
+              "Programación orientada a objetos con patrones de diseño empresariales.",
+              "Procesamiento funcional de colecciones con la API Stream de Java.",
+              "Arquitectura de software desacoplada y manejo robusto de excepciones."
+            ]
+          : [
+              "Object-oriented programming using enterprise design patterns.",
+              "Functional collection processing using the modern Java Stream API.",
+              "Decoupled software architecture with resilient exception handling."
+            ]
+      },
+      { 
+        name: "Spring Boot", 
+        level: lang === 'es' ? "Intermedio" : "Intermediate", 
+        icon: "fa-solid fa-leaf", 
+        description: lang === 'es' ? "REST APIs, JPA, seguridad, inyección de dependencias." : "REST APIs, JPA, security, dependency injection.",
+        projects: ["ROOM 911"],
+        highlights: lang === 'es'
+          ? [
+              "Desarrollo del backend empresarial de control de acceso con Spring Boot.",
+              "Seguridad con Spring Security y tokens de autenticación JWT.",
+              "Persistencia relacional con Spring Data JPA y mapeo de entidades relacionales."
+            ]
+          : [
+              "Enterprise access control backend development with Spring Boot.",
+              "Security architecture with Spring Security and JWT tokens.",
+              "Relational persistence using Spring Data JPA and entity mappings."
+            ]
+      },
+      { 
+        name: "Node.js", 
+        level: lang === 'es' ? "Intermedio" : "Intermediate", 
+        icon: "fa-brands fa-node-js", 
+        description: lang === 'es' ? "Express, APIs REST, manejo de paquetes, npm/pnpm." : "Express, REST APIs, package management, npm/pnpm.",
+        projects: ["DuoBalance", "HuertaDirecta", "Scripts de Automatización"],
+        highlights: lang === 'es'
+          ? [
+              "Desarrollo de servicios de backend rápidos y scripts de generación de assets.",
+              "Manejo estricto de dependencias y scripts de construcción con pnpm.",
+              "Integración de librerías nativas del sistema como headless browser y docx."
+            ]
+          : [
+              "Fast backend services development and asset generation scripts.",
+              "Strict package workflows and build lifecycle automation with pnpm.",
+              "Integration with headless system engines and native docx generation."
+            ]
+      },
+      { 
+        name: "PHP", 
+        level: lang === 'es' ? "Básico" : "Basic", 
+        icon: "fa-brands fa-php", 
+        description: lang === 'es' ? "Lógica del lado del servidor, conexión a bases de datos." : "Server-side logic, database connection.",
+        projects: ["Sistemas SENA"],
+        highlights: lang === 'es'
+          ? [
+              "Procesamiento de peticiones HTTP del servidor y generación dinámica de vistas.",
+              "Conexión y ejecución de consultas relacionales a MySQL.",
+              "Manejo de sesiones de usuario y validación básica de entrada."
+            ]
+          : [
+              "HTTP request handling and dynamic server-rendered view processing.",
+              "Connection and execution of relational queries against MySQL.",
+              "Session lifecycle management and user input sanitization."
+            ]
+      },
     ],
   },
   {
     title: lang === 'es' ? "Bases de Datos" : "Databases",
     icon: "fa-solid fa-database",
     technologies: [
-      { name: "PostgreSQL", level: lang === 'es' ? "Intermedio" : "Intermediate", icon: "fa-solid fa-database", description: lang === 'es' ? "Consultas SQL, joins, índices, normalización de datos." : "SQL queries, joins, indexes, data normalization." },
-      { name: "MySQL", level: lang === 'es' ? "Intermedio" : "Intermediate", icon: "fa-solid fa-database", description: lang === 'es' ? "Diseño relacional, procedimientos almacenados, optimización." : "Relational design, stored procedures, optimization." },
+      { 
+        name: "PostgreSQL", 
+        level: lang === 'es' ? "Intermedio" : "Intermediate", 
+        icon: "fa-solid fa-database", 
+        description: lang === 'es' ? "Consultas SQL, joins, índices, normalización de datos." : "SQL queries, joins, indexes, data normalization.",
+        projects: ["ROOM 911", "DuoBalance"],
+        highlights: lang === 'es'
+          ? [
+              "Diseño y normalización de esquemas relacionales para usuarios, grupos y transacciones.",
+              "Consultas optimizadas con JOINs, índices y claves foráneas.",
+              "Migraciones y gestión de esquemas mediante Prisma ORM y JPA/Hibernate."
+            ]
+          : [
+              "Relational schema modeling and normalization for users, groups, and transactions.",
+              "Optimized relational queries using JOINs, composite indexes, and foreign keys.",
+              "Schema migrations and data integrity via Prisma ORM and JPA/Hibernate."
+            ]
+      },
+      { 
+        name: "MySQL", 
+        level: lang === 'es' ? "Intermedio" : "Intermediate", 
+        icon: "fa-solid fa-database", 
+        description: lang === 'es' ? "Diseño relacional, procedimientos almacenados, optimización." : "Relational design, stored procedures, optimization.",
+        projects: ["HuertaDirecta", "Sistemas SENA"],
+        highlights: lang === 'es'
+          ? [
+              "Modelado de catálogos de productos agrícolas y pedidos en tiempo real.",
+              "Definición de claves primarias, foráneas e integridad referencial.",
+              "Optimización de consultas SQL para dashboards y reportes."
+            ]
+          : [
+              "Agricultural product catalog modeling and real-time order tracking.",
+              "Foreign key constraints and strict referential integrity enforcement.",
+              "SQL query optimization for operational reporting."
+            ]
+      },
     ],
   },
   {
     title: lang === 'es' ? "Herramientas" : "Tools",
     icon: "fa-solid fa-tools",
     technologies: [
-      { name: "Git & GitHub", level: lang === 'es' ? "Intermedio" : "Intermediate", icon: "fa-brands fa-git-alt", description: lang === 'es' ? "Control de versiones, ramas, pull requests, flujo colaborativo." : "Version control, branches, pull requests, collaborative workflow." },
-      { name: "Docker", level: lang === 'es' ? "Básico" : "Basic", icon: "fa-brands fa-docker", description: lang === 'es' ? "Contenedores, imágenes, docker-compose, entornos aislados." : "Containers, images, docker-compose, isolated environments." },
-      { name: "Linux", level: lang === 'es' ? "Intermedio" : "Intermediate", icon: "fa-brands fa-linux", description: lang === 'es' ? "Terminal, comandos, permisos, scripts bash, servidores." : "Terminal, commands, permissions, bash scripts, servers." },
-      { name: "Claude Code", level: lang === 'es' ? "Básico" : "Basic", icon: "fa-solid fa-robot", description: lang === 'es' ? "Asistente de codificación con IA para desarrollo asistido." : "AI coding assistant for assisted development." },
-      { name: "OpenCode", level: lang === 'es' ? "Básico" : "Basic", icon: "fa-solid fa-terminal", description: lang === 'es' ? "CLI interactivo para ingeniería de software con IA." : "Interactive CLI for software engineering with AI." },
-      { name: "Ollama", level: lang === 'es' ? "Básico" : "Basic", icon: "fa-solid fa-brain", description: lang === 'es' ? "Ejecución local de modelos de lenguaje para desarrollo." : "Local execution of language models for development." },
-      { name: "Stitch", level: lang === 'es' ? "Básico" : "Basic", icon: "fa-solid fa-code-branch", description: lang === 'es' ? "Plataforma de diseño integrando IA." : "Design platform integrating AI." },
-      { name: "Power Automate", level: lang === 'es' ? "Básico" : "Basic", icon: "fa-solid fa-bolt", description: lang === 'es' ? "Automatización de procesos empresariales con Microsoft." : "Business process automation with Microsoft." },
+      { 
+        name: "Git & GitHub", 
+        level: lang === 'es' ? "Intermedio" : "Intermediate", 
+        icon: "fa-brands fa-git-alt", 
+        description: lang === 'es' ? "Control de versiones, ramas, pull requests, flujo colaborativo." : "Version control, branches, pull requests, collaborative workflow.",
+        projects: ["ROOM 911", "DuoBalance", "AlgoTrainer", "HuertaDirecta", "Ainglo", "Portafolio CV"],
+        highlights: lang === 'es'
+          ? [
+              "Estrategias de ramificación con Git Flow y control de versiones distribuido.",
+              "Resolución de conflictos y revisión de Pull Requests en entornos de equipo.",
+              "Publicación y despliegue continuo vinculado a repositorios."
+            ]
+          : [
+              "Branching strategies using Git Flow and distributed version control.",
+              "Merge conflict resolution and collaborative Pull Request reviews.",
+              "Continuous delivery linked directly with remote git workflows."
+            ]
+      },
+      { 
+        name: "Docker", 
+        level: lang === 'es' ? "Básico" : "Basic", 
+        icon: "fa-brands fa-docker", 
+        description: lang === 'es' ? "Contenedores, imágenes, docker-compose, entornos aislados." : "Containers, images, docker-compose, isolated environments.",
+        projects: ["ROOM 911", "DuoBalance"],
+        highlights: lang === 'es'
+          ? [
+              "Levantamiento de contenedores de bases de datos PostgreSQL con docker-compose.",
+              "Aislamiento de entornos de desarrollo para evitar discrepancias de configuración.",
+              "Gestión de volúmenes persistentes y variables de entorno para servicios."
+            ]
+          : [
+              "Spinning up PostgreSQL container instances using docker-compose.",
+              "Isolated development environments preventing environment drift.",
+              "Managing persistent data volumes and multi-stage container services."
+            ]
+      },
+      { 
+        name: "Linux", 
+        level: lang === 'es' ? "Intermedio" : "Intermediate", 
+        icon: "fa-brands fa-linux", 
+        description: lang === 'es' ? "Terminal, comandos, permisos, scripts bash, servidores." : "Terminal, commands, permissions, bash scripts, servers.",
+        projects: ["Entorno de Desarrollo & Servidores"],
+        highlights: lang === 'es'
+          ? [
+              "Operación diaria en distribuciones Linux (Fedora / Ubuntu / Debian).",
+              "Scripts bash para automatización de compilaciones y pipelines de activos.",
+              "Gestión de permisos de archivos, procesos de fondo y herramientas de red."
+            ]
+          : [
+              "Daily workflow inside Linux desktop/server environments (Fedora/Ubuntu/Debian).",
+              "Bash automation scripting for asset compilation and development pipelines.",
+              "Process management, file permission administration, and network utilities."
+            ]
+      },
+      { 
+        name: "Claude Code", 
+        level: lang === 'es' ? "Intermedio" : "Intermediate", 
+        icon: "fa-solid fa-robot", 
+        description: lang === 'es' ? "Asistente de codificación con IA para desarrollo asistido." : "AI coding assistant for assisted development.",
+        projects: ["Portafolio CV", "DuoBalance"],
+        highlights: lang === 'es'
+          ? [
+              "Pair programming guiado por IA para acelerar refactorizaciones complejas.",
+              "Depuración exhaustiva y generación de suites de verificación técnica.",
+              "Integración de mejores prácticas de TypeScript y optimización de arquitectura."
+            ]
+          : [
+              "AI-assisted pair programming accelerating complex code refactors.",
+              "Thorough debugging and creation of technical verification test suites.",
+              "Adherence to TypeScript best practices and architectural optimization."
+            ]
+      },
+      { 
+        name: "OpenCode", 
+        level: lang === 'es' ? "Básico" : "Basic", 
+        icon: "fa-solid fa-terminal", 
+        description: lang === 'es' ? "CLI interactivo para ingeniería de software con IA." : "Interactive CLI for software engineering with AI.",
+        projects: ["Desarrollo CLI Asistido"],
+        highlights: lang === 'es'
+          ? [
+              "Uso de asistentes basados en terminal para análisis estático de código.",
+              "Iteración rápida sobre comandos del sistema y scripts de automatización."
+            ]
+          : [
+              "Terminal-based assistants for static code inspection.",
+              "Rapid iteration over shell utilities and automation scripts."
+            ]
+      },
+      { 
+        name: "Ollama", 
+        level: lang === 'es' ? "Básico" : "Basic", 
+        icon: "fa-solid fa-brain", 
+        description: lang === 'es' ? "Ejecución local de modelos de lenguaje para desarrollo." : "Local execution of language models for development.",
+        projects: ["Ainglo", "Experimentación Local"],
+        highlights: lang === 'es'
+          ? [
+              "Ejecución offline de LLMs locales para asistencia de lenguaje en Ainglo.",
+              "Pruebas de latencia y evaluación de prompts estructurados en JSON."
+            ]
+          : [
+              "Running offline local LLMs for language tutoring in Ainglo.",
+              "Latency benchmarking and structured JSON prompt engineering."
+            ]
+      },
+      { 
+        name: "Stitch", 
+        level: lang === 'es' ? "Básico" : "Basic", 
+        icon: "fa-solid fa-code-branch", 
+        description: lang === 'es' ? "Plataforma de diseño integrando IA." : "Design platform integrating AI.",
+        projects: ["Prototipado Visual"],
+        highlights: lang === 'es'
+          ? [
+              "Exploración ágil de bocetos de interfaz y prototipado rápido de UI.",
+              "Traducción de ideas conceptuales a componentes frontend reutilizables."
+            ]
+          : [
+              "Agile UI sketching and rapid user interface wireframing.",
+              "Translating concept ideas into reusable frontend components."
+            ]
+      },
+      { 
+        name: "Power Automate", 
+        level: lang === 'es' ? "Básico" : "Basic", 
+        icon: "fa-solid fa-bolt", 
+        description: lang === 'es' ? "Automatización de procesos empresariales con Microsoft." : "Business process automation with Microsoft.",
+        projects: ["Flujos Empresariales SENA"],
+        highlights: lang === 'es'
+          ? [
+              "Automatización de notificaciones por correo y sincronización de datos.",
+              "Disparadores basados en eventos para optimizar tareas administrativas repetitivas."
+            ]
+          : [
+              "Automated email notification workflows and data synchronization.",
+              "Event-driven triggers streamlining repetitive administrative tasks."
+            ]
+      },
     ],
   },
 ];
 
 function getLevelColor(level: string) {
-  if (level === "Avanzado" || level === "Advanced" || level === "高级") return "bg-emerald-500/15 text-emerald-400 border-emerald-500/25";
-  if (level === "Intermedio" || level === "Intermediate" || level === "中级") return "bg-blue-500/15 text-blue-400 border-blue-500/25";
+  if (level === "Avanzado" || level === "Advanced") return "bg-emerald-500/15 text-emerald-400 border-emerald-500/25";
+  if (level === "Intermedio" || level === "Intermediate") return "bg-blue-500/15 text-blue-400 border-blue-500/25";
   return "bg-yellow-500/15 text-yellow-400 border-yellow-500/25";
 }
 ---
@@ -63,14 +413,16 @@ function getLevelColor(level: string) {
   <div class="container mx-auto px-4 relative z-10">
     <div class="text-center mb-14" data-aos="fade-up">
       <span class="inline-block bg-blue-500/20 text-blue-400 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-4">
-        {lang === 'es' ? "Skills" : "Skills" 
-      }</span>
+        {lang === 'es' ? "Skills & Tecnologías" : "Skills & Technologies"}
+      </span>
       <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white leading-tight">
-        {lang === 'es' ? "Stack" : "Main" }<span class="text-transparent bg-clip-text bg-linear-to-r from-blue-400 via-blue-300 to-cyan-400">{lang === 'es' ? "Principal" : "Stack" }</span>
+        {lang === 'es' ? "Stack" : "Main" } <span class="text-transparent bg-clip-text bg-linear-to-r from-blue-400 via-blue-300 to-cyan-400">{lang === 'es' ? "Principal" : "Stack" }</span>
       </h2>
       <p class="text-gray-500 mt-3 text-sm md:text-base max-w-xl mx-auto">
-        {lang === 'es' ? "Tecnologías con las que trabajo día a día para construir soluciones completas y escalables." : "Technologies I work with daily to build complete and scalable solutions." 
-      }</p>
+        {lang === 'es' 
+          ? "Haz clic en cualquier tecnología para explorar los proyectos reales donde la utilicé y sus aplicaciones técnicas." 
+          : "Click on any technology to explore the real projects where I used it and its technical applications."}
+      </p>
     </div>
 
     <div class="relative grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-0">
@@ -79,6 +431,7 @@ function getLevelColor(level: string) {
 
       <!-- Left Column: Backend + Tools -->
       <div class="flex flex-col gap-10 lg:pr-8">
+        <!-- Backend -->
         <div data-aos="fade-up" data-aos-delay="100">
           <div class="flex items-center gap-3 mb-5">
             <div class="flex items-center gap-2 px-4 py-2 rounded-full bg-gray-100 dark:bg-white/3 border border-gray-200/60 dark:border-white/10">
@@ -90,13 +443,21 @@ function getLevelColor(level: string) {
           <div class="grid grid-cols-1 gap-3">
             {categories[1].technologies.map((tech, i) => (
               <div class={i >= 3 ? "hidden tech-item-backend" : ""}>
-                <TechCard icon={tech.icon} name={tech.name} level={tech.level} description={tech.description} />
+                <TechCard 
+                  icon={tech.icon} 
+                  name={tech.name} 
+                  level={tech.level} 
+                  description={tech.description}
+                  category={categories[1].title}
+                  projects={tech.projects}
+                  highlights={tech.highlights}
+                />
               </div>
             ))}
           </div>
           {categories[1].technologies.length > 3 && (
             <button 
-              class="mt-4 flex items-center justify-center gap-2 w-full py-2.5 rounded-xl border border-gray-200 dark:border-white/10 text-gray-500 dark:text-gray-300 text-sm font-semibold transition-all hover:bg-gray-100 dark:hover:bg-white/3 tech-toggle-btn"
+              class="mt-4 flex items-center justify-center gap-2 w-full py-2.5 rounded-xl border border-gray-200 dark:border-white/10 text-gray-500 dark:text-gray-300 text-sm font-semibold transition-all hover:bg-gray-100 dark:hover:bg-white/3 tech-toggle-btn cursor-pointer"
               data-target="tech-item-backend"
               data-expanded="false"
               data-text-more={lang === 'es' ? 'Ver más' : 'See more'}
@@ -108,6 +469,7 @@ function getLevelColor(level: string) {
           )}
         </div>
 
+        <!-- Herramientas -->
         <div data-aos="fade-up" data-aos-delay="300">
           <div class="flex items-center gap-3 mb-5">
             <div class="flex items-center gap-2 px-4 py-2 rounded-full bg-gray-100 dark:bg-white/3 border border-gray-200/60 dark:border-white/10">
@@ -118,7 +480,19 @@ function getLevelColor(level: string) {
           </div>
           <div class="flex flex-wrap gap-4">
             {categories[3].technologies.map((tech, i) => (
-              <div class={`group relative cursor-pointer ${i >= 8 ? "hidden tech-item-tools" : ""}`}>
+              <div 
+                class={`tech-card-trigger group relative cursor-pointer ${i >= 8 ? "hidden tech-item-tools" : ""}`}
+                data-tech-name={tech.name}
+                data-tech-level={tech.level}
+                data-tech-icon={tech.icon}
+                data-tech-description={tech.description}
+                data-tech-category={categories[3].title}
+                data-tech-projects={JSON.stringify(tech.projects)}
+                data-tech-highlights={JSON.stringify(tech.highlights)}
+                role="button"
+                tabindex="0"
+                aria-label={`Ver detalles de ${tech.name}`}
+              >
                 <!-- Icon Circle -->
                 <div class="w-14 h-14 rounded-2xl bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 flex items-center justify-center group-hover:border-blue-500/50 group-hover:bg-blue-500/10 group-hover:-translate-y-1 transition-all duration-300 shadow-sm">
                   <i class={`${tech.icon} text-2xl text-gray-600 dark:text-gray-300 group-hover:text-blue-400 transition-colors`}></i>
@@ -132,9 +506,13 @@ function getLevelColor(level: string) {
                       {tech.level}
                     </span>
                   </div>
-                  <p class="text-xs text-gray-400 leading-tight">
+                  <p class="text-xs text-gray-400 leading-tight mb-1.5">
                     {tech.description}
                   </p>
+                  <div class="text-[10px] text-blue-400 font-semibold flex items-center gap-1">
+                    <span>{lang === 'es' ? 'Click para ver detalles' : 'Click for details'}</span>
+                    <i class="fa-solid fa-arrow-right text-[8px]"></i>
+                  </div>
                   <!-- Triangle pointer -->
                   <div class="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-gray-900 dark:bg-black/95 border-b border-r border-white/10 rotate-45"></div>
                 </div>
@@ -143,7 +521,7 @@ function getLevelColor(level: string) {
           </div>
           {categories[3].technologies.length > 8 && (
             <button 
-              class="mt-4 flex items-center justify-center gap-2 w-full py-2.5 rounded-xl border border-gray-200 dark:border-white/10 text-gray-500 dark:text-gray-300 text-sm font-semibold transition-all hover:bg-gray-100 dark:hover:bg-white/3 tech-toggle-btn"
+              class="mt-4 flex items-center justify-center gap-2 w-full py-2.5 rounded-xl border border-gray-200 dark:border-white/10 text-gray-500 dark:text-gray-300 text-sm font-semibold transition-all hover:bg-gray-100 dark:hover:bg-white/3 tech-toggle-btn cursor-pointer"
               data-target="tech-item-tools"
               data-expanded="false"
               data-text-more={lang === 'es' ? 'Ver más' : 'See more'}
@@ -158,6 +536,7 @@ function getLevelColor(level: string) {
 
       <!-- Right Column: Frontend + Databases -->
       <div class="flex flex-col gap-10 lg:pl-8">
+        <!-- Frontend -->
         <div data-aos="fade-up">
           <div class="flex items-center gap-3 mb-5">
             <div class="flex items-center gap-2 px-4 py-2 rounded-full bg-gray-100 dark:bg-white/3 border border-gray-200/60 dark:border-white/10">
@@ -169,13 +548,21 @@ function getLevelColor(level: string) {
           <div class="grid grid-cols-1 gap-3">
             {categories[0].technologies.map((tech, i) => (
               <div class={i >= 3 ? "hidden tech-item-frontend" : ""}>
-                <TechCard icon={tech.icon} name={tech.name} level={tech.level} description={tech.description} />
+                <TechCard 
+                  icon={tech.icon} 
+                  name={tech.name} 
+                  level={tech.level} 
+                  description={tech.description}
+                  category={categories[0].title}
+                  projects={tech.projects}
+                  highlights={tech.highlights}
+                />
               </div>
             ))}
           </div>
           {categories[0].technologies.length > 3 && (
             <button 
-              class="mt-4 flex items-center justify-center gap-2 w-full py-2.5 rounded-xl border border-gray-200 dark:border-white/10 text-gray-500 dark:text-gray-300 text-sm font-semibold transition-all hover:bg-gray-100 dark:hover:bg-white/3 tech-toggle-btn"
+              class="mt-4 flex items-center justify-center gap-2 w-full py-2.5 rounded-xl border border-gray-200 dark:border-white/10 text-gray-500 dark:text-gray-300 text-sm font-semibold transition-all hover:bg-gray-100 dark:hover:bg-white/3 tech-toggle-btn cursor-pointer"
               data-target="tech-item-frontend"
               data-expanded="false"
               data-text-more={lang === 'es' ? 'Ver más' : 'See more'}
@@ -187,6 +574,7 @@ function getLevelColor(level: string) {
           )}
         </div>
 
+        <!-- Databases -->
         <div data-aos="fade-up" data-aos-delay="200">
           <div class="flex items-center gap-3 mb-5">
             <div class="flex items-center gap-2 px-4 py-2 rounded-full bg-gray-100 dark:bg-white/3 border border-gray-200/60 dark:border-white/10">
@@ -198,13 +586,21 @@ function getLevelColor(level: string) {
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {categories[2].technologies.map((tech, i) => (
               <div class={i >= 3 ? "hidden tech-item-db" : ""}>
-                <TechCard icon={tech.icon} name={tech.name} level={tech.level} description={tech.description} />
+                <TechCard 
+                  icon={tech.icon} 
+                  name={tech.name} 
+                  level={tech.level} 
+                  description={tech.description}
+                  category={categories[2].title}
+                  projects={tech.projects}
+                  highlights={tech.highlights}
+                />
               </div>
             ))}
           </div>
           {categories[2].technologies.length > 3 && (
             <button 
-              class="mt-4 flex items-center justify-center gap-2 w-full py-2.5 rounded-xl border border-gray-200 dark:border-white/10 text-gray-500 dark:text-gray-300 text-sm font-semibold transition-all hover:bg-gray-100 dark:hover:bg-white/3 tech-toggle-btn"
+              class="mt-4 flex items-center justify-center gap-2 w-full py-2.5 rounded-xl border border-gray-200 dark:border-white/10 text-gray-500 dark:text-gray-300 text-sm font-semibold transition-all hover:bg-gray-100 dark:hover:bg-white/3 tech-toggle-btn cursor-pointer"
               data-target="tech-item-db"
               data-expanded="false"
               data-text-more={lang === 'es' ? 'Ver más' : 'See more'}
@@ -218,10 +614,319 @@ function getLevelColor(level: string) {
       </div>
     </div>
   </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <!-- MODAL DE 3 PANELES: GSAP Interruptible Timeline + Caída        -->
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <div class="skills-nav z-[100000]" id="skillsNav" aria-hidden="true">
+    <div class="skills-nav-bg" id="skillsNavBg"></div>
+
+    <!-- 1. Panel Superior: Detalles de Tecnología y Proyectos -->
+    <div class="skills-nav-panel skills-nav-top skills-nav-border" id="skillsNavTop">
+      <div class="flex items-start justify-between gap-4 pb-3 mb-3 border-b border-gray-200 dark:border-white/10">
+        <div class="flex items-center gap-3">
+          <div id="skillsModalIconWrap" class="w-12 h-12 rounded-2xl bg-blue-500/10 text-blue-500 dark:text-blue-400 flex items-center justify-center text-2xl shrink-0 border border-blue-500/20 shadow-sm">
+            <i id="skillsModalIcon" class="fa-brands fa-react"></i>
+          </div>
+          <div>
+            <div class="flex items-center gap-2 mb-1">
+              <span id="skillsModalCategory" class="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-blue-500/10 text-blue-500 dark:text-blue-400 border border-blue-500/20">
+                Frontend
+              </span>
+              <span id="skillsModalLevel" class="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-emerald-500/15 text-emerald-500 dark:text-emerald-400 border border-emerald-500/25">
+                Avanzado
+              </span>
+            </div>
+            <h3 id="skillsModalName" class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+              React
+            </h3>
+          </div>
+        </div>
+
+        <!-- Botón Toggle con SVG Morph (3 líneas → X) -->
+        <button class="menu-toggle" id="skillsMenuClose" aria-label="Cerrar modal" aria-expanded="true">
+          <svg width="24" height="24" viewBox="0 0 20 20" fill="none" class="text-gray-700 dark:text-gray-200">
+            <line class="bar bar-top" x1="5" y1="5" x2="15" y2="15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <line class="bar bar-mid" x1="3" y1="10" x2="17" y2="10" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0"/>
+            <line class="bar bar-bot" x1="15" y1="5" x2="5" y2="15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Descripción -->
+      <p id="skillsModalDesc" class="text-xs sm:text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+        Descripción detallada de la tecnología seleccionada.
+      </p>
+
+      <!-- Proyectos donde la utilicé -->
+      <div class="mb-4">
+        <div class="flex items-center gap-1.5 mb-2.5">
+          <i class="fa-solid fa-diagram-project text-xs text-blue-500 dark:text-cyan-400"></i>
+          <span class="text-xs font-bold uppercase tracking-wider text-gray-700 dark:text-gray-300">
+            {lang === 'es' ? 'Proyectos donde la utilicé:' : 'Projects where I used it:'}
+          </span>
+        </div>
+        <div id="skillsModalProjects" class="flex flex-wrap gap-2">
+          <!-- Dynamic Project Pills -->
+        </div>
+      </div>
+
+      <div class="mt-auto pt-3 border-t border-gray-200/70 dark:border-white/10 flex items-center justify-between text-xs text-gray-400 font-mono">
+        <span class="text-[11px] uppercase tracking-wider text-blue-500/80 dark:text-cyan-300/80">
+          Full Stack Software Developer
+        </span>
+        <span class="text-[11px]">
+          Emerson Reyes
+        </span>
+      </div>
+    </div>
+
+    <!-- 2. Panel Intermedio: Matcha Green Gradient (Aplicación Práctica y Proyectos) -->
+    <div class="skills-nav-panel skills-nav-middle skills-nav-border" id="skillsNavMiddle">
+      <div class="skills-middle-header">
+        {lang === 'es' ? '{ APLICACIÓN PRÁCTICA & ROL }' : '{ PRACTICAL APPLICATION & ROLE }'}
+      </div>
+      <div class="skills-middle-card">
+        <div class="skills-middle-badge">
+          <i id="skillsMiddleBadgeIcon" class="fa-solid fa-code text-xl text-black"></i>
+        </div>
+        <div class="skills-middle-info">
+          <div id="skillsMiddleTitle" class="skills-middle-title">
+            DuoBalance & ROOM 911
+          </div>
+          <p id="skillsMiddleDesc" class="skills-middle-desc">
+            Implementación técnica en controladores REST, lógica financiera, persistencia y componentes reactivos.
+          </p>
+        </div>
+      </div>
+      <div class="skills-middle-actions">
+        <a id="skillsMiddleProjectAction" href="#section-proyectos" class="skills-action-btn primary cursor-pointer">
+          <i class="fa-solid fa-layer-group mr-1.5"></i>
+          {lang === 'es' ? 'Ver Proyectos' : 'View Projects'}
+        </a>
+        <a id="skillsMiddleGithubAction" href="https://github.com/152004E" target="_blank" rel="noopener noreferrer" class="skills-action-btn cursor-pointer">
+          <i class="fa-brands fa-github mr-1.5"></i> GitHub
+        </a>
+      </div>
+    </div>
+
+    <!-- 3. Panel Inferior: Enlaces rápidos y Socials -->
+    <div class="skills-nav-panel skills-nav-bottom skills-nav-border" id="skillsNavBottom">
+      <ul class="skills-socials">
+        <li><a href="https://github.com/152004E" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github mr-1.5"></i>GitHub</a></li>
+        <li><a href="https://linkedin.com/in/emerson-reyes" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin mr-1.5"></i>LinkedIn</a></li>
+        <li><a href="/cv_emerson_reyes.pdf" target="_blank"><i class="fa-solid fa-file-pdf mr-1.5 text-red-400"></i>PDF CV</a></li>
+        <li><a href="/cv_emerson_reyes.docx" download><i class="fa-solid fa-file-word mr-1.5 text-blue-400"></i>DOCX</a></li>
+      </ul>
+      <div class="skills-nav-asset hidden sm:flex items-center gap-1.5 font-mono text-[11px] text-emerald-400 bg-emerald-500/10 px-3 py-1.5 rounded-full border border-emerald-500/20">
+        <i class="fa-solid fa-check-circle text-[10px]"></i>
+        <span>Interruptible GSAP</span>
+      </div>
+    </div>
+  </div>
 </section>
 
+<style>
+  /* ── Estilos del Modal de 3 Paneles (GreenSock Style) ── */
+  .skills-nav {
+    position: fixed;
+    inset: 0;
+    z-index: 100000;
+    padding: 1rem;
+    pointer-events: none;
+    visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.65rem;
+  }
+  @media (max-width: 640px) {
+    .skills-nav {
+      padding: 0.5rem;
+      gap: 0.5rem;
+    }
+  }
+  .skills-nav-bg {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(6px);
+    opacity: 0;
+  }
+  .skills-nav-border {
+    border: solid 2px;
+    border-radius: 16px;
+  }
+  .skills-nav-panel {
+    width: 100%;
+    max-width: 650px;
+  }
+  .skills-nav-top {
+    flex: 1;
+    width: 100%;
+    background: #ffffff;
+    color: #0e100f;
+    transform: translateX(110%);
+    display: flex;
+    flex-direction: column;
+    padding: 24px 28px 20px;
+    overflow-y: auto;
+    position: relative;
+    z-index: 3;
+    border-color: rgba(0, 0, 0, 0.15);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+  }
+  :global(.dark) .skills-nav-top {
+    background: #0d1117;
+    color: #fffce1;
+    border-color: rgba(255, 255, 255, 0.12);
+  }
+  .skills-nav-middle {
+    position: relative;
+    width: 100%;
+    background: linear-gradient(
+      135deg,
+      #0ae448 0%,
+      #abff84 40%,
+      #6fdd8b 70%,
+      #0ae448 100%
+    );
+    color: #0e100f;
+    transform: translateX(110%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px 24px;
+    z-index: 2;
+    border-color: #065a1e;
+    min-height: 140px;
+    box-shadow: 0 10px 30px rgba(10, 228, 72, 0.18);
+  }
+  .skills-middle-header {
+    font-family: monospace;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    opacity: 0.7;
+    margin-bottom: 10px;
+    color: #065a1e;
+  }
+  .skills-middle-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .skills-middle-badge {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: rgba(0, 0, 0, 0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .skills-middle-info {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .skills-middle-title {
+    font-weight: 700;
+    font-size: clamp(1rem, 3vw, 1.25rem);
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: #0e100f;
+  }
+  .skills-middle-desc {
+    font-size: 0.8rem;
+    color: rgba(14, 16, 15, 0.85);
+    line-height: 1.4;
+  }
+  .skills-middle-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .skills-action-btn {
+    font-family: monospace;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: #0e100f;
+    padding: 6px 14px;
+    border-radius: 100px;
+    background: rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.18);
+    display: inline-flex;
+    align-items: center;
+    transition: all 0.2s;
+  }
+  .skills-action-btn:hover {
+    background: rgba(0, 0, 0, 0.18);
+    transform: translateY(-1px);
+  }
+  .skills-action-btn.primary {
+    background: #0e100f;
+    color: #abff84;
+    border-color: #0e100f;
+  }
+  .skills-action-btn.primary:hover {
+    background: #1a1e1b;
+    color: #ffffff;
+  }
+  .skills-nav-bottom {
+    position: relative;
+    height: 76px;
+    width: 100%;
+    background: #0e100f;
+    color: #bbbaa6;
+    transform: translateX(110%);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    z-index: 1;
+    border-color: #42433d;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  }
+  .skills-socials {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .skills-socials a {
+    font-family: monospace;
+    font-size: 0.78rem;
+    color: #bbbaa6;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    transition: color 0.2s;
+  }
+  .skills-socials a:hover {
+    color: #0ae448;
+  }
+  .menu-toggle {
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+  }
+</style>
+
 <script>
+  import { gsap } from 'gsap';
+
   document.addEventListener('DOMContentLoaded', () => {
+    // 1. Tech Toggle Buttons (Ver más / Ver menos en grid)
     const toggleBtns = document.querySelectorAll('.tech-toggle-btn');
     toggleBtns.forEach(btn => {
       btn.addEventListener('click', () => {
@@ -253,6 +958,310 @@ function getLevelColor(level: string) {
           if (icon) icon.style.transform = 'rotate(180deg)';
         }
       });
+    });
+
+    // 2. MODAL DE 3 PANELES CON ANIMACIÓN DE CAÍDA (GSAP Interruptible Single Timeline)
+    const nav = document.getElementById('skillsNav');
+    const navBg = document.getElementById('skillsNavBg');
+    const closeBtn = document.getElementById('skillsMenuClose');
+    const techTriggers = document.querySelectorAll('.tech-card-trigger');
+
+    if (!nav || !navBg) return;
+
+    // Portal modal to document.body so it is a direct child of body and sits above Navbar and WhatsApp
+    if (nav.parentElement !== document.body) {
+      document.body.appendChild(nav);
+    }
+
+    let isOpen = false;
+    let exitSpeed = 1.4;
+    let tl: gsap.core.Timeline | null = null;
+    let enterEndTime = 0;
+
+    function initDrawerTimeline() {
+      tl && tl.revert();
+
+      gsap.set(nav, { visibility: "hidden" });
+      gsap.set(navBg, { opacity: 0 });
+
+      tl = gsap
+        .timeline({ paused: true })
+        .set(nav, { visibility: "visible", pointerEvents: "auto" })
+
+        // ═══ ENTER ═══
+        .to(
+          navBg,
+          {
+            opacity: 1,
+            duration: 0.4,
+            ease: "power2.out",
+            easeReverse: "power4.out"
+          },
+          0
+        )
+        .fromTo(
+          ".skills-nav-panel",
+          { x: "110%", y: 0, rotation: 0 },
+          {
+            x: "0%",
+            y: 0,
+            duration: 0.6,
+            ease: "back.out",
+            easeReverse: "power3.in",
+            stagger: 0.08
+          },
+          0
+        )
+        .fromTo(
+          ".bar-top",
+          {
+            attr: { x1: 3, y1: 7, x2: 17, y2: 7 }
+          },
+          {
+            attr: { x1: 5, y1: 5, x2: 15, y2: 15 },
+            duration: 0.35,
+            ease: "back.out(1.4)",
+            easeReverse: "power3.out"
+          },
+          0.06
+        )
+        .fromTo(
+          ".bar-mid",
+          { opacity: 1 },
+          { opacity: 0, duration: 0.2 },
+          0.06
+        )
+        .fromTo(
+          ".bar-bot",
+          {
+            attr: { x1: 3, y1: 13, x2: 17, y2: 13 }
+          },
+          {
+            attr: { x1: 15, y1: 5, x2: 5, y2: 15 },
+            duration: 0.35,
+            ease: "back.out(1.4)",
+            easeReverse: "power3.out"
+          },
+          0.06
+        )
+
+        // ═══ PAUSE ═══
+        .addPause();
+
+      enterEndTime = tl.duration();
+
+      // ═══ EXIT — PANELS FALL DOWN WITH STAGGER, BOTTOM FIRST! ═══
+      tl
+        // Morph X → hamburger
+        .to(
+          ".bar-mid",
+          { opacity: 1, duration: 0.2 },
+          "<"
+        )
+        .to(
+          ".bar-top",
+          {
+            attr: { x1: 3, y1: 7, x2: 17, y2: 7 },
+            duration: 0.2,
+            ease: "power3.in"
+          },
+          "<"
+        )
+        .to(
+          ".bar-bot",
+          {
+            attr: { x1: 3, y1: 13, x2: 17, y2: 13 },
+            duration: 0.2,
+            ease: "power3.in"
+          },
+          "<"
+        )
+
+        // panels fall
+        .to(
+          ".skills-nav-panel",
+          {
+            y: "115vh",
+            rotation: "random(-25, 25)",
+            duration: 0.9,
+            ease: "power3.in",
+            stagger: {
+              from: "end",
+              each: 0.04
+            }
+          },
+          "<"
+        )
+
+        // bg fades
+        .to(
+          navBg,
+          {
+            opacity: 0,
+            duration: 0.3,
+            ease: "power2.in"
+          },
+          "<0.1"
+        )
+
+        .set(nav, { visibility: "hidden", pointerEvents: "none" });
+    }
+
+    // Inicializar timeline
+    initDrawerTimeline();
+
+    function populateModalData(triggerEl: Element) {
+      const name = triggerEl.getAttribute('data-tech-name') || 'React';
+      const level = triggerEl.getAttribute('data-tech-level') || 'Intermedio';
+      const icon = triggerEl.getAttribute('data-tech-icon') || 'fa-brands fa-react';
+      const desc = triggerEl.getAttribute('data-tech-description') || '';
+      const category = triggerEl.getAttribute('data-tech-category') || 'Stack';
+
+      let projects: string[] = [];
+      let highlights: string[] = [];
+      try {
+        projects = JSON.parse(triggerEl.getAttribute('data-tech-projects') || '[]');
+      } catch (e) {}
+      try {
+        highlights = JSON.parse(triggerEl.getAttribute('data-tech-highlights') || '[]');
+      } catch (e) {}
+
+      // 1. Panel Superior
+      const modalIcon = document.getElementById('skillsModalIcon');
+      const modalName = document.getElementById('skillsModalName');
+      const modalCategory = document.getElementById('skillsModalCategory');
+      const modalLevel = document.getElementById('skillsModalLevel');
+      const modalDesc = document.getElementById('skillsModalDesc');
+      const modalProjects = document.getElementById('skillsModalProjects');
+
+      if (modalIcon) modalIcon.className = `${icon} text-2xl`;
+      if (modalName) modalName.textContent = name;
+      if (modalCategory) modalCategory.textContent = category;
+      if (modalLevel) modalLevel.textContent = level;
+      if (modalDesc) modalDesc.textContent = desc;
+
+      // Diccionario de repositorios específicos por cada proyecto
+      const projectUrls: Record<string, string> = {
+        'ROOM 911': 'https://github.com/152004E/room-911-management-system',
+        'DuoBalance': 'https://github.com/152004E/DuoBalance-app',
+        'HuertaDirecta': 'https://github.com/HuertaDirectaProject/HdirectaJava',
+        'AlgoTrainer': 'https://github.com/152004E/Algotrainer',
+        'Ainglo': 'https://github.com/152004E/Ainglo',
+        'Portafolio CV': 'https://github.com/152004E/Portafolio_CV',
+      };
+
+      if (modalProjects) {
+        if (projects.length === 0) {
+          modalProjects.innerHTML = `<span class="text-xs text-gray-400 italic">No especificado</span>`;
+        } else {
+          modalProjects.innerHTML = projects.map(p => {
+            const url = projectUrls[p] || 'https://github.com/152004E';
+            return `
+              <a 
+                href="${url}" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-blue-500/10 dark:bg-white/5 hover:bg-blue-500/20 dark:hover:bg-white/10 border border-blue-500/20 hover:border-blue-500/40 text-xs font-semibold text-blue-600 dark:text-cyan-300 transition-all hover:scale-105 shadow-xs" 
+                title="Ver repositorio de ${p}"
+              >
+                <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-emerald-400"></i>
+                <span>${p}</span>
+              </a>
+            `;
+          }).join('');
+        }
+      }
+
+      // 2. Panel Intermedio (Matcha)
+      const middleTitle = document.getElementById('skillsMiddleTitle');
+      const middleDesc = document.getElementById('skillsMiddleDesc');
+      const middleIcon = document.getElementById('skillsMiddleBadgeIcon');
+      const middleGithubBtn = document.getElementById('skillsMiddleGithubAction') as HTMLAnchorElement | null;
+
+      if (middleIcon) middleIcon.className = `${icon} text-xl text-black`;
+      if (middleTitle) {
+        const topProjects = projects.slice(0, 2).join(' & ');
+        middleTitle.textContent = topProjects ? `${topProjects} · ${name}` : `${name} en Producción`;
+      }
+      if (middleDesc) {
+        if (highlights.length > 0) {
+          middleDesc.innerHTML = highlights.join('<br class="my-1" />• ');
+        } else {
+          middleDesc.textContent = desc;
+        }
+      }
+
+      if (middleGithubBtn) {
+        const primaryProject = projects[0];
+        const targetRepoUrl = (primaryProject && projectUrls[primaryProject]) 
+          ? projectUrls[primaryProject] 
+          : 'https://github.com/152004E';
+        middleGithubBtn.href = targetRepoUrl;
+        middleGithubBtn.title = primaryProject ? `Repositorio de ${primaryProject}` : 'GitHub';
+      }
+    }
+
+    function toggle(targetEl?: Element) {
+      if (!tl) return;
+
+      if (targetEl) {
+        populateModalData(targetEl);
+      }
+
+      isOpen = !isOpen;
+
+      if (isOpen) {
+        document.body.style.overflow = 'hidden';
+        if (tl.time() >= enterEndTime) {
+          tl.timeScale(1).restart();
+        } else {
+          tl.timeScale(1).play();
+        }
+      } else {
+        document.body.style.overflow = '';
+        if (tl.time() < enterEndTime) {
+          tl.timeScale(exitSpeed).reverse();
+        } else {
+          tl.timeScale(1).play();
+        }
+      }
+    }
+
+    // Disparadores en las tarjetas de skills
+    techTriggers.forEach(el => {
+      el.addEventListener('click', () => {
+        if (!isOpen) {
+          toggle(el);
+        } else {
+          populateModalData(el);
+          // Micro-animación de actualización de panel intermedio
+          gsap.fromTo("#skillsNavMiddle", { scale: 0.97 }, { scale: 1, duration: 0.25, ease: "back.out" });
+        }
+      });
+      el.addEventListener('keydown', (e) => {
+        const ke = e as KeyboardEvent;
+        if (ke.key === 'Enter' || ke.key === ' ') {
+          ke.preventDefault();
+          toggle(el);
+        }
+      });
+    });
+
+    closeBtn?.addEventListener('click', () => toggle());
+    navBg?.addEventListener('click', () => {
+      if (isOpen) toggle();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && isOpen) {
+        toggle();
+      }
+    });
+
+    // Enlace de acción para cerrar al saltar a proyectos
+    const projectAction = document.getElementById('skillsMiddleProjectAction');
+    projectAction?.addEventListener('click', () => {
+      if (isOpen) toggle();
     });
   });
 </script>

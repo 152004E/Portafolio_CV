@@ -36,8 +36,31 @@ const projects: Project[] = [
     image: "",
     imageLabel: "Enterprise Security",
     links: [
-      { label: "Live Demo", primary: true },
-      { label: "GitHub", icon: "fa-brands fa-github" },
+      { label: "Live Demo", primary: true, url: "https://github.com/152004E/room-911-management-system" },
+      { label: "GitHub", url: "https://github.com/152004E/room-911-management-system", icon: "fa-brands fa-github" },
+    ],
+  },
+  {
+    id: "duobalance",
+    name: "DuoBalance",
+    category: lang === 'es' ? "Fintech / Gestión" : "Fintech / Management",
+    description: lang === 'es'
+      ? "Plataforma web y móvil para control y división inteligente de gastos compartidos entre parejas y grupos. Cuenta con liquidación neta, algoritmos de saldo, autenticación JWT, dashboards y exportación."
+      : "Web and mobile platform for smart shared expense tracking and splitting for couples and groups. Features net settlements, balance algorithms, JWT authentication, dashboards, and export.",
+    stack: [
+      { name: "NestJS", icon: "fa-solid fa-server", color: "text-red-500" },
+      { name: "React Native", icon: "fa-brands fa-react", color: "text-cyan-400" },
+      { name: "PostgreSQL", icon: "fa-solid fa-database", color: "text-blue-400" },
+      { name: "Prisma", icon: "fa-solid fa-layer-group", color: "text-emerald-400" },
+      { name: "TypeScript", icon: "fa-brands fa-js", color: "text-blue-400" },
+    ],
+    status: lang === 'es' ? "En Desarrollo" : "In Development",
+    statusColor: "text-cyan-400",
+    statusBg: "bg-cyan-500/10 border-cyan-500/20",
+    image: "",
+    imageLabel: "DuoBalance",
+    links: [
+      { label: "Repository", url: "https://github.com/152004E/DuoBalance-app", icon: "fa-brands fa-github" },
     ],
   },
   {
@@ -56,7 +79,7 @@ const projects: Project[] = [
     image: "",
     imageLabel: "Agri-tech",
     links: [
-      { label: "GitHub", url: "https://github.com/152004E/web-huerta-directa", icon: "fa-brands fa-github" },
+      { label: "GitHub", url: "https://github.com/HuertaDirectaProject/HdirectaJava", icon: "fa-brands fa-github" },
     ],
   },
   {
@@ -74,7 +97,7 @@ const projects: Project[] = [
     image: "",
     imageLabel: "AlgoTrainer",
     links: [
-      { label: "Repository", icon: "fa-brands fa-github" },
+      { label: "Repository", url: "https://github.com/152004E/Algotrainer", icon: "fa-brands fa-github" },
     ],
   },
   {
@@ -212,10 +235,9 @@ const projects: Project[] = [
         {lang === 'es' ? 'Anterior' : 'Previous' 
       }</button>
       <div class="flex gap-1.5">
-        <span id="project-dot-0" class="w-2 h-2 rounded-full bg-cyan-400 transition-all duration-300"></span>
-        <span id="project-dot-1" class="w-2 h-2 rounded-full bg-gray-300 dark:bg-white/20 transition-all duration-300"></span>
-        <span id="project-dot-2" class="w-2 h-2 rounded-full bg-gray-300 dark:bg-white/20 transition-all duration-300"></span>
-        <span id="project-dot-3" class="w-2 h-2 rounded-full bg-gray-300 dark:bg-white/20 transition-all duration-300"></span>
+        {projects.map((_, i) => (
+          <span id={`project-dot-${i}`} class={`w-2 h-2 rounded-full ${i === 0 ? "bg-cyan-400" : "bg-gray-300 dark:bg-white/20"} transition-all duration-300`}></span>
+        ))}
       </div>
       <button id="next-project" class="flex items-center gap-2 px-5 py-2.5 rounded-xl border border-gray-200 dark:border-white/10 text-gray-500 dark:text-gray-300 text-sm font-semibold transition-all duration-300 hover:border-blue-500/40 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-white/[0.03] hover:translate-x-1">
         {lang === 'es' ? 'Siguiente' : 'Next' 
