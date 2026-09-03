@@ -681,14 +681,14 @@ function getLevelColor(level: string) {
       </div>
     </div>
 
-    <!-- 2. Panel Intermedio: Matcha Green Gradient (Aplicación Práctica y Proyectos) -->
+    <!-- 2. Panel Intermedio: Paleta Portafolio (Aplicación Práctica y Proyectos) -->
     <div class="skills-nav-panel skills-nav-middle skills-nav-border" id="skillsNavMiddle">
       <div class="skills-middle-header">
         {lang === 'es' ? '{ APLICACIÓN PRÁCTICA & ROL }' : '{ PRACTICAL APPLICATION & ROLE }'}
       </div>
       <div class="skills-middle-card">
         <div class="skills-middle-badge">
-          <i id="skillsMiddleBadgeIcon" class="fa-solid fa-code text-xl text-black"></i>
+          <i id="skillsMiddleBadgeIcon" class="fa-solid fa-code text-xl"></i>
         </div>
         <div class="skills-middle-info">
           <div id="skillsMiddleTitle" class="skills-middle-title">
@@ -710,7 +710,7 @@ function getLevelColor(level: string) {
       </div>
     </div>
 
-    <!-- 3. Panel Inferior: Enlaces rápidos y Socials -->
+    <!-- 3. Panel Inferior: Enlaces rápidos y WhatsApp -->
     <div class="skills-nav-panel skills-nav-bottom skills-nav-border" id="skillsNavBottom">
       <ul class="skills-socials">
         <li><a href="https://github.com/152004E" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github mr-1.5"></i>GitHub</a></li>
@@ -718,9 +718,16 @@ function getLevelColor(level: string) {
         <li><a href="/cv_emerson_reyes.pdf" target="_blank"><i class="fa-solid fa-file-pdf mr-1.5 text-red-400"></i>PDF CV</a></li>
         <li><a href="/cv_emerson_reyes.docx" download><i class="fa-solid fa-file-word mr-1.5 text-blue-400"></i>DOCX</a></li>
       </ul>
-      <div class="skills-nav-asset hidden sm:flex items-center gap-1.5 font-mono text-[11px] text-emerald-400 bg-emerald-500/10 px-3 py-1.5 rounded-full border border-emerald-500/20">
-        <i class="fa-solid fa-check-circle text-[10px]"></i>
-        <span>Interruptible GSAP</span>
+      <div class="skills-nav-asset flex items-center">
+        <a 
+          href="https://wa.me/573222463385?text=%C2%A1Hola!%20Me%20gustar%C3%ADa%20hablar%20sobre%20tus%20servicios%20y%20proyectos." 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500 hover:bg-emerald-400 text-white font-semibold text-xs transition-all hover:scale-105 shadow-md shadow-emerald-500/25 cursor-pointer"
+        >
+          <i class="fa-brands fa-whatsapp text-sm"></i>
+          <span>{lang === 'es' ? 'Escribir al WhatsApp' : 'Chat on WhatsApp'}</span>
+        </a>
       </div>
     </div>
   </div>
@@ -786,21 +793,31 @@ function getLevelColor(level: string) {
     width: 100%;
     background: linear-gradient(
       135deg,
-      #0ae448 0%,
-      #abff84 40%,
-      #6fdd8b 70%,
-      #0ae448 100%
+      #f0f7ff 0%,
+      #e0f2fe 50%,
+      #eef2ff 100%
     );
-    color: #0e100f;
+    color: #0f172a;
     transform: translateX(110%);
     display: flex;
     flex-direction: column;
     justify-content: center;
     padding: 20px 24px;
     z-index: 2;
-    border-color: #065a1e;
+    border-color: rgba(59, 130, 246, 0.25);
     min-height: 140px;
-    box-shadow: 0 10px 30px rgba(10, 228, 72, 0.18);
+    box-shadow: 0 10px 30px rgba(59, 130, 246, 0.1);
+  }
+  :global(.dark) .skills-nav-middle {
+    background: linear-gradient(
+      135deg,
+      #0b1329 0%,
+      #0f172a 55%,
+      #082f49 100%
+    );
+    color: #ffffff;
+    border-color: rgba(56, 189, 248, 0.3);
+    box-shadow: 0 10px 30px rgba(56, 189, 248, 0.12);
   }
   .skills-middle-header {
     font-family: monospace;
@@ -808,9 +825,11 @@ function getLevelColor(level: string) {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.12em;
-    opacity: 0.7;
     margin-bottom: 10px;
-    color: #065a1e;
+    color: #2563eb;
+  }
+  :global(.dark) .skills-middle-header {
+    color: #38bdf8;
   }
   .skills-middle-card {
     display: flex;
@@ -822,10 +841,17 @@ function getLevelColor(level: string) {
     width: 48px;
     height: 48px;
     border-radius: 12px;
-    background: rgba(0, 0, 0, 0.12);
+    background: rgba(59, 130, 246, 0.12);
+    color: #2563eb;
     display: flex;
     align-items: center;
     justify-content: center;
+    border: 1px solid rgba(59, 130, 246, 0.2);
+  }
+  :global(.dark) .skills-middle-badge {
+    background: rgba(56, 189, 248, 0.15);
+    color: #38bdf8;
+    border-color: rgba(56, 189, 248, 0.3);
   }
   .skills-middle-info {
     display: flex;
@@ -837,12 +863,18 @@ function getLevelColor(level: string) {
     font-size: clamp(1rem, 3vw, 1.25rem);
     line-height: 1.2;
     letter-spacing: -0.02em;
-    color: #0e100f;
+    color: #0f172a;
+  }
+  :global(.dark) .skills-middle-title {
+    color: #ffffff;
   }
   .skills-middle-desc {
     font-size: 0.8rem;
-    color: rgba(14, 16, 15, 0.85);
+    color: #334155;
     line-height: 1.4;
+  }
+  :global(.dark) .skills-middle-desc {
+    color: #cbd5e1;
   }
   .skills-middle-actions {
     display: flex;
@@ -854,23 +886,43 @@ function getLevelColor(level: string) {
     font-size: 0.75rem;
     font-weight: 600;
     text-decoration: none;
-    color: #0e100f;
+    color: #1e3a8a;
     padding: 6px 14px;
     border-radius: 100px;
-    background: rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(0, 0, 0, 0.18);
+    background: rgba(59, 130, 246, 0.08);
+    border: 1px solid rgba(59, 130, 246, 0.2);
     display: inline-flex;
     align-items: center;
     transition: all 0.2s;
   }
+  :global(.dark) .skills-action-btn {
+    color: #e2e8f0;
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.15);
+  }
   .skills-action-btn:hover {
-    background: rgba(0, 0, 0, 0.18);
+    background: rgba(59, 130, 246, 0.15);
     transform: translateY(-1px);
   }
+  :global(.dark) .skills-action-btn:hover {
+    background: rgba(255, 255, 255, 0.12);
+  }
   .skills-action-btn.primary {
-    background: #0e100f;
-    color: #abff84;
-    border-color: #0e100f;
+    background: #2563eb;
+    color: #ffffff;
+    border-color: #2563eb;
+  }
+  .skills-action-btn.primary:hover {
+    background: #1d4ed8;
+    color: #ffffff;
+  }
+  :global(.dark) .skills-action-btn.primary {
+    background: linear-gradient(to right, #2563eb, #06b6d4);
+    color: #ffffff;
+    border-color: transparent;
+  }
+  :global(.dark) .skills-action-btn.primary:hover {
+    background: linear-gradient(to right, #1d4ed8, #0891b2);
   }
   .skills-action-btn.primary:hover {
     background: #1a1e1b;
@@ -1178,7 +1230,7 @@ function getLevelColor(level: string) {
       const middleIcon = document.getElementById('skillsMiddleBadgeIcon');
       const middleGithubBtn = document.getElementById('skillsMiddleGithubAction') as HTMLAnchorElement | null;
 
-      if (middleIcon) middleIcon.className = `${icon} text-xl text-black`;
+      if (middleIcon) middleIcon.className = `${icon} text-xl`;
       if (middleTitle) {
         const topProjects = projects.slice(0, 2).join(' & ');
         middleTitle.textContent = topProjects ? `${topProjects} · ${name}` : `${name} en Producción`;
