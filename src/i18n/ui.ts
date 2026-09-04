@@ -34,25 +34,27 @@ export const ui = {
     'hero.followMe': 'Sígueme en:',
     
     'about.badge': 'Descripción',
-    'about.p1': 'Tecnólogo en Análisis y Desarrollo de Software, con más de 3 años de experiencia desarrollando proyectos de forma autónoma y experiencia práctica en la Fábrica de Software del SENA. Con conocimientos sólidos en desarrollo Full Stack utilizando tecnologías como <span class="text-blue-400 font-medium">Java</span>, <span class="text-blue-400 font-medium">Spring Boot</span>, <span class="text-blue-400 font-medium">JavaScript</span>, <span class="text-blue-400 font-medium">React</span>, <span class="text-blue-400 font-medium">TypeScript</span> y <span class="text-blue-400 font-medium">Node.js</span>.',
+    'about.p1': 'Tecnólogo en Análisis y Desarrollo de Software del SENA (2023–2026), con 6 meses de práctica laboral profesional en la Fábrica de Software del SENA (Abril – Octubre 2026) y desarrollo continuo de proyectos full stack autónomos desde 2023. Con conocimientos sólidos en <span class="text-blue-400 font-medium">Java</span>, <span class="text-blue-400 font-medium">Spring Boot</span>, <span class="text-blue-400 font-medium">JavaScript</span>, <span class="text-blue-400 font-medium">React</span>, <span class="text-blue-400 font-medium">TypeScript</span>, <span class="text-blue-400 font-medium">NestJS</span>, <span class="text-blue-400 font-medium">PostgreSQL</span> y <span class="text-blue-400 font-medium">Docker</span>.',
     'about.p2': 'Experiencia en construcción de interfaces web modernas y responsivas con Tailwind CSS.',
     'about.github': 'Ver en GitHub',
 
     'exp.badge': 'Trayectoria',
     'exp.title1': 'Experiencia',
     'exp.title2': ' y Trayectoria',
-    'exp.present': '2026 - Presente',
-    'exp.job1.title': 'Desarrollador Full Stack Junior',
-    'exp.job1.desc': '3 años desarrollando apps full stack (React, Node.js). Creación de interfaces modernas en equipos ágiles (Scrum) y consumo de APIs, con fuerte enfoque en diseño responsivo.',
-    'exp.job2.title': 'Desarrollador Web y Proyectos Colaborativos',
-    'exp.job2.desc': 'Desarrollo de plataformas web enfocadas en UX y componentes reutilizables. Trabajo colaborativo con control de versiones y metodologías ágiles.',
-    'exp.job3.title': 'Liderazgo en Equipos Académicos y Desarrollo',
-    'exp.job3.desc': 'Liderazgo de equipos en proyectos académicos. Coordinación de tareas y planificación de desarrollo, fortaleciendo habilidades blandas y adopción tecnológica.',
+    'exp.present': 'Abril 2026 - Octubre 2026',
+    'exp.date2': '2023 - Presente',
+    'exp.date3': '2023 - 2026',
+    'exp.job1.title': 'Desarrollador Full Stack — Fábrica de Software SENA',
+    'exp.job1.desc': '6 meses de práctica profesional en proyectos reales del ecosistema SENA. Desarrollo de aplicaciones full stack con React, Spring Boot y PostgreSQL; implementación de APIs REST con JWT; trabajo ágil con Scrum y control de versiones con Git.',
+    'exp.job2.title': 'Desarrollador Independiente — Proyectos Autónomos & Open Source',
+    'exp.job2.desc': 'Desarrollo continuo de soluciones web y móviles desde 2023: Room 911 (Spring Boot, React, PostgreSQL, Docker), DuoBalance (NestJS, React Native, Prisma), HuertaDirecta, AlgoTrainer y Ainglo. Arquitectura backend e integración de IA.',
+    'exp.job3.title': 'Tecnólogo en Análisis y Desarrollo de Software — SENA',
+    'exp.job3.desc': 'Formación académica (2023 – 2026) con énfasis en ingeniería de requerimientos, diseño de bases de datos relacionales, programación orientada a objetos (Java) y buenas prácticas de ingeniería de software.',
 
-    'stats.1': 'Proyectos desarrollados para clientes locales y startups digitales',
-    'stats.2': 'Años de experiencia en diseño y desarrollo web',
-    'stats.3': 'Proyectos integrando frontend, backend y bases de datos',
-    'stats.4': 'Aplicaciones diseñadas con enfoque en usabilidad y rendimiento'
+    'stats.1': 'Proyectos y herramientas desarrolladas con control de versiones en GitHub',
+    'stats.2': 'Meses de práctica profesional formal en Fábrica de Software SENA',
+    'stats.3': 'Proyectos Full Stack estructurados con backend, base de datos y despliegue',
+    'stats.4': 'Nivel de inglés certificado para documentación técnica y aprendizaje'
   },
   en: {
     'nav.home': 'Home',
@@ -83,24 +85,26 @@ export const ui = {
     'hero.followMe': 'Follow me on:',
 
     'about.badge': 'Description',
-    'about.p1': 'Software Analysis and Development Technologist, with over 3 years of experience developing projects autonomously and practical experience in the SENA Software Factory. Solid knowledge in Full Stack development using technologies such as <span class="text-blue-400 font-medium">Java</span>, <span class="text-blue-400 font-medium">Spring Boot</span>, <span class="text-blue-400 font-medium">JavaScript</span>, <span class="text-blue-400 font-medium">React</span>, <span class="text-blue-400 font-medium">TypeScript</span> and <span class="text-blue-400 font-medium">Node.js</span>.',
+    'about.p1': 'Software Analysis and Development Technologist from SENA (2023–2026), with a 6-month professional internship at the SENA Software Factory (April – October 2026) and continuous independent full stack project engineering since 2023. Solid knowledge in <span class="text-blue-400 font-medium">Java</span>, <span class="text-blue-400 font-medium">Spring Boot</span>, <span class="text-blue-400 font-medium">JavaScript</span>, <span class="text-blue-400 font-medium">React</span>, <span class="text-blue-400 font-medium">TypeScript</span>, <span class="text-blue-400 font-medium">NestJS</span>, <span class="text-blue-400 font-medium">PostgreSQL</span> and <span class="text-blue-400 font-medium">Docker</span>.',
     'about.p2': 'Experience in building modern and responsive web interfaces with Tailwind CSS.',
     'about.github': 'View on GitHub',
 
     'exp.badge': 'Career Path',
     'exp.title1': 'Experience',
     'exp.title2': ' & Career Path',
-    'exp.present': '2026 - Present',
-    'exp.job1.title': 'Junior Full Stack Developer',
-    'exp.job1.desc': '3 years developing full stack apps (React, Node.js). Creation of modern interfaces in agile teams (Scrum) and API integration, with strong focus on responsive design.',
-    'exp.job2.title': 'Web Developer and Collaborative Projects',
-    'exp.job2.desc': 'Development of web platforms focused on UX and reusable components. Collaborative work with version control and agile methodologies.',
-    'exp.job3.title': 'Leadership in Academic Teams and Development',
-    'exp.job3.desc': 'Team leadership in academic projects. Task coordination and development planning, strengthening soft skills and tech adoption.',
+    'exp.present': 'April 2026 - October 2026',
+    'exp.date2': '2023 - Present',
+    'exp.date3': '2023 - 2026',
+    'exp.job1.title': 'Full Stack Developer — SENA Software Factory',
+    'exp.job1.desc': '6-month professional internship in enterprise projects within the SENA ecosystem. Full stack engineering with React, Spring Boot, and PostgreSQL; REST APIs with JWT; agile collaboration with Scrum and Git version control.',
+    'exp.job2.title': 'Independent Developer — Autonomous Projects & Open Source',
+    'exp.job2.desc': 'Continuous development of web and mobile software since 2023: Room 911 (Spring Boot, React, PostgreSQL, Docker), DuoBalance (NestJS, React Native, Prisma), HuertaDirecta, AlgoTrainer, and Ainglo. Backend architecture and AI integrations.',
+    'exp.job3.title': 'Software Analysis and Development Technologist — SENA',
+    'exp.job3.desc': 'Academic degree (2023 – 2026) emphasizing requirement engineering, relational database design, object-oriented programming (Java), and software engineering best practices.',
 
-    'stats.1': 'Projects developed for local clients and digital startups',
-    'stats.2': 'Years of experience in web design and development',
-    'stats.3': 'Projects integrating frontend, backend and databases',
-    'stats.4': 'Applications designed with a focus on usability and performance'
+    'stats.1': 'Projects and tools developed with Git version control on GitHub',
+    'stats.2': 'Months of formal professional internship at SENA Software Factory',
+    'stats.3': 'Structured Full Stack projects featuring backend, database, and deployment',
+    'stats.4': 'Certified English level for technical documentation and continuous learning'
   }
 } as const;
