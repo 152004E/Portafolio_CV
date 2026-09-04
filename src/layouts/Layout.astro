@@ -131,14 +131,16 @@ const { title = lang === 'es' ? "Emerson Reyes - Portafolio profesional" : "Emer
       let ctx: any;
       let navLinksHandler: any;
 
-      function initCinematic() {
-        if (!document.documentElement.classList.contains('cinematic-enabled')) return;
+      function initNavigationAndScroll() {
+        if (window.location.pathname.includes('/cv')) return;
+
+        const isCinematic = document.documentElement.classList.contains('cinematic-enabled');
 
         lenis = new Lenis({
-          duration: 0.4,
+          duration: isCinematic ? 0.4 : 0.8,
           easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
           smoothWheel: true,
-          wheelMultiplier: 1.8,
+          wheelMultiplier: isCinematic ? 1.8 : 1.0,
         });
 
         lenis.on('scroll', ScrollTrigger.update);
@@ -150,95 +152,99 @@ const { title = lang === 'es' ? "Emerson Reyes - Portafolio profesional" : "Emer
 
         navLinksHandler = (e: Event) => {
           const targetId = (e.currentTarget as Element).getAttribute('href');
-          if(targetId && targetId.startsWith('#') && document.querySelector(targetId)){
+          if (targetId && targetId.startsWith('#') && document.querySelector(targetId)) {
              e.preventDefault();
              
              if (targetId === '#section-portada') {
-               lenis.scrollTo(0);
+               lenis.scrollTo(0, { duration: 0.8 });
                return;
              }
              
              const targetEl = document.querySelector(targetId);
              if (!targetEl) return;
              
-             const wrapper = targetEl.closest('.gsap-horizontal-wrapper');
-             if (wrapper) {
-                const trigger = ScrollTrigger.getAll().find(t => t.trigger === wrapper);
-                if (trigger) {
-                   const container = wrapper.querySelector('.gsap-horizontal-container');
-                   if (container) {
-                       const panels = Array.from(container.querySelectorAll('.gsap-horizontal-panel'));
-                       const panel = targetEl.closest('.gsap-horizontal-panel');
-                       if (panel) {
-                           const panelIndex = panels.indexOf(panel);
-                           const direction = wrapper.getAttribute('data-direction');
-                           
-                           let progress = 0;
-                           if (panels.length > 1) {
-                              if (direction === 'rtl') {
-                                 const visualIndex = panels.length - 1 - panelIndex;
-                                 progress = visualIndex / (panels.length - 1);
-                              } else {
-                                 progress = panelIndex / (panels.length - 1);
-                              }
-                           }
-                           
-                           const scrollPos = trigger.start + (trigger.end - trigger.start) * progress;
-                           lenis.scrollTo(scrollPos);
-                           return;
-                       }
-                   }
-                }
+             if (isCinematic) {
+               const wrapper = targetEl.closest('.gsap-horizontal-wrapper');
+               if (wrapper) {
+                  const trigger = ScrollTrigger.getAll().find(t => t.trigger === wrapper);
+                  if (trigger) {
+                     const container = wrapper.querySelector('.gsap-horizontal-container');
+                     if (container) {
+                         const panels = Array.from(container.querySelectorAll('.gsap-horizontal-panel'));
+                         const panel = targetEl.closest('.gsap-horizontal-panel');
+                         if (panel) {
+                             const panelIndex = panels.indexOf(panel);
+                             const direction = wrapper.getAttribute('data-direction');
+                             
+                             let progress = 0;
+                             if (panels.length > 1) {
+                                if (direction === 'rtl') {
+                                   const visualIndex = panels.length - 1 - panelIndex;
+                                   progress = visualIndex / (panels.length - 1);
+                                } else {
+                                   progress = panelIndex / (panels.length - 1);
+                                }
+                             }
+                             
+                             const scrollPos = trigger.start + (trigger.end - trigger.start) * progress;
+                             lenis.scrollTo(scrollPos, { duration: 1.0 });
+                             return;
+                         }
+                     }
+                  }
+               }
              }
              
-             lenis.scrollTo(targetEl, { offset: -50 });
+             lenis.scrollTo(targetEl, { offset: -70, duration: 0.8 });
           }
         };
         
-        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+        document.querySelectorAll('nav a[href^="#"], a[href^="#contacto"], a[href^="#section-proyectos"]').forEach(anchor => {
           anchor.addEventListener('click', navLinksHandler);
         });
 
-        // Use context for easy cleanup
-        ctx = gsap.context(() => {
-          const wrappers = document.querySelectorAll('.gsap-horizontal-wrapper');
-          wrappers.forEach(wrapper => {
-            const container = wrapper.querySelector('.gsap-horizontal-container');
-            if (!container) return;
-            const panels = gsap.utils.toArray(container.querySelectorAll('.gsap-horizontal-panel'));
-            const direction = wrapper.getAttribute('data-direction') || 'ltr';
+        if (isCinematic) {
+          // Use context for easy cleanup
+          ctx = gsap.context(() => {
+            const wrappers = document.querySelectorAll('.gsap-horizontal-wrapper');
+            wrappers.forEach(wrapper => {
+              const container = wrapper.querySelector('.gsap-horizontal-container');
+              if (!container) return;
+              const panels = gsap.utils.toArray(container.querySelectorAll('.gsap-horizontal-panel'));
+              const direction = wrapper.getAttribute('data-direction') || 'ltr';
 
-            if (panels.length > 0) {
-              container.classList.remove('flex-col');
-              container.setAttribute('style', `display: flex; flex-direction: row; width: ${panels.length * 100}vw;`);
+              if (panels.length > 0) {
+                container.classList.remove('flex-col');
+                container.setAttribute('style', `display: flex; flex-direction: row; width: ${panels.length * 100}vw;`);
 
-              if (direction === 'rtl') {
-                gsap.set(panels, { xPercent: -100 * (panels.length - 1) });
-                gsap.to(panels, {
-                  xPercent: 0,
-                  ease: "none",
-                  scrollTrigger: {
-                    trigger: wrapper,
-                    pin: true,
-                    scrub: true,
-                    end: () => "+=" + (container.getBoundingClientRect().width * 0.4)
-                  }
-                });
-              } else {
-                gsap.to(panels, {
-                  xPercent: -100 * (panels.length - 1),
-                  ease: "none",
-                  scrollTrigger: {
-                    trigger: wrapper,
-                    pin: true,
-                    scrub: true,
-                    end: () => "+=" + (container.getBoundingClientRect().width * 0.4)
-                  }
-                });
+                if (direction === 'rtl') {
+                  gsap.set(panels, { xPercent: -100 * (panels.length - 1) });
+                  gsap.to(panels, {
+                    xPercent: 0,
+                    ease: "none",
+                    scrollTrigger: {
+                      trigger: wrapper,
+                      pin: true,
+                      scrub: true,
+                      end: () => "+=" + (container.getBoundingClientRect().width * 0.4)
+                    }
+                  });
+                } else {
+                  gsap.to(panels, {
+                    xPercent: -100 * (panels.length - 1),
+                    ease: "none",
+                    scrollTrigger: {
+                      trigger: wrapper,
+                      pin: true,
+                      scrub: true,
+                      end: () => "+=" + (container.getBoundingClientRect().width * 0.4)
+                    }
+                  });
+                }
               }
-            }
+            });
           });
-        });
+        }
       }
 
       function destroyCinematic() {
@@ -264,7 +270,7 @@ const { title = lang === 'es' ? "Emerson Reyes - Portafolio profesional" : "Emer
       }
 
       // Initialize
-      initCinematic();
+      initNavigationAndScroll();
 
 
 
