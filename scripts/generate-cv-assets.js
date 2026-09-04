@@ -169,7 +169,7 @@ function createCvDoc(lang = 'es') {
       spacing: { after: 60 },
       children: [
         new TextRun({ text: isEs ? 'Inglés: ' : 'English: ', bold: true, size: 16, color: cAccent, font: 'Arial' }),
-        new TextRun({ text: isEs ? 'B1 Certificado' : 'B1 Certified', size: 16, color: cMuted, font: 'Arial' })
+        new TextRun({ text: isEs ? 'A2 Certificado' : 'A2 Certified', size: 16, color: cMuted, font: 'Arial' })
       ]
     }),
     new Paragraph({
@@ -324,8 +324,8 @@ function createCvDoc(lang = 'es') {
       children: [
         new TextRun({
           text: isEs
-            ? 'Tecnólogo en Análisis y Desarrollo de Software graduado del SENA, con más de 3 años de experiencia desarrollando proyectos de forma autónoma y práctica real en la Fábrica de Software del SENA. Inglés B1 certificado, con capacidad para leer documentación técnica y colaborar en entornos internacionales.'
-            : 'Software Analysis and Development Technologist graduated from SENA, with over 3 years of experience building projects autonomously and practical experience in the SENA Software Factory. B1 Certified English, skilled at technical documentation and international collaboration.',
+            ? 'Tecnólogo en Análisis y Desarrollo de Software del SENA (2023–2026), con 6 meses de práctica laboral profesional en la Fábrica de Software del SENA (Abril – Octubre 2026) y desarrollo continuo de proyectos full stack autónomos desde 2023. Inglés A2 certificado, con capacidad para leer y asimilar documentación técnica.'
+            : 'Software Analysis and Development Technologist from SENA (2023–2026), with a 6-month professional internship at the SENA Software Factory (April – October 2026) and continuous independent full stack project engineering since 2023. A2 Certified English, skilled at technical documentation and continuous learning.',
           size: 18,
           color: cMuted,
           font: 'Arial'
@@ -337,8 +337,8 @@ function createCvDoc(lang = 'es') {
       children: [
         new TextRun({
           text: isEs
-            ? 'Apasionado por el desarrollo Full Stack, interfaces modernas, sistemas escalables y automatización. Experiencia construyendo aplicaciones web completas con tecnologías frontend y backend, integrando bases de datos, APIs REST, autenticación JWT y arquitecturas modernas.'
-            : 'Passionate about Full Stack development, modern UI interfaces, scalable systems, and workflow automation. Experienced in engineering end-to-end web applications with frontend and backend frameworks, integrating relational databases, REST APIs, JWT authentication, and modern architectures.',
+            ? 'Apasionado por el desarrollo Full Stack, interfaces modernas, sistemas escalables y automatización. Experiencia construyendo aplicaciones completas con React, React Native, NestJS, Spring Boot, PostgreSQL, Docker y APIs REST con JWT. Orientado al aprendizaje continuo, buenas prácticas de ingeniería y construcción de software de alto impacto.'
+            : 'Passionate about Full Stack development, modern UI interfaces, scalable systems, and workflow automation. Experienced in engineering end-to-end applications with React, React Native, NestJS, Spring Boot, PostgreSQL, Docker, and secure REST APIs with JWT.',
           size: 18,
           color: cMuted,
           font: 'Arial'
@@ -352,14 +352,14 @@ function createCvDoc(lang = 'es') {
       spacing: { after: 40 },
       children: [
         new TextRun({
-          text: isEs ? 'Desarrollador Full Stack — Proyectos Autónomos' : 'Full Stack Developer — Independent Projects',
+          text: isEs ? 'Desarrollador Full Stack — Fábrica de Software SENA' : 'Full Stack Developer — SENA Software Factory',
           bold: true,
           size: 19,
           color: cAccent,
           font: 'Arial'
         }),
         new TextRun({
-          text: isEs ? '   (2022 – Actualidad)' : '   (2022 – Present)',
+          text: isEs ? '   (Abril 2026 – Octubre 2026)' : '   (April 2026 – October 2026)',
           bold: false,
           size: 16,
           color: '64748B',
@@ -371,7 +371,7 @@ function createCvDoc(lang = 'es') {
       spacing: { after: 60 },
       children: [
         new TextRun({
-          text: isEs ? 'Experiencia independiente · +3 años' : 'Independent Experience · +3 years',
+          text: isEs ? 'Servicio Nacional de Aprendizaje · Práctica laboral (6 meses)' : 'National Learning Service · Professional Internship (6 months)',
           bold: true,
           size: 16,
           color: cGreen,
@@ -381,18 +381,16 @@ function createCvDoc(lang = 'es') {
     }),
     ...(isEs
       ? [
-          '• Desarrollo de aplicaciones web completas con React, TypeScript, TailwindCSS en frontend.',
-          '• Construcción de APIs REST con Spring Boot, Node.js y autenticación JWT.',
-          '• Integración con bases de datos PostgreSQL y MySQL; diseño de esquemas relacionales.',
-          '• Automatización de flujos y consumo de APIs externas e integración de modelos de IA.',
-          '• Control de versiones con Git/GitHub y despliegue con Docker y entornos Linux.'
+          '• Desarrollo de aplicaciones full stack con React, Spring Boot y PostgreSQL en proyectos reales del ecosistema SENA.',
+          '• Implementación de APIs REST seguras con autenticación JWT y control de acceso por roles.',
+          '• Trabajo colaborativo en equipo bajo metodología ágil Scrum y control de versiones con Git/GitHub.',
+          '• Análisis de requerimientos y modelado de arquitecturas de software.'
         ]
       : [
-          '• Full web application development with React, TypeScript, and TailwindCSS on frontend.',
-          '• REST API engineering with Spring Boot, Node.js, and secure JWT authentication.',
-          '• Integration with PostgreSQL and MySQL databases; relational schema modeling.',
-          '• Workflow automation, external API consumption, and LLM/AI model integration.',
-          '• Version control with Git/GitHub and deployment using Docker and Linux environments.'
+          '• Full stack development with React, Spring Boot, and PostgreSQL in real SENA ecosystem projects.',
+          '• Implementation of robust REST APIs with JWT authentication and role-based access control.',
+          '• Collaborative teamwork using agile Scrum methodologies and Git/GitHub version control.',
+          '• Requirement engineering and software architecture modeling.'
         ]
     ).map(point => new Paragraph({
       spacing: { after: 40 },
@@ -405,14 +403,14 @@ function createCvDoc(lang = 'es') {
       spacing: { after: 40 },
       children: [
         new TextRun({
-          text: isEs ? 'Desarrollador — Fábrica de Software SENA' : 'Developer — SENA Software Factory',
+          text: isEs ? 'Desarrollador Independiente — Proyectos Autónomos & Open Source' : 'Independent Developer — Autonomous Projects & Open Source',
           bold: true,
           size: 19,
           color: cAccent,
           font: 'Arial'
         }),
         new TextRun({
-          text: '   (SENA)',
+          text: isEs ? '   (2023 – Actualidad)' : '   (2023 – Present)',
           bold: false,
           size: 16,
           color: '64748B',
@@ -424,7 +422,7 @@ function createCvDoc(lang = 'es') {
       spacing: { after: 60 },
       children: [
         new TextRun({
-          text: isEs ? 'Servicio Nacional de Aprendizaje · Práctica institucional' : 'National Learning Service · Institutional Practice',
+          text: isEs ? 'Proyectos personales y de estudio autónomo' : 'Personal side projects and self-driven engineering',
           bold: true,
           size: 16,
           color: cGreen,
@@ -434,14 +432,18 @@ function createCvDoc(lang = 'es') {
     }),
     ...(isEs
       ? [
-          '• Participación en proyectos reales dentro del ecosistema de desarrollo de la Fábrica de Software.',
-          '• Aplicación de metodologías de análisis de requerimientos y documentación técnica.',
-          '• Trabajo colaborativo en equipo con estándares de desarrollo de software.'
+          '• Desarrollo de aplicaciones completas con React, React Native, TypeScript y TailwindCSS en frontend.',
+          '• Construcción de APIs REST y microservicios con NestJS, Spring Boot, Node.js y autenticación JWT.',
+          '• Integración con bases de datos PostgreSQL y MySQL; diseño de esquemas con Prisma ORM.',
+          '• Automatización de flujos y consumo de APIs externas e integración de modelos de IA.',
+          '• Control de versiones con Git/GitHub y despliegue containerizado con Docker en Linux.'
         ]
       : [
-          '• Participation in enterprise software projects within the SENA Software Factory ecosystem.',
-          '• Application of requirement engineering methodologies and professional technical documentation.',
-          '• Collaborative teamwork upholding rigorous software engineering standards.'
+          '• Full web and mobile application engineering with React, React Native, TypeScript, and TailwindCSS.',
+          '• REST API engineering with NestJS, Spring Boot, Node.js, and secure JWT authentication.',
+          '• Database modeling and schema design with PostgreSQL, MySQL, and Prisma ORM.',
+          '• Workflow automation, external API consumption, and LLM/AI model integration.',
+          '• Version control with Git/GitHub and containerized deployments using Docker on Linux.'
         ]
     ).map(point => new Paragraph({
       spacing: { after: 40 },
@@ -462,7 +464,7 @@ function createCvDoc(lang = 'es') {
           font: 'Arial'
         }),
         new TextRun({
-          text: isEs ? '   (Graduado)' : '   (Graduated)',
+          text: '   (2023 – 2026)',
           bold: false,
           size: 16,
           color: '64748B',
@@ -485,16 +487,16 @@ function createCvDoc(lang = 'es') {
     ...(isEs
       ? [
           '• Desarrollo de aplicaciones web modernas y responsivas.',
-          '• Programación orientada a objetos y arquitectura de software.',
+          '• Programación orientada a objetos (Java) y arquitectura de software.',
           '• Diseño y administración de bases de datos relacionales.',
-          '• Construcción e integración de APIs REST.',
+          '• Construcción e integración de APIs REST con seguridad JWT.',
           '• Análisis de requerimientos y documentación técnica.'
         ]
       : [
           '• Modern and responsive web application engineering.',
-          '• Object-oriented programming and scalable software architecture.',
+          '• Object-oriented programming (Java) and scalable software architecture.',
           '• Relational database modeling and administration.',
-          '• Design, construction, and integration of REST APIs.',
+          '• Design, construction, and integration of REST APIs with JWT security.',
           '• Requirements analysis and technical project documentation.'
         ]
     ).map(point => new Paragraph({
@@ -509,45 +511,45 @@ function createCvDoc(lang = 'es') {
       ? [
           {
             name: 'ROOM 911 Management System',
-            desc: 'Sistema de control de acceso con autenticación biométrica, JWT, dashboards y gestión de empleados.'
+            desc: 'Sistema de control de acceso con autenticación biométrica y JWT. Stack: Spring Boot, React, PostgreSQL y Docker.'
           },
           {
             name: 'DuoBalance',
-            desc: 'Plataforma web y móvil para gestión y división de gastos compartidos con NestJS, PostgreSQL y React Native.'
-          },
-          {
-            name: 'AlgoTrainer',
-            desc: 'Plataforma de entrenamiento para speedcubers con reconocimiento y medición de algoritmos.'
+            desc: 'Plataforma móvil y web de división inteligente de gastos con algoritmos de saldo. Stack: NestJS, React Native y Prisma.'
           },
           {
             name: 'HuertaDirecta',
-            desc: 'Plataforma agrotech que conecta agricultores directamente con compradores sin intermediarios.'
+            desc: 'Plataforma agrotech para venta directa sin intermediarios con inventario en tiempo real. Stack: React, Node.js y PostgreSQL.'
+          },
+          {
+            name: 'AlgoTrainer',
+            desc: 'Entrenamiento interactivo para speedcubers con reconocimiento de algoritmos 3D. Stack: React, TypeScript y TailwindCSS.'
           },
           {
             name: 'Ainglo',
-            desc: 'Asistente de IA para aprender inglés por Telegram con reconocimiento de voz, TTS y diccionario.'
+            desc: 'Asistente de IA para aprendizaje de inglés por Telegram con TTS y análisis de voz. Stack: Python, Gemini API y SQLite.'
           }
         ]
       : [
           {
             name: 'ROOM 911 Management System',
-            desc: 'Access control system with biometric authentication, JWT, dashboards, and staff management.'
+            desc: 'Biometric access control system with JWT. Stack: Spring Boot, React, PostgreSQL, and Docker.'
           },
           {
             name: 'DuoBalance',
-            desc: 'Web and mobile shared expense management platform with NestJS, PostgreSQL, and React Native.'
-          },
-          {
-            name: 'AlgoTrainer',
-            desc: 'Speedcuber algorithm training platform focusing on pattern recognition and execution timers.'
+            desc: 'Shared expense management platform with net settlement algorithms. Stack: NestJS, React Native, and Prisma.'
           },
           {
             name: 'HuertaDirecta',
-            desc: 'Agrotech platform directly connecting local farmers with wholesale buyers transparently.'
+            desc: 'Direct farm-to-consumer agrotech marketplace with real-time inventory. Stack: React, Node.js, and PostgreSQL.'
+          },
+          {
+            name: 'AlgoTrainer',
+            desc: 'Speedcuber algorithm training platform with 3D visualization. Stack: React, TypeScript, and TailwindCSS.'
           },
           {
             name: 'Ainglo',
-            desc: 'AI English learning assistant via Telegram with voice recognition, TTS, and smart dictionary.'
+            desc: 'AI English learning assistant on Telegram with TTS and pronunciation analysis. Stack: Python, Gemini API, and SQLite.'
           }
         ]
     ).map(proj => new Paragraph({
